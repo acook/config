@@ -8,30 +8,31 @@
 
 files=( .bash_profile .gitconfig .vim .vimrc .bash_completion .hgrc )
 
-echo -ne Changing directory to `dirname $0` -\ 
+echo -ne pushd:\ 
 pushd `dirname $0`
-dir=`pwd`
 
-echo -ne Creating backup directory -\ 
+dir=`pwd`
+dot_dir=$dir/dotfiles
+
 mkdir -v backup
 
 for i in "${files[@]}" 
-do
-  if [ -h ~/$i ] 
-    then
-      echo -ne nop -\ 
-      echo ~/$i is symlink, not backing up
-      rm ~/$i
-    else
-      if [ -f ~/$i ]
-        then
-          echo -ne backup -\ 
-          mv -v ~/$i backup
-      fi
-  fi
-  echo -ne link -\ 
-  ln -v -s $dir/$i ~/$i
-done
+  do
+    if [ -h ~/$i ] 
+      then
+        echo -ne rm: symlink\ 
+        rm -v ~/$i
+      else
+        if [ -f ~/$i ]
+          then
+            echo -ne backup -\ 
+            mv -v ~/$i backup
+        fi
+    fi
+    echo -ne ln:\ 
+    ln -v -s $dot_dir/$i ~/$i
+  done
+#end for
 
 echo Sourcing .bash_profile...
 source ~/.bash_profile
