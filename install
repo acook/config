@@ -9,21 +9,25 @@ dir=`pwd`
 echo -ne Creating backup directory -\ 
 mkdir -v backup
 
-echo -ne Backing up and symlinking these files -\ 
-echo ${files[@]}
-
 for i in "${files[@]}" 
 do
-  echo -ne backup -\ 
   if [ -h ~/$i ] 
     then
+      echo -ne nop -\ 
       echo ~/$i is symlink, not backing up
       rm ~/$i
     else
-      mv -v ~/$i backup
+      if [ -f ~/$i ]
+        then
+          echo -ne backup -\ 
+          mv -v ~/$i backup
+      fi
   fi
   echo -ne link -\ 
   ln -v -s $dir/$i ~/$i
 done
+
+echo Sourcing .bash_profile...
+source ~/.bash_profile
 
 echo Done!
