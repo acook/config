@@ -1,15 +1,30 @@
 #!/bin/bash
 
+# Platform-specific setups
+unamestr=$(uname)
+case $unamestr in
+  'Darwin')        # OSX
+    # Set up MacPorts paths
+    export PATH=/opt/local/libexec/gnubin/:/opt/local/bin:/opt/local/sbin:$PATH
+    export MANPATH=/opt/local/share/man:$MANPATH
+
+    # I can set alias ls=ls_osx if I don't have gnu coreutils installed
+    alias ls_osx="ls -p -F -G -h"
+    # Colorize ls
+    export LSCOLORS=hxdxDxGxbxfxFxBxBxHxHx
+
+    # Attempt at fixing OSX tomfoolery
+    export ARCHFLAGS="-arch x86_64"
+esac
+
 # enable vi command line editing mode
 #set -o vi
 
 # since I type "vim" so much, I end up typing it inside vim when I want to edit a file, this should reverse the trend
 alias :e=vim
-alias gedit=/Applications/gedit.app/Contents/MacOS/gedit
 
-# set path to all my useful script and binary directories (includes MacPorts' /opt)
-export PATH=$HOME/bin:/opt/local/bin:/opt/local/sbin:$PATH
-export MANPATH=/opt/local/share/man:$MANPATH
+# set path to all my useful script and binary directories
+export PATH=$HOME/bin:$PATH
 
 # load up my git-enabled prompt
 source git_prompt
@@ -27,15 +42,12 @@ source rails_helpers
 #ssh-add ~/.ssh/id_rsa
 
 # searches for given string in filenames in current and all subdirectories
-#function s { find . -nowarn -name "*$1*" 2>/dev/nul; } # gnu/linux version
-function s { find . -nowarn -name "*$1*" 2>~/.nil; } # OSX version
+function s { find . -nowarn -name "*$1*" 2>/dev/null; }
 # searches for given filename exactly in current and all subdirectories
-#function ss { find . -nowarn -name "$1" 2>/dev/null; } # gnu/linux version
-function ss { find . -nowarn -name "$1" 2>~/.nil; } # OSX version
+function ss { find . -nowarn -name "$1" 2>/dev/null; }
 
 # ls with showall, colors, and /'s after directories
-alias ls="gls -AFhxX --color --group-directories-first " # gnu/linux version
-#alias ls_osx="ls -p -F -G -h" # OSX version
+alias ls="ls -AFhxX --color --group-directories-first "
 #alias l="ls"
 alias ll="ls -A -XSx -l"
 alias lk="ls -gGhLXS"
@@ -43,7 +55,6 @@ alias lk="ls -gGhLXS"
 # makes sure bash knows it's dealing with a color terminal-emulator and sets the colors for ls
 # LSCOLORS is BSD/OSX format, LS_COLORS is linux format
 export CLICOLOR=1
-export LSCOLORS=hxdxDxGxbxfxFxBxBxHxHx
 
 # grep customizations
 alias grep='grep -Hns --binary-files=without-match --color'
@@ -79,8 +90,3 @@ export HISTCONTROL=erasedups
 export HISTSIZE=10000
 shopt -s histappend
 
-# attempt at fixing OSX tomfoolery
-export ARCHFLAGS="-arch x86_64"
-
-# source the variables we need for capistrano deploys
-#source ~/.ec2/variables.sh
