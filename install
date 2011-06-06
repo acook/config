@@ -1,0 +1,29 @@
+# creates symbolic links
+
+files=( .bash_profile .gitconfig .vim .vimrc .bash_completion .hgrc )
+
+echo -ne Changing directory to `dirname $0` -\ 
+pushd `dirname $0`
+dir=`pwd`
+
+echo -ne Creating backup directory -\ 
+mkdir -v backup
+
+echo -ne Backing up and symlinking these files -\ 
+echo ${files[@]}
+
+for i in "${files[@]}" 
+do
+  echo -ne backup -\ 
+  if [ -h ~/$i ] 
+    then
+      echo ~/$i is symlink, not backing up
+      rm ~/$i
+    else
+      mv -v ~/$i backup
+  fi
+  echo -ne link -\ 
+  ln -v -s $dir/$i ~/$i
+done
+
+echo Done!
