@@ -28,6 +28,9 @@ export PATH=$HOME/bin:$PATH
 
 # load up my git-enabled prompt
 source git_prompt
+# load up bash completion scripts from other people
+source git-completion.bash
+source git-flow-completion.bash
 
 # load up my rails helper functions and aliases
 source rails_helpers
