@@ -6,7 +6,7 @@
 # Put all the dotfiles in the same directory as the install script and list them in the file variable.
 # run with `./install`
 
-files=( .bash_profile .gitconfig .vim .vimrc .bash_completion .hgrc )
+files=( .bash_profile .gitconfig .vim .vimrc .bash_completion .hgrc .irbrc .screenrc )
 
 echo -ne pushd:\ 
 pushd `dirname $0`
