@@ -5,8 +5,10 @@ unamestr=$(uname)
 case $unamestr in
   'Darwin')        # OSX
     # Set up MacPorts paths
-    export PATH=/opt/local/libexec/gnubin/:/opt/local/bin:/opt/local/sbin:$PATH
-    export MANPATH=/opt/local/share/man:$MANPATH
+    #export PATH=/opt/local/libexec/gnubin/:/opt/local/bin:/opt/local/sbin:$PATH
+    #export MANPATH=/opt/local/share/man:$MANPATH
+    # Give precedence to user/local/bin because that's where Homebrew installs their stuff
+    export PATH=/usr/local/bin:$PATH
 
     # I can set alias ls=ls_osx if I don't have gnu coreutils installed
     alias ls_osx="ls -p -F -G -h"
@@ -15,15 +17,18 @@ case $unamestr in
 
     # Attempt at fixing OSX tomfoolery
     export ARCHFLAGS="-arch x86_64"
+
+    # set vim as pager for manual
+    export MANPAGER='col -bx | vim -c ":set ft=man nonu nolist" -R -'
 esac
 
 # enable vi command line editing mode
 #set -o vi
 
-# since I type "vim" so much, I end up typing it inside vim when I want to edit a file, this should reverse the trend
+# shortcut to vim
 alias :e=vim
 
-# set path to all my useful script and binary directories
+# add path to all my useful script and binary directories
 export PATH=$HOME/bin:$PATH
 
 # load up my git-enabled prompt
@@ -83,7 +88,7 @@ function spell { echo $@|aspell -a; }
 #bashorg () { lynx -dump "www.bash.org?$1" | less; }
 
 export PAGER=vimless
-export MANPAGER=vimman
+#export MANPAGER=vimman
 alias less=$PAGER
 
 # sooo many letters to type in a day, here's a few less for the history command
