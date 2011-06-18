@@ -34,8 +34,8 @@ for i in "${files[@]}"
   done
 #end for
 
-echo Syncing and updating submodules...
-git submodule sync
+echo Pulling remote submodules...
+git submodule init
 git submodule update
 
 echo Sourcing .bash_profile...
