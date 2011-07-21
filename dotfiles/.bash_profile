@@ -29,7 +29,7 @@ esac
 alias :e=vim
 
 # add path to all my useful script and binary directories
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/xbin:$PATH
 
 # load up my git-enabled prompt
 source git_prompt
