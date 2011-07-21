@@ -20,6 +20,7 @@ if has("macunix")
   set transparency=8
 end
 
+" for Gui versions of vim
 set guioptions=aAce
 
 " Syntax hilight based on filetype, which is autmatically determined.
@@ -183,13 +184,13 @@ nmap <Tab> i<Tab><Esc>^
 :map! <Esc>OS -
 
 
-"ruby
+" ruby
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-"improve autocomplete menu color
+" improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
 " Spell Check with ctrl+T
