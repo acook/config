@@ -190,6 +190,9 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
+" remove all spaces at the end of line on file save
+autocmd BufWritePre * :%s/\s\+$//e
+
 " improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
