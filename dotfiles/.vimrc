@@ -16,7 +16,10 @@ syntax on
 colorscheme wombat256mod
 
 " for MacVim
-set transparency=8
+if has("macunix")
+  set transparency=8
+end
+
 set guioptions=aAce
 
 " Syntax hilight based on filetype, which is autmatically determined.
