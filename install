@@ -8,7 +8,7 @@
 
 files=( .bash_profile .gitconfig .vim .vimrc .bash_completion .hgrc .irbrc .screenrc )
 
-echo -ne pushd:\ 
+echo -ne "pushd: "
 pushd `dirname $0`
 
 dir=`pwd`
@@ -16,20 +16,20 @@ dot_dir=$dir/dotfiles
 
 mkdir -v backup
 
-for i in "${files[@]}" 
+for i in "${files[@]}"
   do
-    if [ -h ~/$i ] 
+    if [ -h ~/$i ]
       then
-        echo -ne rm: symlink\ 
+        echo -ne "rm: symlink "
         rm -v ~/$i
       else
         if [ -f ~/$i ]
           then
-            echo -ne backup -\ 
+            echo -ne "backup - "
             mv -v ~/$i backup
         fi
     fi
-    echo -ne ln:\ 
+    echo -ne "ln: "
     ln -v -s $dot_dir/$i ~/$i
   done
 #end for
