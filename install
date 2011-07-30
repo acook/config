@@ -35,8 +35,8 @@ for i in "${files[@]}"
 #end for
 
 echo Pulling remote submodules...
-git submodule init
-git submodule update
+git submodule update --init
+git submodule foreach "git pull"
 
 echo Sourcing .bash_profile...
 source ~/.bash_profile
