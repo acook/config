@@ -20,6 +20,10 @@ case $unamestr in
 
     # set vim as pager for manual
     export MANPAGER='col -bx | vim -c ":set ft=man nonu nolist" -R -'
+    ;;
+  'Linux')
+    keychain id_rsa id_dsa
+    . ~/.keychain/`uname -n`-sh
 esac
 
 # enable vi command line editing mode
