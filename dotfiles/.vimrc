@@ -9,11 +9,40 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
 " load all the vim bundles I've installed
-call pathogen#runtime_append_all_bundles() 
+call pathogen#runtime_append_all_bundles()
 
 " Enable syntax hilighting and set colour scheme
 syntax on
-colorscheme wombat256mod
+
+" Configure 256 color schemes for GUI or Terminal using CSApprox or
+" guicolorscheme, depending on conditions
+if version >= 700 && &term != 'cygwin' && !has('gui_running')
+  set t_Co=256
+  if &t_Co == 256 || &t_Co == 88
+    " Check whether to use CSApprox.vim plugin or guicolorscheme.vim plugin.
+    if has('gui') &&
+      \ (filereadable(expand("$HOME/.vim/plugin/CSApprox.vim")) ||
+      \  filereadable(expand("$HOME/vimfiles/plugin/CSApprox.vim")))
+      let s:use_CSApprox = 1
+    elseif filereadable(expand("$HOME/.vim/plugin/guicolorscheme.vim")) ||
+      \    filereadable(expand("$HOME/vimfiles/plugin/guicolorscheme.vim"))
+      let s:use_guicolorscheme = 1
+    endif
+  endif
+endif
+
+" Can use the CSApprox.vim plugin.
+if exists('s:use_CSApprox')
+  let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+  colorscheme wombat256mod
+elseif exists('s:use_guicolorscheme')
+  " Can use the guicolorscheme plugin. It needs to be loaded before
+  " running GuiColorScheme (hence the :runtime! command).
+  runtime! plugin/guicolorscheme.vim
+  GuiColorScheme wombat256mod
+else
+  colorscheme wombat256mod
+endif
 
 " for MacVim
 if has("macunix")
@@ -55,7 +84,7 @@ set shiftwidth=2
 " This also means files are still "open" in vim when you :q them.
 set hidden
 
-" Open new windows on the bottom or right instead of the top and left. 
+" Open new windows on the bottom or right instead of the top and left.
 set splitbelow
 set splitright
 
@@ -87,7 +116,7 @@ set scrolloff=3
 " text search options
 set hlsearch
 set incsearch
-set ignorecase 
+set ignorecase
 set smartcase
 
 " for exhuberant CTags support
@@ -139,7 +168,7 @@ nmap <Tab> i<Tab><Esc>^
 :imap <C-S-tab> <ESC>:tabprevious<cr>i
 :imap <C-tab> <ESC>:tabnext<cr>i
 :nmap <C-t> :tabnew<cr>
-:imap <C-t> <ESC>:tabnew<cr> 
+:imap <C-t> <ESC>:tabnew<cr>
 
 " make mouse scrolling work in vim!!!
 :map <M-Esc>[62~ <ScrollWheelUp>
