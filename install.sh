@@ -10,21 +10,21 @@ dir=`dirname $0`
 dot_dir=$dir/dotfiles
 backup_dir=$dir/backup
 
-mkdir -v $backup_dir
-cd $dot_dir
+mkdir -v "$backup_dir"
+cd "$dot_dir"
 
 for filename in *; do
   if [ -h ~/$filename ]; then
     echo -ne "rm: symlink "
-    rm -v ~/$filename
+    rm -v "~/$filename"
   else
     if [ -f ~/$filename ]; then
       echo -ne "backup - "
-      mv -v ~/$filename $backup_dir
+      mv -v "~/$filename" "$backup_dir"
     fi
   fi
   echo -ne "ln: "
-  ln -v -s $dot_dir/$filename ~/$filename
+  ln -v -s "$dot_dir/$filename" "~/$filename"
 done
 
 echo Pulling remote submodules...
