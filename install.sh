@@ -4,7 +4,7 @@
 # Creates symlinks to the new dotfiles
 # Put this in a SCM repo such as mercurial, git, or monotone with the dotfiles you want to install on multiple systems.
 # Put all the dotfiles in the same directory as the install script and list them in the file variable.
-# run with `./install`
+# run with `./install.sh`
 
 dir=`dirname $0`
 dot_dir=$dir/dotfiles
