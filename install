@@ -6,14 +6,12 @@
 # Put all the dotfiles in the same directory as the install script and list them in the file variable.
 # run with `./install`
 
-echo -ne "pushd: "
-pushd `dirname $0`
-
-dir=`pwd`
+dir=`dirname $0`
 dot_dir=$dir/dotfiles
-cd $dot_dir
+backup_dir=$dir/backup
 
-mkdir -v backup
+mkdir -v $backup_dir
+cd $dot_dir
 
 for i in *; do
   if [ -h ~/$i ]; then
