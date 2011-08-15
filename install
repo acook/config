@@ -15,23 +15,19 @@ cd $dot_dir
 
 mkdir -v backup
 
-  do
-    if [ -h ~/$i ]
-      then
-        echo -ne "rm: symlink "
-        rm -v ~/$i
-      else
-        if [ -f ~/$i ]
-          then
-            echo -ne "backup - "
-            mv -v ~/$i backup
-        fi
 for i in *; do
+  if [ -h ~/$i ]; then
+    echo -ne "rm: symlink "
+    rm -v ~/$i
+  else
+    if [ -f ~/$i ]; then
+      echo -ne "backup - "
+      mv -v ~/$i backup
     fi
-    echo -ne "ln: "
-    ln -v -s $dot_dir/$i ~/$i
-  done
-#end for
+  fi
+  echo -ne "ln: "
+  ln -v -s $dot_dir/$i ~/$i
+done #end for
 
 echo Pulling remote submodules...
 git submodule update --init
