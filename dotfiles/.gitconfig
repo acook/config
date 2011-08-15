@@ -39,3 +39,5 @@
   b  = branch
 [push]
 	default = current
+[pull]
+	default = current
