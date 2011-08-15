@@ -20,7 +20,7 @@ for i in *; do
   else
     if [ -f ~/$i ]; then
       echo -ne "backup - "
-      mv -v ~/$i backup
+      mv -v ~/$i $backup_dir
     fi
   fi
   echo -ne "ln: "
