@@ -6,17 +6,15 @@
 # Put all the dotfiles in the same directory as the install script and list them in the file variable.
 # run with `./install`
 
-files=( .bash_profile .gitconfig .vim .vimrc .bash_completion .hgrc .irbrc .screenrc .gemrc )
-
 echo -ne "pushd: "
 pushd `dirname $0`
 
 dir=`pwd`
 dot_dir=$dir/dotfiles
+cd $dot_dir
 
 mkdir -v backup
 
-for i in "${files[@]}"
   do
     if [ -h ~/$i ]
       then
@@ -28,6 +26,7 @@ for i in "${files[@]}"
             echo -ne "backup - "
             mv -v ~/$i backup
         fi
+for i in *; do
     fi
     echo -ne "ln: "
     ln -v -s $dot_dir/$i ~/$i
