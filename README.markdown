@@ -6,20 +6,20 @@ Maintains a (mostly) homogenous configuration setup across Linux and OSX platfor
 Prerequisites
 -------------
 
-- git : http://git-scm.com - Without git the install script will complain at the end and you won't get any of the submodules, but it will still happily do everything else.
-- vim : http://www.vim.org - Several of the configuration files included here are for or involve Vim.
-- coreutils : http://www.gnu.org/s/coreutils - GNU basic utilities, some aliases and functions in the bash configuration may fail.
-- fileutils : http://www.gnu.org/s/fileutils - GNU file manipulation utilities, some aliases and functions in the bash configuration may fail.
+- **git** : http://git-scm.com - Without git the install script will complain at the end and you won't get any of the submodules, but it will still happily do everything else.
+- **vim** : http://www.vim.org - Several of the configuration files included here are for or involve Vim.
+- **coreutils** : http://www.gnu.org/s/coreutils - GNU basic utilities, some aliases and functions in the bash configuration may fail.
+- **fileutils** : http://www.gnu.org/s/fileutils - GNU file manipulation utilities, some aliases and functions in the bash configuration may fail.
 
 Note that my configuration files use GNU syntax, not BSD syntax.
 
 Recommended
 -----------
 
-- homebrew : http://mxcl.github.com/homebrew - Easily compile and install applications from source. Everything in the **Prequisite** and **Recommended** lists can be easily obtained with brew, even brew itself, sort of. (OSX Only)
-- git-flow : https://github.com/nvie/gitflow - This gives git a basic workflow and automates various tasks.
-- ack : http://betterthangrep.com - Grep replacement.
-- colordiff : http://colordiff.sourceforge.net - I pattern match with color, so this is a must.
+- **homebrew** : http://mxcl.github.com/homebrew - Easily compile and install applications from source. Everything in the **Prequisite** and **Recommended** lists can be easily obtained with brew, even brew itself, sort of. (OSX Only)
+- **git-flow** : https://github.com/nvie/gitflow - This gives git a basic workflow and automates various tasks.
+- **ack** : http://betterthangrep.com - Grep replacement.
+- **colordiff** : http://colordiff.sourceforge.net - I pattern match with color, so this is a must.
 
 What the `install.sh` script does
 ---------------------------------
