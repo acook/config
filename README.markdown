@@ -31,9 +31,11 @@ Prerequisites
 
 Note that my configuration files use GNU syntax, not BSD syntax.
 
+
 Recommended
 -----------
 
+- **rails_helpers** : https://gist.github.com/702727 - My `.bash_profile` tries to load this when it starts, remove that line if you don't need this
 - **homebrew** : http://mxcl.github.com/homebrew - Easily compile and install applications from source. Everything in the **Prequisite** and **Recommended** lists can be easily obtained with brew, even brew itself, sort of. (OSX Only)
 - **git-flow** : https://github.com/nvie/gitflow - This gives git a basic workflow and automates various tasks.
 - **ack** : http://betterthangrep.com - Grep replacement.
@@ -52,6 +54,7 @@ You can use the script with your own collection of dotfiles
 Todo
 ----
 
+- Ignore failures when unable to find files or commands from my personal script repo
 - Multiple backups
 - Check to see if git is installed before running git commands
 - Support mercurial
