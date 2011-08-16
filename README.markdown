@@ -6,8 +6,8 @@ Maintains a (mostly) homogenous configuration setup across Linux and OSX platfor
 How to Use
 ----------
 
-0. Open a terminal in the same directory as this file
-0. `install.sh`
+0. Open a terminal in the same directory as this file.
+0. `./install.sh`
 0. `git config --global user.name "Your Name"`
 0. `git config --global user.email you@example.com`
 
@@ -15,9 +15,9 @@ How to Use
 What the `install.sh` script does
 ---------------------------------
 
-- Backs up any existing configuration files
-- Creates symlinks to the dotfiles in the repo
-- Pulls all the submodules contained in this repo
+- Backs up any existing configuration files.
+- Creates symlinks to the dotfiles in the repo.
+- Pulls all the submodules contained in this repo.
 - Sources your `.bash_profile` script.
 
 
@@ -35,7 +35,7 @@ Note that my configuration files use GNU syntax, not BSD syntax.
 Recommended
 -----------
 
-- **rails_helpers** : https://gist.github.com/702727 - My `.bash_profile` tries to load this when it starts, remove that line if you don't need this
+- **rails_helpers** : https://gist.github.com/702727 - My `.bash_profile` tries to load this when it starts, remove that line if you don't need this.
 - **homebrew** : http://mxcl.github.com/homebrew - Easily compile and install applications from source. Everything in the **Prequisite** and **Recommended** lists can be easily obtained with brew, even brew itself, sort of. (OSX Only)
 - **git-flow** : https://github.com/nvie/gitflow - This gives git a basic workflow and automates various tasks.
 - **ack** : http://betterthangrep.com - Grep replacement.
@@ -45,18 +45,18 @@ Recommended
 You can use the script with your own collection of dotfiles
 -------------
 
-0. Fork this repo
-0. Clear out the dotfiles directory
-0. Drop in your own configuration files
-0. Commit and push to your repo
-0. Run with `./install.sh`
+0. Fork this repo.
+0. Clear out the dotfiles directory.
+0. Drop in your own configuration files.
+0. Commit and push to your repo.
+0. Run with `./install.sh`.
 
 Todo
 ----
 
-- Ignore failures when unable to find files or commands from my personal script repo
-- Multiple backups
-- Check to see if git is installed before running git commands
-- Support mercurial
-- Move backup directory outside of repo (??)
+- Ignore failures when unable to find files or commands from my personal script repo.
+- Multiple backups.
+- Check to see if git is installed before running git commands.
+- Support mercurial.
+- Move backup directory outside of repo. (??)
 
