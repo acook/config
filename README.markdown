@@ -2,6 +2,7 @@ Dotfile Configuration for OSX and Linux
 ================
 
 Maintains a (mostly) homogenous configuration setup across Linux and OSX platforms.
+
 *Anthony M. Cook 2011 - http://github.com/acook | @anthony_m_cook | http://anthonymcook.com*
 
 How to Use
