@@ -12,6 +12,15 @@ How to Use
 0. `git config --global user.email you@example.com`
 
 
+What the `install.sh` script does
+---------------------------------
+
+- Backs up any existing configuration files
+- Creates symlinks to the dotfiles in the repo
+- Pulls all the submodules contained in this repo
+- Sources your `.bash_profile` script.
+
+
 Prerequisites
 -------------
 
@@ -30,13 +39,6 @@ Recommended
 - **ack** : http://betterthangrep.com - Grep replacement.
 - **colordiff** : http://colordiff.sourceforge.net - I pattern match with color, so this is a must.
 
-What the `install.sh` script does
----------------------------------
-
-- Backs up any existing configuration files
-- Creates symlinks to the dotfiles in the repo
-- Pulls all the submodules contained in this repo
-- Sources your `.bash_profile` script.
 
 You can use the script with your own collection of dotfiles
 -------------
