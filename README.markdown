@@ -3,6 +3,15 @@ Dotfile Configuration for OSX and Linux
 
 Maintains a (mostly) homogenous configuration setup across Linux and OSX platforms.
 
+How to Use
+----------
+
+0. Open a terminal in the same directory as this file
+0. `install.sh`
+0. `git config --global user.name "Your Name"`
+0. `git config --global user.email you@example.com`
+
+
 Prerequisites
 -------------
 
