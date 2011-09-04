@@ -46,3 +46,9 @@
 [submodule "dotfiles/.vim/bundle/vim-unimpaired"]
 	path = dotfiles/.vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "dotfiles/.vim/bundle/vimwiki"]
+	path = dotfiles/.vim/bundle/vimwiki
+	url = https://github.com/vim-scripts/vimwiki.git
+[submodule "dotfiles/.vim/bundle/mustache"]
+	path = dotfiles/.vim/bundle/mustache
+	url = https://github.com/juvenn/mustache.vim.git
