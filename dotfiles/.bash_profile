@@ -10,6 +10,9 @@ case $unamestr in
     # Give precedence to user/local/bin because that's where Homebrew installs their stuff
     export PATH=/usr/local/bin:$PATH
 
+    # Path extension for Haskell Platform on OSX
+    export PATH="$HOME/Library/Haskell/bin:$PATH"
+
     # I can set alias ls=ls_osx if I don't have gnu coreutils installed
     alias ls_osx="ls -p -F -G -h"
     # Colorize ls
@@ -21,6 +24,7 @@ case $unamestr in
     # set vim as pager for manual
     export MANPAGER='col -bx | vim -c ":set ft=man nonu nolist" -R -'
     ;;
+
   'Linux')
     keychain id_rsa id_dsa
     . ~/.keychain/`uname -n`-sh
@@ -102,3 +106,5 @@ export HISTCONTROL=erasedups
 export HISTSIZE=10000
 shopt -s histappend
 
+# Load RVM if available
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
