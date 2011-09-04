@@ -6,25 +6,30 @@
 # Put all the dotfiles in the same directory as the install script and list them in the file variable.
 # run with `./install.sh`
 
-dir=`dirname $0`
+cd `dirname $0`
+
+dir=`pwd`
 dot_dir=$dir/dotfiles
 backup_dir=$dir/backup
 
-mkdir -v "$backup_dir"
-cd "$dot_dir"
+echo dot_dir: $dot_dir
+echo backup_dir: $backup_dir
 
-for filename in *; do
+mkdir -v "$backup_dir"
+files=`ls -1 -A $dot_dir`
+
+for filename in $files; do
   if [ -h ~/$filename ]; then
     echo -ne "rm: symlink "
     rm -v "~/$filename"
   else
     if [ -f ~/$filename ]; then
       echo -ne "backup - "
-      mv -v "~/$filename" "$backup_dir"
+      mv -v ~/"$filename" "$backup_dir"/
     fi
   fi
   echo -ne "ln: "
-  ln -v -s "$dot_dir/$filename" "~/$filename"
+  ln -v -s "$dot_dir/$filename" ~/"$filename"
 done
 
 echo Pulling remote submodules...
