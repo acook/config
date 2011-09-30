@@ -19,17 +19,17 @@ mkdir -v "$backup_dir"
 files=`ls -1 -A $dot_dir`
 
 for filename in $files; do
-  if [ -h ~/$filename ]; then
+  if [ -h "$HOME/$filename" ]; then
     echo -ne "rm: symlink "
-    rm -v "~/$filename"
+    rm -v "$HOME/$filename"
   else
-    if [ -f ~/$filename ]; then
+    if [ -f "$HOME/$filename" ]; then
       echo -ne "backup - "
-      mv -v ~/"$filename" "$backup_dir"/
+      mv -v "$HOME/$filename" "$backup_dir/"
     fi
   fi
   echo -ne "ln: "
-  ln -v -s "$dot_dir/$filename" ~/"$filename"
+  ln -vs "$dot_dir/$filename" "$HOME/$filename"
 done
 
 echo Pulling remote submodules...
