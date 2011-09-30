@@ -24,7 +24,7 @@ for filename in $files; do
     rm -v "$HOME/$filename"
   else
     if [ -f "$HOME/$filename" ]; then
-      echo -ne "backup - "
+      echo -ne "mv: "
       mv -v "$HOME/$filename" "$backup_dir/"
     fi
   fi
@@ -34,6 +34,7 @@ done
 
 echo Pulling remote submodules...
 git submodule update --init
+git submodule foreach "git co master"
 git submodule foreach "git pull"
 
 echo Sourcing .bash_profile...
