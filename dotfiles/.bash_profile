@@ -26,7 +26,7 @@ case $unamestr in
     ;;
 
   'Linux')
-    if ! command -v keychain ; then
+    if command -v keychain ; then
       keychain id_rsa
       . ~/.keychain/`uname -n`-sh
     fi
