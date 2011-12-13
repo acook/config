@@ -14,6 +14,16 @@ call pathogen#runtime_append_all_bundles()
 " Enable syntax hilighting and set colour scheme
 syntax on
 
+" Configure Vimwiki
+let g:vimwiki_hl_headers=1
+let g:vimwiki_hl_cb_checked=1
+let g:vimwiki_user_mouse=1
+let g:vimwiki_folding=1
+let g:vimwiki_fold_lists=1
+let g:vimwiki_list_ignore_newline=0
+let wiki_1 = {}
+let wiki_1.nested_syntaxes = {'python': 'python', 'ruby': 'ruby', 'rails': 'rails', 'yaml': 'yml'}
+
 " Configure 256 color schemes for GUI or Terminal using CSApprox or
 " guicolorscheme, depending on conditions
 if version >= 700 && &term != 'cygwin' && !has('gui_running')
@@ -61,7 +71,7 @@ filetype indent on
 " Enable syntax folding for blocks and comments.
 set foldmethod=syntax
 set foldminlines=3
-set foldlevel=1
+set foldlevel=100
 
 " indentation configuration
 set cindent
@@ -226,6 +236,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 highlight Pmenu ctermbg=238 gui=bold
 
 " Spell Check with ctrl+T
+"map <leader>s
 "map ^S:w!<CR>:!aspell check %<CR>:e! %<CR>
 " set the spellcheck language
 setlocal spell spelllang=en_us
