@@ -26,8 +26,15 @@ case $unamestr in
     ;;
 
   'Linux')
-    keychain id_rsa id_dsa
-    . ~/.keychain/`uname -n`-sh
+    if ! command -v keychain ; then
+      keychain id_rsa
+      . ~/.keychain/`uname -n`-sh
+    fi
+
+    export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+      vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
+      -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
+      -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 esac
 
 # enable vi command line editing mode
