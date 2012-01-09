@@ -1,6 +1,6 @@
 [user]
-  name = Anthony Cook
-  email = anthonymichaelcook@gmail.com
+	name = Anthony Cook
+	email = anthonymichaelcook@gmail.com
 
 [color]
   diff = auto
@@ -29,6 +29,7 @@
 [core]
   pager = less -FRSX
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	excludesfile = /Users/Thoughtworks/.gitignore_global
 
 [alias]
   co = checkout
@@ -39,7 +40,21 @@
   b  = branch
 
 [push]
-
 	default = current
+
 [pull]
 	default = current
+
+[merge]
+	default = current
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[mergetool "sourcetree"]
+	cmd = /Applications/More/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
