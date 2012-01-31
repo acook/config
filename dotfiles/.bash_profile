@@ -37,6 +37,16 @@ case $unamestr in
       -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 esac
 
+if command -v vimless ; then
+  export PAGER=vimless
+fi
+
+alias less=$PAGER
+
+if command -v vimman ; then
+  export MANPAGER=vimman
+fi
+
 # enable vi command line editing mode
 #set -o vi
 
@@ -101,10 +111,6 @@ function spell { echo $@|aspell -a; }
 
 # Quick bash.org
 #bashorg () { lynx -dump "www.bash.org?$1" | less; }
-
-export PAGER=vimless
-#export MANPAGER=vimman
-alias less=$PAGER
 
 # sooo many letters to type in a day, here's a few less for the history command
 alias h='history'
