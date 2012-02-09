@@ -49,3 +49,9 @@
 [submodule "dotfiles/.vim/bundle/vimwiki"]
 	path = dotfiles/.vim/bundle/vimwiki
 	url = https://github.com/vim-scripts/vimwiki.git
+[submodule "dotfiles/.vim/bundle/vim-javascript"]
+	path = dotfiles/.vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "dotfiles/.vim/bundle/vim-jst"]
+	path = dotfiles/.vim/bundle/vim-jst
+	url = https://github.com/briancollins/vim-jst.git
