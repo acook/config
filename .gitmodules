@@ -55,3 +55,6 @@
 [submodule "dotfiles/.vim/bundle/vim-jst"]
 	path = dotfiles/.vim/bundle/vim-jst
 	url = https://github.com/briancollins/vim-jst.git
+[submodule "dotfiles/.vim/bundle/Command-T"]
+	path = dotfiles/.vim/bundle/Command-T
+	url = https://github.com/wincent/Command-T.git
