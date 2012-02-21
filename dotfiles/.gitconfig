@@ -1,11 +1,11 @@
 [user]
-	name = Anthony Cook
-	email = anthonymichaelcook@gmail.com
+  name = Red Roadster
+  email = stan.green@manheim.com
 
 [color]
-  diff = auto
-  status = auto
-  branch = auto
+	diff = auto
+	status = auto
+	branch = auto
   interactive = auto
   ui = auto
   pager = true
@@ -50,7 +50,7 @@
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 
 [mergetool "sourcetree"]
 	cmd = /Applications/More/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
