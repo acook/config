@@ -22,7 +22,10 @@ case $unamestr in
     export ARCHFLAGS="-arch x86_64"
 
     # set vim as pager for manual
-    export MANPAGER='col -bx | vim -c ":set ft=man nonu nolist" -R -'
+    #export MANPAGER='col -bx | vim -c ":set ft=man nonu nolist" -R -'
+
+    # Add homebrew bash completion file
+    source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
     ;;
 
   'Linux')
@@ -31,21 +34,25 @@ case $unamestr in
       . ~/.keychain/`uname -n`-sh
     fi
 
-    export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
-      vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
-      -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
-      -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+    #export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+    #  vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
+    #  -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
+    #  -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 esac
 
-if command -v vimless ; then
-  export PAGER=vimless
+# Handle potential pagers
+if [[ -n `command -v vimpager` ]] ; then
+  export PAGER=vimpager
+else
+  if [[ -n `command -v vimless` ]] ; then
+    export PAGER=vimless
+  fi
+  if [[ -n `command -v vimman` ]] ; then
+    export MANPAGER=vimman
+  fi
 fi
 
 alias less=$PAGER
-
-if command -v vimman ; then
-  export MANPAGER=vimman
-fi
 
 # enable vi command line editing mode
 #set -o vi
@@ -136,4 +143,4 @@ export HISTSIZE=10000
 shopt -s histappend
 
 # Load RVM if available
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
