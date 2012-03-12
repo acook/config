@@ -56,8 +56,16 @@ alias :e=vim
 # add path to all my useful script and binary directories
 export PATH=$HOME/bin:$HOME/xbin:$PATH
 
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
 # load up my git-enabled prompt
 source git_prompt
+
 # load up bash completion scripts from other people
 source git-completion.bash
 source git-flow-completion.bash
@@ -82,15 +90,20 @@ function ss { find . -nowarn -name "$1" 2>/dev/null; }
 # ls with showall, colors, and /'s after directories
 alias ls="ls -AFhxX --color --group-directories-first "
 #alias l="ls"
-alias ll="ls -A -XSx -l"
+#alias ll="ls -A -XSx -l"
+alias ll='ls -alF'
 alias lk="ls -gGhLXS"
+alias la='ls -A'
+alias l='ls -CF'
 
 # makes sure bash knows it's dealing with a color terminal-emulator and sets the colors for ls
 # LSCOLORS is BSD/OSX format, LS_COLORS is linux format
 export CLICOLOR=1
 
 # grep customizations
-alias grep='grep -Hns --binary-files=without-match --color'
+alias grep='grep -Hns --binary-files=without-match --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 function gr { grep -R $1 $2./*; }
 function grr { grep -R $*; }
 
@@ -98,6 +111,9 @@ function rg { find . -name '*.*rb' -exec grep "$*" {} \; -print; }
 
 # diff with unified format (why use anything else?!)
 alias diff='diff -U3'
+
+# Add an "alert" alias for long running commands. Use semicolor to execute it in sequence
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # replace this with a util that allows real directory history navigation
 alias cx='pushd'

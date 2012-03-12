@@ -14,6 +14,9 @@ call pathogen#runtime_append_all_bundles()
 " Enable syntax hilighting and set colour scheme
 syntax on
 
+" Disable broken ri popup on linux
+set noballooneval
+
 " Configure Vimwiki
 let g:vimwiki_hl_headers=1
 let g:vimwiki_hl_cb_checked=1
@@ -110,9 +113,6 @@ set wildmode=list:longest
 
 " Show line numbers
 set number
-
-" Don't beep, blink instead
-set visualbell
 
 " Make clipbord work on OS X. This makes copy/paste operations trivial between
 " vim and other applications since they all use the same clipboard now.
