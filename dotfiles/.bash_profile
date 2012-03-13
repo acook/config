@@ -130,6 +130,7 @@ shopt -s histappend
 
 # Adding CDE specific aliases
 alias cde='cd ~/Projects/Corndog'
+<<<<<<< HEAD
 alias config='cd ~/Projects/config'
 alias gs='git status'
 
