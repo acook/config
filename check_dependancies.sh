@@ -36,8 +36,13 @@ type ack-grep 2>/dev/null || existance='false'
 
 if [ $existance == 'false' ]
 then
-  echo '-- Installing ack-grep'
-  sudo apt-get install -y ack-grep
+  if [ $distro == 'Linux' ]
+  then
+    echo '-- Installing ack-grep'
+    sudo apt-get install -y ack-grep
+  else
+    echo >&2 '-- Currently not supporting installation on non-Linux'
+  fi
 else
   echo '-- Found ack-grep'
 fi
