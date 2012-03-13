@@ -5,18 +5,19 @@ Maintains a (mostly) homogenous configuration setup across Linux and OSX platfor
 
 *Anthony M. Cook 2011 - http://github.com/acook | @anthony_m_cook | http://anthonymcook.com*
 
+
 How to Use
 ----------
 
 0. Open a terminal in the same directory as this file.
-0. `./install.sh`
-0. `git config --global user.name "Your Name"`
-0. `git config --global user.email you@example.com`
+0. Run `./install.sh`
+0. Enjoy!
 
 
 What the `install.sh` script does
 ---------------------------------
 
+- Asks you for info to set up your git config.
 - Backs up any existing configuration files.
 - Creates symlinks to the dotfiles in the repo.
 - Pulls all the submodules contained in this repo.
@@ -38,9 +39,9 @@ Recommended
 -----------
 
 - **homebrew** : http://mxcl.github.com/homebrew - Easily compile and install applications from source. Everything in the **Prequisite** and **Recommended** lists can be easily obtained with brew, even brew itself, sort of. (OSX Only)
-- **git-flow** : https://github.com/nvie/gitflow - This gives git a basic workflow and automates various tasks.
-- **ack** : http://betterthangrep.com - Grep replacement.
-- **colordiff** : http://colordiff.sourceforge.net - I pattern match with color, so this is a must.
+- **RVM** : http://beginrescueend.com - Install Ruby, manage sets of gems, manage multiple versions of Ruby.
+- **ack** : http://betterthangrep.com - Grep-like utility excellent for source code.
+- **colordiff** : http://colordiff.sourceforge.net - I pattern match with color, so this is a must for me.
 
 
 You can use the script with your own collection of dotfiles
@@ -52,8 +53,9 @@ You can use the script with your own collection of dotfiles
 0. Commit and push to your repo.
 0. Run with `./install.sh`.
 
-Todo
-----
+
+Future
+------
 
 - Ignore failures when unable to find files or commands from my personal script repo.
 - Multiple backups.
