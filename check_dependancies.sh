@@ -14,21 +14,6 @@ fi
 
 echo ''
 
-echo 'Checking for rails_helpers'
-
-if [ ! -f "rails_helpers" ]
-  then
-    echo 'Downloading rails_helpers'
-    git clone git://gist.github.com/702727.git tmp
-    cp tmp/rails_helpers .
-    rm -rf tmp
-    chmod +x rails_helpers
-  else
-    echo '-- rails_helpers found'
-fi
-
-echo ""
-
 echo 'Checking for ack'
 
 existance='true'

@@ -70,9 +70,6 @@ source git_prompt
 source git-completion.bash
 source git-flow-completion.bash
 
-# load up my rails helper functions and aliases
-source rails_helpers
-
 # ssh public key agent code
 #SSHAGENT=/usr/bin/ssh-agent
 #SSHAGENTARGS="-s"
