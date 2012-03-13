@@ -8,7 +8,8 @@ set nocompatible
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
-" load all the vim bundles I've installed
+" initialize pathogen and load all the plugins in .vim/bundle
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#runtime_append_all_bundles()
 
 " Enable syntax hilighting and set colour scheme
