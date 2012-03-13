@@ -69,11 +69,6 @@ set foldlevel=100
 set cindent
 set smartindent
 set autoindent
-" list of keys that will cause reindenting of the current line in insert mode
-" this used to cause issues with my comma key, but I think its fixed now :)
-set cinkeys=\{,\},:,0#,!,!^F
-set cinkeys=0{,0},0),0#,!<Tab>,;,:,o,O,e
-set indentkeys=!<Tab>,o,O
 
 " Convert tabs to spaces, use 2 spaces in place of tabs.
 set expandtab
