@@ -64,3 +64,6 @@
 [submodule "dotfiles/.vim/bundle/vim-pathogen"]
 	path = dotfiles/.vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
+[submodule "dotfiles/.vim/bundle/supertab"]
+	path = dotfiles/.vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
