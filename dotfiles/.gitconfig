@@ -1,11 +1,11 @@
 [user]
-  name = Red Roadster
-  email = stan.green@manheim.com
+	name = Anthony Cook
+	email = anthonymichaelcook@gmail.com
 
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+  diff = auto
+  status = auto
+  branch = auto
   interactive = auto
   ui = auto
   pager = true
