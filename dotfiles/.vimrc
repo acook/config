@@ -132,8 +132,25 @@ set smartcase
 " for exhuberant CTags support
 set tags=./tags;/
 
-" makes vim treat question marks as part of a word in ruby
-au BufRead *.rb,*.rake,*.rhtml,<ruby>  set isk=?,@,48-57,_,192-255
+" treat question marks as part of a word in ruby
+autocmd BufRead *.rb,*.rake,*.rhtml,<ruby> set isk=?,@,48-57,_,192-255
+
+" ruby
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+
+" disable wordwrap when looking at CSVs
+autocmd BufRead *.csv,*.csv*,<csv> set nowrap
+
+" remove all spaces at the end of line on file save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" display the file name of the current file in the Terminal (xterm/item/&c) title
+set title
+autocmd BufEnter * let &titlestring = "vim: " . expand("%:p:~")
+"autocmd BufEnter * exe "echo '\033'+bufname("%")+'\007'"
 
 " sets backspace key functions, allows it to backspace over end of line
 " characters, start of line, and indentation
@@ -143,8 +160,7 @@ set backspace=indent,eol,start
 set mousemodel=extend
 set mouse=a
 
-" my own personal keybindings/shortcuts
-" for rails.vim
+" shortcuts for rails.vim
 map <leader>r <Esc>:R
 map <leader>rm <Esc>:Rmodel<CR>
 map <leader>rc <Esc>:Rcontroller<CR>
@@ -159,16 +175,12 @@ map <leader>g <Esc>:GundoToggle<CR>
 " runs diff against the current buffer and the file on disk
 map <leader>d <Esc>:w !diff % -<CR>
 " search hilighting control, enables and disable intelligently and toggles
-"nnoremap / :set hlsearch<CR>/
-"nnoremap ? :set hlsearch<CR>?
-"nnoremap n :set hlsearch<CR>n
-"nnoremap N :set hlsearch<CR>N
-"nnoremap <CR> :noh<CR><CR>
+nnoremap / :set hlsearch<CR>/
+nnoremap ? :set hlsearch<CR>?
+nnoremap n :set hlsearch<CR>n
+nnoremap N :set hlsearch<CR>N
+nnoremap <CR> :noh<CR><CR>
 nnoremap <leader>/ :set hlsearch!<CR>
-
-" tab goes into insert mode from normal mode and jumps to the first
-" nonwhitespace character.
-nmap <Tab> i<Tab><Esc>^
 
 " tab navigation like firefox
 :nmap <C-S-tab> :tabprevious<cr>
@@ -222,16 +234,6 @@ nmap <Tab> i<Tab><Esc>^
 :map! <kPlus> +
 :map! <Esc>OS -
 
-
-" ruby
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-
-" remove all spaces at the end of line on file save
-autocmd BufWritePre * :%s/\s\+$//e
-
 " improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
@@ -269,13 +271,6 @@ function! s:RunShellCommand(cmdline)
   silent execute '$read !'. expanded_cmdline
   1
 endfunction
-
-
-" Display the file name of the current file in the Terminal (xterm/item/&c)
-" title.
-set title
-autocmd BufEnter * let &titlestring = "vim: " . expand("%:p:~")
-"autocmd BufEnter * exe "echo '\033'+bufname("%")+'\007'"
 
 " statusline tweaks
 set ls=2 " Always show status line
