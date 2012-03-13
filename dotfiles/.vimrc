@@ -12,12 +12,6 @@ let g:syntastic_auto_loc_list=2
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#runtime_append_all_bundles()
 
-" Enable syntax hilighting and set colour scheme
-syntax on
-
-" Disable broken ri popup
-set noballooneval
-
 " Configure Vimwiki
 let g:vimwiki_hl_headers=1
 let g:vimwiki_hl_cb_checked=1
@@ -34,29 +28,19 @@ if version >= 700 && &term != 'cygwin' && !has('gui_running')
   set t_Co=256
   if &t_Co == 256 || &t_Co == 88
     " Check whether to use CSApprox.vim plugin or guicolorscheme.vim plugin.
-    if has('gui') &&
-      \ (filereadable(expand("$HOME/.vim/plugin/CSApprox.vim")) ||
-      \  filereadable(expand("$HOME/vimfiles/plugin/CSApprox.vim")))
-      let s:use_CSApprox = 1
-    elseif filereadable(expand("$HOME/.vim/plugin/guicolorscheme.vim")) ||
-      \    filereadable(expand("$HOME/vimfiles/plugin/guicolorscheme.vim"))
-      let s:use_guicolorscheme = 1
+    if has('gui')
+      let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+      colorscheme wombat256mod
+    else
+      GuiColorScheme wombat256mod
     endif
   endif
 endif
 
-" Can use the CSApprox.vim plugin.
-if exists('s:use_CSApprox')
-  let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-  colorscheme wombat256mod
-elseif exists('s:use_guicolorscheme')
-  " Can use the guicolorscheme plugin. It needs to be loaded before
-  " running GuiColorScheme (hence the :runtime! command).
-  runtime! plugin/guicolorscheme.vim
-  GuiColorScheme wombat256mod
-else
-  colorscheme wombat256mod
-endif
+" Disable broken ri popup
+if has("balloon_eval")
+  set noballooneval
+end
 
 " for MacVim
 if has("macunix")
@@ -65,6 +49,9 @@ end
 
 " for Gui versions of vim :help guioptions
 set guioptions=aAce
+
+" Enable syntax hilighting
+syntax on
 
 " Syntax hilight based on filetype, which is autmatically determined.
 " The filetype plugin needs to be reinitilized because of pathogen
