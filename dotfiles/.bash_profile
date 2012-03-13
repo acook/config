@@ -137,3 +137,7 @@ shopt -s histappend
 
 # Load RVM if available
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# Adding CDE specific aliases
+alias cde='cd ~/Projects/Corndog'
+alias gs='git status'
