@@ -58,3 +58,6 @@
 [submodule "dotfiles/.vim/bundle/Command-T"]
 	path = dotfiles/.vim/bundle/Command-T
 	url = https://github.com/wincent/Command-T.git
+[submodule "dotfiles/.vim/bundle/vim-conque"]
+	path = dotfiles/.vim/bundle/vim-conque
+	url = https://github.com/rson/vim-conque.git
