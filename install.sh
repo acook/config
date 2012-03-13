@@ -33,9 +33,7 @@ for filename in $files; do
 done
 
 echo Pulling remote submodules...
-git submodule update --init
-git submodule foreach "git co master"
-git submodule foreach "git pull"
+./update.sh 1>/dev/null
 
 echo Sourcing .bash_profile...
 source ~/.bash_profile
