@@ -14,7 +14,7 @@ call pathogen#runtime_append_all_bundles()
 " Enable syntax hilighting and set colour scheme
 syntax on
 
-" Disable broken ri popup on linux
+" Disable broken ri popup
 set noballooneval
 
 " Configure Vimwiki
@@ -62,10 +62,11 @@ if has("macunix")
   set transparency=8
 end
 
-" for Gui versions of vim
+" for Gui versions of vim :help guioptions
 set guioptions=aAce
 
 " Syntax hilight based on filetype, which is autmatically determined.
+" The filetype plugin needs to be reinitilized because of pathogen
 filetype off
 filetype on
 filetype plugin on
@@ -82,9 +83,9 @@ set smartindent
 set autoindent
 " list of keys that will cause reindenting of the current line in insert mode
 " this used to cause issues with my comma key, but I think its fixed now :)
-"set cinkeys=\{,\},:,0#,!,!^F
-"set cinkeys=0{,0},0),0#,!<Tab>,;,:,o,O,e
-"set indentkeys=!<Tab>,o,O
+set cinkeys=\{,\},:,0#,!,!^F
+set cinkeys=0{,0},0),0#,!<Tab>,;,:,o,O,e
+set indentkeys=!<Tab>,o,O
 
 " Convert tabs to spaces, use 2 spaces in place of tabs.
 set expandtab
@@ -94,7 +95,7 @@ set shiftwidth=2
 " The current buffer can be put to the background without writing to disk;
 " When a background buffer becomes current again marks and undo-history are
 " remembered.
-" This also means files are still "open" in vim when you :q them.
+" This also means file buffers are still "open" in vim when you :q them.
 set hidden
 
 " Open new windows on the bottom or right instead of the top and left.
