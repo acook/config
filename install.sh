@@ -64,6 +64,7 @@ git config --global user.email $git_email > /dev/null
 git config --global github.user $github_username > /dev/null
 git config --global github.token $github_token > /dev/null
 
-echo "You should now source bashrc (source ~/.bashrc)"
+echo Sourcing .bash_profile...
+. ~/.bash_profile
 
 echo Done!
