@@ -24,16 +24,15 @@ let wiki_1.nested_syntaxes = {'python': 'python', 'ruby': 'ruby', 'rails': 'rail
 
 " Configure 256 color schemes for GUI or Terminal using CSApprox or
 " guicolorscheme, depending on conditions
-if version >= 700 && &term != 'cygwin' && !has('gui_running')
+if has('gui_running')
+  colorscheme wombat256mod
+elseif version >= 700 && &term != 'cygwin'
   set t_Co=256
-  if &t_Co == 256 || &t_Co == 88
-    " Check whether to use CSApprox.vim plugin or guicolorscheme.vim plugin.
-    if has('gui')
-      let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-      colorscheme wombat256mod
-    else
-      GuiColorScheme wombat256mod
-    endif
+  if has('gui')
+    let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+    colorscheme wombat256mod
+  else
+    GuiColorScheme wombat256mod
   endif
 endif
 
