@@ -67,3 +67,12 @@
 [submodule "dotfiles/.vim/bundle/supertab"]
 	path = dotfiles/.vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "dotfiles/.vim/bundle/ctrlp.vim"]
+	path = dotfiles/.vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "dotfiles/.vim/bundle/csapprox"]
+	path = dotfiles/.vim/bundle/csapprox
+	url = https://github.com/godlygeek/csapprox.git
+[submodule "dotfiles/.vim/bundle/nerdtree"]
+	path = dotfiles/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
