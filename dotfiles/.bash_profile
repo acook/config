@@ -21,9 +21,6 @@ case $unamestr in
     # Attempt at fixing OSX tomfoolery
     export ARCHFLAGS="-arch x86_64"
 
-    # set vim as pager for manual
-    #export MANPAGER='col -bx | vim -c ":set ft=man nonu nolist" -R -'
-
     # Add homebrew bash completion file
     source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
     ;;
@@ -33,11 +30,6 @@ case $unamestr in
       keychain id_rsa
       . ~/.keychain/`uname -n`-sh
     fi
-
-    #export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
-    #  vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
-    #  -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
-    #  -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 esac
 
 # Handle potential pagers
@@ -54,20 +46,17 @@ fi
 
 alias less=$PAGER
 
-# enable vi command line editing mode
-#set -o vi
-
 # shortcut to vim
 alias :e=vim
 
-# add path to all my useful script and binary directories
+# add path to user bin and xbin directories
 export PATH=$HOME/bin:$HOME/xbin:$PATH
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+  . /etc/bash_completion
 fi
 
 # load up my git-enabled prompt
@@ -84,10 +73,10 @@ function ss { find . -nowarn -name "$1" 2>/dev/null; }
 
 # ls with showall, colors, and /'s after directories
 alias ls="ls -AFhxX --color --group-directories-first "
+alias l="\ls -FhxX --color --group-directories-first "
 alias ll='ls -alF'
 alias lk="ls -gGhLXS"
 alias la='ls -A'
-alias l='ls -CF'
 
 # makes sure bash knows it's dealing with a color terminal-emulator and sets the colors for ls
 # LSCOLORS is BSD/OSX format, LS_COLORS is linux format
