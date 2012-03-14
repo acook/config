@@ -1,9 +1,0 @@
-[ui]
-username = Anthony Cook <anthonymichaelcook@gmail.com>
-
-[extensions]
-hgext.convert =
-hgext.bookmarks =
-hggit = ~/Pork/hg-git/hggit
-prompt = ~/Pork/hg-prompt/prompt.py
-hgshelve= ~/Pork/hgshelve/hgshelve.py
