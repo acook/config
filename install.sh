@@ -64,7 +64,6 @@ done
 echo Pulling remote submodules...
 ./update.sh 1>/dev/null
 
-echo Sourcing .bash_profile...
-. ~/.bash_profile
+echo "You should now source bashrc (source ~/.bashrc)"
 
 echo Done!
