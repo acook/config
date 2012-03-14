@@ -2,6 +2,7 @@
 username = Anthony Cook <anthonymichaelcook@gmail.com>
 
 [extensions]
+color =
 hgext.convert =
 hgext.bookmarks =
 hggit = ~/Pork/hg-git/hggit
