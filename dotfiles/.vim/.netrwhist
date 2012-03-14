@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/anthony/.ec2'
-let g:netrw_dirhist_2='/Users/acook/Pork/my-scripts'
-let g:netrw_dirhist_3='/Users/Thoughtworks/Dropbox/Work/Thoughtworks/rovers'
-let g:netrw_dirhist_4='/Users/Thoughtworks/Projects/personal/config/dotfiles/.vim/bundle/vimwiki'
-let g:netrw_dirhist_5='/home/dev/Projects/Corndog'
-let g:netrw_dirhist_6='/home/dev/Projects/sunspot'
