@@ -18,23 +18,6 @@ while getopts ":n" opt; do
 done
 
 
-if [[ $1 != 'true' ]]; then
-  echo "Enter additional info to use for this configuration (pass -n to skip this in the future)."
-  echo -ne "git name: "
-  read $git_name
-  echo -ne "git email: "
-  read $git_email
-  echo -ne "github username: "
-  read $github_username
-  echo -ne "github token: "
-  read $github_token
-fi
-
-git config --global user.name $git_name > /dev/null
-git config --global user.email $git_email > /dev/null
-git config --global github.user $github_username > /dev/null
-git config --global github.token $github_token > /dev/null
-
 cd `dirname $0`
 
 dir=`pwd`
@@ -63,6 +46,23 @@ done
 
 echo Pulling remote submodules...
 ./update.sh 1>/dev/null
+
+if [[ $1 != 'true' ]]; then
+  echo "Enter additional info to use for this configuration (pass -n to skip this in the future)."
+  echo -ne "git name: "
+  read git_name
+  echo -ne "git email: "
+  read git_email
+  echo -ne "github username: "
+  read github_username
+  echo -ne "github token: "
+  read github_token
+
+  git config --global user.name $git_name
+  git config --global user.email $git_email
+  git config --global github.user $github_username
+  git config --global github.token $github_token
+fi
 
 echo "You should now source bashrc (source ~/.bashrc)"
 
