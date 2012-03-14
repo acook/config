@@ -1,0 +1,69 @@
+#!/bin/sh
+# defined colors to make it easier to output visually stimulating prompts and other messages
+
+# escapes the arguments you send it
+function esc () { echo -ne "\\033[$*"; }
+# color code escapes your first argument then follows with the rest of them
+function escc () { echo -ne "\\033[$1m$2 $3 $4 $5 $6 $7 $8 $9"; }
+# basic color escapes
+function c () { echo -ne "\\033[$1m"; }
+function fg () { echo -ne "\\033[0;$1m"; }
+function fgb () { echo -ne "\\033[1;$1m"; }
+function fgu () { echo -ne "\\033[4;$1m"; }
+function fgk () { echo -ne "\\033[5;$1m"; }
+function fgr () { echo -ne "\\033[7;$1m"; }
+function fg_reset () { echo -ne "\\033[0m"; }
+
+# easier raw access to 256 colors
+function fgx () { echo -ne "\\033[38;5;$1m"; }
+function bgx () { echo -ne "\\033[48;5;$1m"; }
+
+# system standard terminal colors
+fg_black='0;30'  # Black
+fg_red='0;31'    # Red
+fg_green='0;32'  # Green
+fg_yellow='0;33' # Yellow
+fg_blue='0;34'   # Blue
+fg_violet='0;35' # Purple
+fg_cyan='0;36'   # Cyan
+fg_white='0;37'  # White
+
+# bold colors
+fg_grey='1;30'     # Black
+fg_b_black='1;30'  # Black
+fg_b_red='1;31'    # Red
+fg_b_green='1;32'  # Green
+fg_b_yellow='1;33' # Yellow
+fg_b_blue='1;34'   # Blue
+fg_b_violet='1;35' # Purple
+fg_b_cyan='1;36'   # Cyan
+fg_b_white='1;37'  # White
+
+# underlined colors
+fg_u_black='4;30'  # Black
+fg_u_red='4;31'    # Red
+fg_u_green='4;32'  # Green
+fg_u_yellow='4;33' # Yellow
+fg_u_blue='4;34'   # Blue
+fg_u_violet='4;35' # Purple
+fg_u_cyan='4;36'   # Cyan
+fg_u_white='4;37'  # White
+
+# background colors
+bg_black='40'
+bg_red='41'
+bg_green='42'
+bg_yellow='43'
+bg_blue='44'
+bg_violet='45'
+bg_cyan='46'
+bg_white='47'
+
+reset_colors='0'
+
+# 256 extended colors are indexed and mapped to the same number for both foreground and background
+function hex256 { echo $1 | conv-rgb2xterm; }
+
+# my trademark colors
+color_lime='154'
+color_neonberry='26'
