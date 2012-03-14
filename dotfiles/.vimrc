@@ -127,8 +127,13 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " disable wordwrap when looking at CSVs
 autocmd BufRead *.csv,*.csv*,<csv> set nowrap
 
-" remove all spaces at the end of line on file save
-autocmd BufWritePre * :%s/\s\+$//e
+" remove whistespace at end of line before write
+func! StripTrailingWhitespace()
+  normal mZ
+  %s/\s\+$//e
+  normal `Z
+endfunc
+au BufWrite * if ! &bin | call StripTrailingWhitespace() | endif
 
 " display the file name of the current file in the Terminal (xterm/item/&c) title
 set title
@@ -138,6 +143,8 @@ autocmd BufEnter * let &titlestring = "vim: " . expand("%:p:~")
 " sets backspace key functions, allows it to backspace over end of line
 " characters, start of line, and indentation
 set backspace=indent,eol,start
+" movement keys will take you to the next or previous line
+set whichwrap+=<,>,h,l
 
 " enable mouse in console
 set mousemodel=extend
@@ -164,6 +171,8 @@ nnoremap n :set hlsearch<CR>n
 nnoremap N :set hlsearch<CR>N
 nnoremap <CR> :noh<CR><CR>
 nnoremap <leader>/ :set hlsearch!<CR>
+" When pressing <leader>cd switch to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>
 
 " tab navigation like firefox
 :nmap <C-S-tab> :tabprevious<cr>
@@ -174,6 +183,20 @@ nnoremap <leader>/ :set hlsearch!<CR>
 :imap <C-tab> <ESC>:tabnext<cr>i
 :nmap <C-t> :tabnew<cr>
 :imap <C-t> <ESC>:tabnew<cr>
+
+" Bash like keys for the command line
+cnoremap <C-A>      <Home>
+cnoremap <C-E>      <End>
+cnoremap <C-K>      <C-U>
+
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+
+" Smart way to move btw. windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 " make mouse scrolling work in vim!!!
 :map <M-Esc>[62~ <ScrollWheelUp>
