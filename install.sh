@@ -17,7 +17,6 @@ while getopts ":n" opt; do
   esac
 done
 
-
 if [[ $1 != 'true' ]]; then
   echo "Enter additional info to use for this configuration (pass -n to skip this in the future)."
   echo -ne "git name: "
@@ -29,11 +28,6 @@ if [[ $1 != 'true' ]]; then
   echo -ne "github token: "
   read $github_token
 fi
-
-git config --global user.name $git_name > /dev/null
-git config --global user.email $git_email > /dev/null
-git config --global github.user $github_username > /dev/null
-git config --global github.token $github_token > /dev/null
 
 cd `dirname $0`
 
@@ -61,10 +55,14 @@ for filename in $files; do
   ln -vs "$dot_dir/$filename" "$HOME/$filename"
 done
 
-echo Pulling remote submodules...
-git submodule update --init
-git submodule foreach "git co master"
-git submodule foreach "git pull"
+# Run update script to pull remote submodules
+cd `dirname $0` && ./update.sh
+
+echo Writing config settings...
+git config --global user.name $git_name > /dev/null
+git config --global user.email $git_email > /dev/null
+git config --global github.user $github_username > /dev/null
+git config --global github.token $github_token > /dev/null
 
 echo Sourcing .bash_profile...
 source ~/.bash_profile
