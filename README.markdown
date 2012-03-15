@@ -59,7 +59,5 @@ Future
 
 - Ignore failures when unable to find files or commands from my personal script repo.
 - Multiple backups.
-- Check to see if git is installed before running git commands.
 - Support mercurial.
-- Move backup directory outside of repo. (??)
 
