@@ -5,8 +5,10 @@
 set nocompatible
 
 " This is for the Syntastic plugin, we need to set it before it loads
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
+let g:syntastic_enable_signs = 1
+let g:syntastic_echo_current_error = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_enable_highlighting = 1
 
 " configure CtrlP
 let g:ctrlp_max_height = 45
@@ -26,10 +28,6 @@ let g:ctrlp_user_command = {
       \ 'fallback': 'find %s -type f'
       \ }
 
-" initialize pathogen and load all the plugins in .vim/bundle
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#runtime_append_all_bundles()
-
 " Configure Vimwiki
 let g:vimwiki_hl_headers=1
 let g:vimwiki_hl_cb_checked=1
@@ -40,11 +38,34 @@ let g:vimwiki_list_ignore_newline=0
 let wiki_1 = {}
 let wiki_1.nested_syntaxes = {'python': 'python', 'ruby': 'ruby', 'rails': 'rails', 'yaml': 'yml'}
 
-" Configure 256 color schemes for GUI or Terminal using CSApprox or
-" guicolorscheme, depending on conditions
+" configure IndentGuides plugin
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_start_level = 3
+let g:indent_guides_guide_size  = 1
+autocmd! VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=236 guibg=#303030 | :hi IndentGuidesEven ctermbg=239 guibg=#505050
+"autocmd! VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=123 guibg=#880055
+
+" configure Powerline, enable fancy symbols
+let g:Powerline_symbols = 'fancy'
+
+" initialize pathogen and load all the plugins in .vim/bundle
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#runtime_append_all_bundles()
+
 if has('gui_running')
+
+  " for Gui versions of vim. see :help guioptions for more info
+  set guioptions=aAce
   colorscheme wombat256mod
+
+  " for MacVim
+  if has("macunix")
+    set transparency=8
+  end
+
 elseif version >= 700 && &term != 'cygwin'
+
+  " configure 256 color schemes for terminal using CSApprox or guicolorscheme
   set t_Co=256
   if has('gui')
     let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
@@ -52,26 +73,17 @@ elseif version >= 700 && &term != 'cygwin'
   else
     GuiColorScheme wombat256mod
   endif
+
 endif
 
-" Disable broken ri popup
+" Disable balloon popup since theres a plugin that makes it really annoying
 if has("balloon_eval")
   set noballooneval
 end
 
-" for MacVim
-if has("macunix")
-  set transparency=8
-end
-
-" for Gui versions of vim :help guioptions
-set guioptions=aAce
-
-" Enable syntax hilighting
-syntax on
-
 " Syntax hilight based on filetype, which is autmatically determined.
-" The filetype plugin needs to be reinitilized because of pathogen
+" The filetype plugin needs to be reinitialized
+syntax on
 filetype off
 filetype on
 filetype plugin on
@@ -92,17 +104,20 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
-" The current buffer can be put to the background without writing to disk;
-" When a background buffer becomes current again marks and undo-history are
-" remembered.
-" This also means file buffers are still "open" in vim when you :q them.
+" text search options
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" hide buffers instead of closing them when you :q, keeping their undo history
 set hidden
 
-" Open new windows on the bottom or right instead of the top and left.
+" Open new windows on the bottom and right instead of the top and left.
 set splitbelow
 set splitright
 
-" Make the command and search history frickin' huge
+" increase the default command line history
 set history=1000
 
 " File name tab completion functions like bash, it gives you a list of
@@ -124,14 +139,37 @@ set go+=a
 " scrolls the buffer before you reach the last line of the window
 set scrolloff=3
 
-" text search options
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
+" Always show status line
+set ls=2
 
-" for exhuberant CTags support
+" default encoding
+set encoding=utf-8
+
+" sets backspace key functions, allows it to backspace over end of line
+" characters, start of line, and indentation
+set backspace=indent,eol,start
+" movement keys will take you to the next or previous line
+set whichwrap+=<,>,h,l
+
+" enable mouse in console
+set mousemodel=extend
+set mouse=a
+
+" improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
+
+" set the spellcheck language
+setlocal spell spelllang=en_us
+" disable spellcheck by default
+set nospell
+
+" for exuberant CTags support
 set tags=./tags;/
+
+" use a user-local vim-specific directory for backups rather than the global
+" tmp directory by default
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " treat question marks as part of a word in ruby
 autocmd BufRead *.rb,*.rake,*.rhtml,<ruby> set isk=?,@,48-57,_,192-255
@@ -154,25 +192,18 @@ endfunc
 au BufWrite * if ! &bin | call StripTrailingWhitespace() | endif
 
 " display the file name of the current file in the Terminal (xterm/item/&c) title
-set title
-autocmd BufEnter * let &titlestring = "vim: " . expand("%:p:~")
-"autocmd BufEnter * exe "echo '\033'+bufname("%")+'\007'"
-
-" sets backspace key functions, allows it to backspace over end of line
-" characters, start of line, and indentation
-set backspace=indent,eol,start
-" movement keys will take you to the next or previous line
-set whichwrap+=<,>,h,l
-
-" enable mouse in console
-set mousemodel=extend
-set mouse=a
+if has('title')
+  set title
+  autocmd BufEnter * let &titlestring = "vim: " . expand("%:p:~")
+  "set titlestring=%t%(\ [%R%M]%)
+  "autocmd BufEnter * exe "echo '\033'+bufname("%")+'\007'"
+endif
 
 " shortcuts
 " for rails.vim alternate between test and tested
-map <leader>t <Esc>:A
-map <leader>ts <Esc>:AS
-map <leader>tv <Esc>:AV
+map <leader>t <Esc>:A<CR>
+map <leader>ts <Esc>:AS<CR>
+map <leader>tv <Esc>:AV<CR>
 " foe rails.vim swap to model/control/etc from associated file
 map <leader>rm <Esc>:Rmodel<CR>
 map <leader>rc <Esc>:Rcontroller<CR>
@@ -205,14 +236,14 @@ nnoremap <leader>/ :set hlsearch!<CR>
 map <leader>cd :cd %:p:h<cr>
 
 " tab navigation like firefox
-:nmap <C-S-tab> :tabprevious<cr>
-:nmap <C-tab> :tabnext<cr>
-:map <C-S-tab> :tabprevious<cr>
-:map <C-tab> :tabnext<cr>
-:imap <C-S-tab> <ESC>:tabprevious<cr>i
-:imap <C-tab> <ESC>:tabnext<cr>i
-:nmap <C-t> :tabnew<cr>
-:imap <C-t> <ESC>:tabnew<cr>
+nmap <C-S-tab> :tabprevious<cr>
+nmap <C-tab> :tabnext<cr>
+map <C-S-tab> :tabprevious<cr>
+map <C-tab> :tabnext<cr>
+imap <C-S-tab> <ESC>:tabprevious<cr>i
+imap <C-tab> <ESC>:tabnext<cr>i
+nmap <C-t> :tabnew<cr>
+imap <C-t> <ESC>:tabnew<cr>
 
 " Bash like keys for the command line
 cnoremap <C-A>      <Home>
@@ -229,129 +260,44 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " make mouse scrolling work in vim!!!
-:map <M-Esc>[62~ <ScrollWheelUp>
-:map! <M-Esc>[62~ <ScrollWheelUp>
-:map <M-Esc>[63~ <ScrollWheelDown>
-:map! <M-Esc>[63~ <ScrollWheelDown>
-:map <M-Esc>[64~ <S-ScrollWheelUp>
-:map! <M-Esc>[64~ <S-ScrollWheelUp>
-:map <M-Esc>[65~ <S-ScrollWheelDown>
-:map! <M-Esc>[65~ <S-ScrollWheelDown>
+map <M-Esc>[62~ <ScrollWheelUp>
+map <M-Esc>[63~ <ScrollWheelDown>
+map <M-Esc>[64~ <S-ScrollWheelUp>
+map <M-Esc>[65~ <S-ScrollWheelDown>
+map! <M-Esc>[62~ <ScrollWheelUp>
+map! <M-Esc>[63~ <ScrollWheelDown>
+map! <M-Esc>[64~ <S-ScrollWheelUp>
+map! <M-Esc>[65~ <S-ScrollWheelDown>
 
 " make keypad work in vim with iTerm on OS X!
-:map <Esc>Oq 1
-:map <Esc>Or 2
-:map <Esc>Os 3
-:map <Esc>Ot 4
-:map <Esc>Ou 5
-:map <Esc>Ov 6
-:map <Esc>Ow 7
-:map <Esc>Ox 8
-:map <Esc>Oy 9
-:map <Esc>Op 0
-:map <Esc>On .
-:map <Esc>OQ /
-:map <Esc>OR *
-:map <kPlus> +
-:map <Esc>OS -
-:map! <Esc>Oq 1
-:map! <Esc>Or 2
-:map! <Esc>Os 3
-:map! <Esc>Ot 4
-:map! <Esc>Ou 5
-:map! <Esc>Ov 6
-:map! <Esc>Ow 7
-:map! <Esc>Ox 8
-:map! <Esc>Oy 9
-:map! <Esc>Op 0
-:map! <Esc>On .
-:map! <Esc>OQ /
-:map! <Esc>OR *
-:map! <kPlus> +
-:map! <Esc>OS -
-
-" improve autocomplete menu color
-highlight Pmenu ctermbg=238 gui=bold
-
-" Spell Check with ctrl+T
-"map <leader>s
-"map ^S:w!<CR>:!aspell check %<CR>:e! %<CR>
-" set the spellcheck language
-setlocal spell spelllang=en_us
-" disable spellcheck by default since it annoys me
-set nospell
-
-" creates a new :Shell command that works like :! but opens the result in a
-" new window
-command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
-function! s:RunShellCommand(cmdline)
-  let isfirst = 1
-  let words = []
-  for word in split(a:cmdline)
-    if isfirst
-      let isfirst = 0  " don't change first word (shell command)
-    else
-      if word[0] =~ '\v[%#<]'
-        let word = expand(word)
-      endif
-      let word = shellescape(word, 1)
-    endif
-    call add(words, word)
-  endfor
-  let expanded_cmdline = join(words)
-  botright new
-  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-  call setline(1, 'You entered:  ' . a:cmdline)
-  call setline(2, 'Expanded to:  ' . expanded_cmdline)
-  call append(line('$'), substitute(getline(2), '.', '=', 'g'))
-  silent execute '$read !'. expanded_cmdline
-  1
-endfunction
-
-" statusline tweaks
-set ls=2 " Always show status line
-if has('statusline')
-  " Status line detail:
-  " %f     file path
-  " %y     file type between braces (if defined)
-  " %([%R%M]%)   read-only, modified and modifiable flags between braces
-  " %{'!'[&ff=='default_file_format']}
-  "        shows a '!' if the file format is not the platform
-  "        default
-  " %{'$'[!&list]}  shows a '*' if in list mode
-  " %{'~'[&pm=='']} shows a '~' if in patchmode
-  " (%{synIDattr(synID(line('.'),col('.'),0),'name')})
-  "        only for debug : display the current syntax item name
-  " %=     right-align following items
-  " #%n    buffer number
-  " %l/%L,%c%V   line number, total number of lines, and column number
-  function SetStatusLineStyle()
-    if &stl == '' || &stl =~ 'synID'
-      let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}%{'~'[&pm=='']}%=%{SyntasticStatuslineFlag()} #%n %l/%L,%c%V "
-    else
-      let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]} (%{synIDattr(synID(line('.'),col('.'),0),'name')})%=#%n %l/%L,%c%V "
-    endif
-  endfunc
-  " Switch between the normal and vim-debug modes in the status line
-  nmap _ds :call SetStatusLineStyle()<CR>
-  call SetStatusLineStyle()
-  " Window title
-  if has('title')
-    set titlestring=%t%(\ [%R%M]%)
-  endif
-endif
-
-" use a user-local vim-specific directory for backups rather than the global
-" tmp directory by default
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
-" lets you navigate logic constructs with the % key
-runtime macros/matchit.vim
-
-" For Project.vim
-":let g:proj_flags="imstvcg"
-
-" for NERDTree.vim
-"set winfixwidth
+map <Esc>Oq 1
+map <Esc>Or 2
+map <Esc>Os 3
+map <Esc>Ot 4
+map <Esc>Ou 5
+map <Esc>Ov 6
+map <Esc>Ow 7
+map <Esc>Ox 8
+map <Esc>Oy 9
+map <Esc>Op 0
+map <Esc>On .
+map <Esc>OQ /
+map <Esc>OR *
+map <kPlus> +
+map <Esc>OS -
+map! <Esc>Oq 1
+map! <Esc>Or 2
+map! <Esc>Os 3
+map! <Esc>Ot 4
+map! <Esc>Ou 5
+map! <Esc>Ov 6
+map! <Esc>Ow 7
+map! <Esc>Ox 8
+map! <Esc>Oy 9
+map! <Esc>Op 0
+map! <Esc>On .
+map! <Esc>OQ /
+map! <Esc>OR *
+map! <kPlus> +
+map! <Esc>OS -
 
