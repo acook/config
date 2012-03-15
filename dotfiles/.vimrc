@@ -8,6 +8,24 @@ set nocompatible
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
+" configure CtrlP
+let g:ctrlp_max_height = 45
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_match_window_bottom = 1
+let g:ctrlp_switch_buffer = 2
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_mruf_include = '\.py$\|\.rb$|\.coffee|\.haml'
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript']
+let g:ctrlp_user_command = {
+      \ 'types': {
+      \ 1: ['.git/', 'cd %s && git ls-files'],
+      \ 2: ['.hg/', 'hg --cwd %s locate -I .'],
+      \ },
+      \ 'fallback': 'find %s -type f'
+      \ }
+
 " initialize pathogen and load all the plugins in .vim/bundle
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#runtime_append_all_bundles()
@@ -150,16 +168,28 @@ set whichwrap+=<,>,h,l
 set mousemodel=extend
 set mouse=a
 
-" shortcuts for rails.vim
-map <leader>r <Esc>:R
+" shortcuts
+" for rails.vim alternate between test and tested
+map <leader>t <Esc>:A
+map <leader>ts <Esc>:AS
+map <leader>tv <Esc>:AV
+" foe rails.vim swap to model/control/etc from associated file
 map <leader>rm <Esc>:Rmodel<CR>
 map <leader>rc <Esc>:Rcontroller<CR>
-" for fuzzyfinder
-map <leader>ff <Esc>:FufFile<CR>
-map <leader>fb <Esc>:FufBuffer<CR>
-map <leader>ft <Esc>:FufTag<CR>
-map <leader>fq <Esc>:FufQuickfix<CR>
-map <leader>fd <Esc>:FufDir<CR>
+map <leader>rh <Esc>:Rhelper<CR>
+map <leader>ru <Esc>:Runittest<CR>
+map <leader>rf <Esc>:Rfunctionaltest<CR>
+map <leader>ro <Esc>:Robserver<CR>
+map <leader>rv <Esc>:Rview<CR>
+map <leader>rl <Esc>:Rlocale<CR>
+" for CtrlP
+map <leader>ff <Esc>:CtrlP<CR>
+map <leader>fb <Esc>:CtrlPBuffer<CR>
+map <leader>ft <Esc>:CtrlPTag<CR>
+map <leader>fq <Esc>:CtrlPQuickFix<CR>
+map <leader>fd <Esc>:CtrlPDir<CR>
+map <leader>fr <Esc>:CtrlPRTS<CR>
+map <leader>fm <Esc>:CtrlPMRU<CR>
 " for gundo
 map <leader>g <Esc>:GundoToggle<CR>
 " runs diff against the current buffer and the file on disk
