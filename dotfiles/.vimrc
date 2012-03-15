@@ -30,12 +30,12 @@ let g:ctrlp_user_command = {
       \ }
 
 " Configure Vimwiki
-let g:vimwiki_hl_headers=1
-let g:vimwiki_hl_cb_checked=1
-let g:vimwiki_user_mouse=1
-let g:vimwiki_folding=1
-let g:vimwiki_fold_lists=1
-let g:vimwiki_list_ignore_newline=0
+let g:vimwiki_hl_headers = 1
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_user_mouse = 1
+let g:vimwiki_folding = 1
+let g:vimwiki_fold_lists = 1
+let g:vimwiki_list_ignore_newline = 0
 let wiki_1 = {}
 let wiki_1.nested_syntaxes = {'python': 'python', 'ruby': 'ruby', 'rails': 'rails', 'yaml': 'yml'}
 
@@ -43,8 +43,8 @@ let wiki_1.nested_syntaxes = {'python': 'python', 'ruby': 'ruby', 'rails': 'rail
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 3
 let g:indent_guides_guide_size  = 1
-autocmd! VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=236 guibg=#303030 | :hi IndentGuidesEven ctermbg=239 guibg=#505050
-"autocmd! VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=123 guibg=#880055
+autocmd! VimEnter,Colorscheme * hi IndentGuidesOdd ctermbg=236 guibg=#303030 | hi IndentGuidesEven ctermbg=239 guibg=#505050
+"autocmd! VimEnter,Colorscheme * hi IndentGuidesEven ctermbg=123 guibg=#880055
 
 " configure Powerline, enable fancy symbols
 let g:Powerline_symbols = 'fancy'
