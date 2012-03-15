@@ -50,6 +50,7 @@
 	l = !GIT_PAGER=less git log --pretty=oneline --abbrev-commit --decorate
 	subdo = submodule foreach git
 	top = !eval cd "$(pwd)/$(git rev-parse --show-cdup)" && pwd
+  dog = log --decorate --oneline --graph
 
 [push]
 	default = current
