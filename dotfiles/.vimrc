@@ -226,6 +226,8 @@ map <leader>fm :CtrlPMRU<CR>
 map <leader>g :GundoToggle<CR>
 " runs diff against the current buffer and the file on disk
 map <leader>d :w !diff % -<CR>
+" When pressing <leader>cd switch to the directory of the open buffer
+map <leader>cd :cd %:p:h<CR>
 " search hilighting control, enables and disable intelligently and toggles
 nnoremap / :set hlsearch<CR>/
 nnoremap ? :set hlsearch<CR>?
@@ -233,18 +235,16 @@ nnoremap n :set hlsearch<CR>n
 nnoremap N :set hlsearch<CR>N
 nnoremap <CR> :noh<CR><CR>
 nnoremap <leader>/ :set hlsearch!<CR>
-" When pressing <leader>cd switch to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>
 
 " tab navigation like firefox
-nmap <C-S-tab> :tabprevious<cr>
-nmap <C-tab> :tabnext<cr>
-map <C-S-tab> :tabprevious<cr>
-map <C-tab> :tabnext<cr>
-imap <C-S-tab> <ESC>:tabprevious<cr>i
-imap <C-tab> <ESC>:tabnext<cr>i
-nmap <C-t> :tabnew<cr>
-imap <C-t> <ESC>:tabnew<cr>
+nmap <C-S-tab> :tabprevious<CR>
+nmap <C-tab> :tabnext<CR>
+map <C-S-tab> :tabprevious<CR>
+map <C-tab> :tabnext<CR>
+imap <C-S-tab> <ESC>:tabprevious<CR>i
+imap <C-tab> <ESC>:tabnext<CR>i
+nmap <C-t> :tabnew<CR>
+imap <C-t> <ESC>:tabnew<CR>
 
 " Bash like keys for the command line
 cnoremap <C-A> <Home>
