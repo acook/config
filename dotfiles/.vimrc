@@ -43,7 +43,8 @@ let wiki_1.nested_syntaxes = {'python': 'python', 'ruby': 'ruby', 'rails': 'rail
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 3
 let g:indent_guides_guide_size  = 1
-autocmd! VimEnter,Colorscheme * hi IndentGuidesOdd ctermbg=236 guibg=#303030 | hi IndentGuidesEven ctermbg=239 guibg=#505050 | IndentGuidesEnable
+autocmd! VimEnter,Colorscheme * hi IndentGuidesOdd ctermbg=236 guibg=#303030 | hi IndentGuidesEven ctermbg=239 guibg=#505050
+autocmd BufRead * IndentGuidesEnable
 "autocmd! VimEnter,Colorscheme * hi IndentGuidesEven ctermbg=123 guibg=#880055
 
 " configure Powerline, enable fancy symbols
