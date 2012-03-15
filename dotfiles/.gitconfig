@@ -1,13 +1,19 @@
 [user]
-	name = Anthony Cook
-	email = anthonymichaelcook@gmail.com
+  name = Anthony Cook
+  email = anthonymichaelcook@gmail.com
+  editor = vim
+
+[core]
+  pager = less -FRSX
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	excludesfile = ~/.gitignore_global
 
 [color]
+  ui = auto
   diff = auto
   status = auto
   branch = auto
   interactive = auto
-  ui = auto
   pager = true
 
 [color "branch"]
@@ -26,11 +32,6 @@
   changed = yellow bold
   untracked = white
 
-[core]
-  pager = less -FRSX
-  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = /Users/Thoughtworks/.gitignore_global
-
 [alias]
   co = checkout
   st = status
@@ -38,6 +39,17 @@
   w  = whatchanged
   nb = checkout -b
   b  = branch
+  unstage = reset HEAD --
+	origin = remote show origin
+	sdiff = diff --staged
+	hdiff = diff HEAD
+	last = log -1 HEAD
+  unmerged = ls-files --unmerged
+  lg = !GIT_PAGER=less git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lp = !GIT_PAGER=less git log -p --patience
+	l = !GIT_PAGER=less git log --pretty=oneline --abbrev-commit --decorate
+	subdo = submodule foreach git
+	top = !eval cd "$(pwd)/$(git rev-parse --show-cdup)" && pwd
 
 [push]
 	default = current
@@ -48,6 +60,26 @@
 [merge]
 	default = current
 
+[url "http://github.com/"]
+	insteadOf = "gh:"
+
+[url "git@github.com:"]
+	pushInsteadOf = "https://github.com/"
+	pushInsteadOf = "http://github.com/"
+	pushInsteadOf = "gh:"
+
+[url "https://gist.github.com/"]
+	insteadOf = "gist:"
+
+[url "git@gist.github.com:"]
+	pushInsteadOf = "https://gist.github.com/"
+	pushInsteadOf = "http://gist.github.com/"
+	pushInsteadOf = "gist:"
+
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
@@ -55,6 +87,4 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/More/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[branch "master"]
-	remote = origin
-	merge = refs/heads/master
+
