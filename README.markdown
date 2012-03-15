@@ -53,6 +53,49 @@ You can use the script with your own collection of dotfiles
 0. Commit and push to your repo.
 0. Run with `./install.sh`.
 
+Cheatsheet
+----------
+
+### Vim Commands
+
+There are three File Navigation related plugins, they each have a different use case.
+
+#### CtrlP
+
+Full tree fuzzy file, tag, buffer, quickfix, and MRU file matching. Its amazing. It replaces FuzzyFinder.
+Just don't use the file finder in a massive directory like / or ~, because it will lag on startup.
+
+- <Leader>ff  - Opens fuzzy file finder.
+- <Leader>ft  - Opens fuzzy tag finder.
+- <Leader>fb  - Opens fuzzy buffer finder.
+- <Leader>fd  - Opens fuzzy directory finder.
+- <Leader>fm  - Opens fuzzy MRU finder.
+- <Leader>fq  - Opens fuzzy quickfix finder.
+
+When its open you can also do a few more things:
+
+- <f5>   - refreshes the cache
+- <c-d>  - disables full path search, does filename only matching
+- :45    - a colon at the end of a file can be followed by a vim command
+
+#### Lusty Explorer
+
+Quick open files, does fuzzy matching per directory. Very fast, no startup lag.
+Also includes some Buffer Navigation commands.
+
+- <Leader>lf  - Opens filesystem explorer.
+- <Leader>lr  - Opens filesystem explorer at the directory of the current file.
+- <Leader>lb  - Opens buffer explorer.
+- <Leader>lg  - Opens buffer grep.
+- <Leader>lj  - Opens buffer juggler.
+
+#### NERDtree
+
+Useful for exploring directory structures, or keeping open on the side like a project window.
+
+- :NERDtree
+- :e .
+
 
 Future
 ------
