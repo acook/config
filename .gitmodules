@@ -85,3 +85,12 @@
 [submodule "dotfiles/.vim/bundle/vim-matchit"]
 	path = dotfiles/.vim/bundle/vim-matchit
 	url = https://github.com/mirell/vim-matchit.git
+[submodule "dotfiles/.vim/bundle/badwolf"]
+	path = dotfiles/.vim/bundle/badwolf
+	url = https://github.com/sjl/badwolf.git
+[submodule "dotfiles/.vim/bundle/darkspectrum"]
+	path = dotfiles/.vim/bundle/darkspectrum
+	url = https://github.com/vim-scripts/darkspectrum.git
+[submodule "dotfiles/.vim/bundle/molokai"]
+	path = dotfiles/.vim/bundle/molokai
+	url = https://github.com/tomasr/molokai
