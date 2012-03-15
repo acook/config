@@ -94,3 +94,15 @@
 [submodule "dotfiles/.vim/bundle/molokai"]
 	path = dotfiles/.vim/bundle/molokai
 	url = https://github.com/tomasr/molokai
+[submodule "dotfiles/.vim/bundle/taglist.vim"]
+	path = dotfiles/.vim/bundle/taglist.vim
+	url = https://github.com/vim-scripts/taglist.vim
+[submodule "dotfiles/.vim/bundle/rainbow.vim"]
+	path = dotfiles/.vim/bundle/rainbow.vim
+	url = https://github.com/Soares/rainbow.vim.git
+[submodule "dotfiles/.vim/bundle/lusty"]
+	path = dotfiles/.vim/bundle/lusty
+	url = https://github.com/sjbach/lusty.git
+[submodule "dotfiles/.vim/bundle/YankRing.vim"]
+	path = dotfiles/.vim/bundle/YankRing.vim
+	url = https://github.com/vim-scripts/YankRing.vim.git
