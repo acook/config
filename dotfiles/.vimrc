@@ -11,6 +11,7 @@ let g:syntastic_auto_loc_list = 2
 let g:syntastic_enable_highlighting = 1
 
 " configure CtrlP
+let g:ctrlp_map = ''
 let g:ctrlp_max_height = 45
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_match_window_bottom = 1
