@@ -76,3 +76,12 @@
 [submodule "dotfiles/.vim/bundle/nerdtree"]
 	path = dotfiles/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "dotfiles/.vim/bundle/vim-indent-guides"]
+	path = dotfiles/.vim/bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "dotfiles/.vim/bundle/vim-powerline"]
+	path = dotfiles/.vim/bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "dotfiles/.vim/bundle/vim-matchit"]
+	path = dotfiles/.vim/bundle/vim-matchit
+	url = https://github.com/mirell/vim-matchit.git
