@@ -202,30 +202,30 @@ endif
 
 " shortcuts
 " for rails.vim alternate between test and tested
-map <leader>t <Esc>:A<CR>
-map <leader>ts <Esc>:AS<CR>
-map <leader>tv <Esc>:AV<CR>
+map <leader>t  :A<CR>
+map <leader>ts :AS<CR>
+map <leader>tv :AV<CR>
 " foe rails.vim swap to model/control/etc from associated file
-map <leader>rm <Esc>:Rmodel<CR>
-map <leader>rc <Esc>:Rcontroller<CR>
-map <leader>rh <Esc>:Rhelper<CR>
-map <leader>ru <Esc>:Runittest<CR>
-map <leader>rf <Esc>:Rfunctionaltest<CR>
-map <leader>ro <Esc>:Robserver<CR>
-map <leader>rv <Esc>:Rview<CR>
-map <leader>rl <Esc>:Rlocale<CR>
+map <leader>rm :Rmodel<CR>
+map <leader>rc :Rcontroller<CR>
+map <leader>rh :Rhelper<CR>
+map <leader>ru :Runittest<CR>
+map <leader>rf :Rfunctionaltest<CR>
+map <leader>ro :Robserver<CR>
+map <leader>rv :Rview<CR>
+map <leader>rl :Rlocale<CR>
 " for CtrlP
-map <leader>ff <Esc>:CtrlP<CR>
-map <leader>fb <Esc>:CtrlPBuffer<CR>
-map <leader>ft <Esc>:CtrlPTag<CR>
-map <leader>fq <Esc>:CtrlPQuickFix<CR>
-map <leader>fd <Esc>:CtrlPDir<CR>
-map <leader>fr <Esc>:CtrlPRTS<CR>
-map <leader>fm <Esc>:CtrlPMRU<CR>
+map <leader>ff :CtrlP<CR>
+map <leader>fb :CtrlPBuffer<CR>
+map <leader>ft :CtrlPTag<CR>
+map <leader>fq :CtrlPQuickFix<CR>
+map <leader>fd :CtrlPDir<CR>
+map <leader>fr :CtrlPRTS<CR>
+map <leader>fm :CtrlPMRU<CR>
 " for gundo
-map <leader>g <Esc>:GundoToggle<CR>
+map <leader>g :GundoToggle<CR>
 " runs diff against the current buffer and the file on disk
-map <leader>d <Esc>:w !diff % -<CR>
+map <leader>d :w !diff % -<CR>
 " search hilighting control, enables and disable intelligently and toggles
 nnoremap / :set hlsearch<CR>/
 nnoremap ? :set hlsearch<CR>?
@@ -247,9 +247,9 @@ nmap <C-t> :tabnew<cr>
 imap <C-t> <ESC>:tabnew<cr>
 
 " Bash like keys for the command line
-cnoremap <C-A>      <Home>
-cnoremap <C-E>      <End>
-cnoremap <C-K>      <C-U>
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-K> <C-U>
 
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
