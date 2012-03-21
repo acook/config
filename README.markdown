@@ -96,6 +96,13 @@ Useful for exploring directory structures, or keeping open on the side like a pr
 - :NERDtree
 - :e .
 
+#### Rails.vim
+
+Alternate - swap from test to tested and back
+
+- :AV
+- :AS
+
 
 Future
 ------
