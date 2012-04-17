@@ -142,7 +142,7 @@ set go+=a
 set scrolloff=3
 
 " Always show status line
-set ls=2
+set laststatus=2
 
 " default encoding
 set encoding=utf-8
