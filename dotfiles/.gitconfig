@@ -51,6 +51,7 @@
 	subdo = submodule foreach git
 	top = !eval cd "$(pwd)/$(git rev-parse --show-cdup)" && pwd
   dog = log --decorate --oneline --graph
+  unstash = stash pop
 
 [push]
 	default = current
