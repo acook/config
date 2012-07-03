@@ -32,7 +32,7 @@ case $unamestr in
     ;;
 
   'Linux')
-    if command -v keychain ; then
+    if [[ -n `command -v keychain` ]]; then
       keychain id_rsa
       . ~/.keychain/`uname -n`-sh
     fi
@@ -44,13 +44,13 @@ case $unamestr in
 esac
 
 # Handle potential pagers
-if [[ -n `command -v vimpager` ]] ; then
+if [[ -n `command -v vimpager` ]]; then
   export PAGER=vimpager
 else
-  if [[ -n `command -v vimless` ]] ; then
+  if [[ -n `command -v vimless` ]]; then
     export PAGER=vimless
   fi
-  if [[ -n `command -v vimman` ]] ; then
+  if [[ -n `command -v vimman` ]]; then
     export MANPAGER=vimman
   fi
 fi
@@ -133,7 +133,7 @@ function psg { ps -A | awk 'NR==1; /'$1'/&&!/awk/'; }
 function spell { echo $@|aspell -a; }
 
 # Quick bash.org
-#bashorg () { lynx -dump "www.bash.org?$1" | less; }
+bashorg () { lynx -dump "www.bash.org?$1" | less; }
 
 # sooo many letters to type in a day, here's a few less for the history command
 alias h='history'
