@@ -109,5 +109,5 @@ Future
 
 - Ignore failures when unable to find files or commands from my personal script repo.
 - Multiple backups.
-- Support mercurial.
+- Handle preexisting directories (~/.vim will usually screw up the initial install).
 
