@@ -82,9 +82,6 @@
 [submodule "dotfiles/.vim/bundle/vim-powerline"]
 	path = dotfiles/.vim/bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
-[submodule "dotfiles/.vim/bundle/vim-matchit"]
-	path = dotfiles/.vim/bundle/vim-matchit
-	url = https://github.com/mirell/vim-matchit.git
 [submodule "dotfiles/.vim/bundle/badwolf"]
 	path = dotfiles/.vim/bundle/badwolf
 	url = https://github.com/sjl/badwolf.git
