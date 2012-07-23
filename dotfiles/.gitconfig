@@ -40,6 +40,7 @@
   nb = checkout -b
   b  = branch
   unstage = reset HEAD --
+  root = rev-parse --show-toplevel
 	origin = remote show origin
 	sdiff = diff --staged
 	hdiff = diff HEAD
