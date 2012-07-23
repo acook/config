@@ -17,7 +17,7 @@ while getopts ":n" opt; do
   esac
 done
 
-if [[ "$noninteractive" != 'true' ]]; then
+if [[ $noninteractive != 'true' ]]; then
   echo "Enter additional info to use for this configuration (pass -n to skip this in the future)."
   echo -ne "git name: "
   read $git_name
@@ -55,10 +55,10 @@ for filename in $files; do
   ln -vs "$dot_dir/$filename" "$HOME/$filename"
 done
 
-# Run update script to pull remote submodules
-cd `dirname $0` && ./update.sh
+echo Pulling remote submodules...
+$dir/update.sh 1>/dev/null
 
-if [[ "$noninteractive" != 'true' ]]; then
+if [[ $noninteractive != 'true' ]]; then
   echo Writing config settings...
   git config --global user.name $git_name > /dev/null
   git config --global user.email $git_email > /dev/null
@@ -66,7 +66,6 @@ if [[ "$noninteractive" != 'true' ]]; then
   git config --global github.token $github_token > /dev/null
 fi
 
-echo Sourcing .bash_profile...
-source ~/.bash_profile
+echo "You should now source bashrc (source ~/.bashrc)"
 
 echo Done!
