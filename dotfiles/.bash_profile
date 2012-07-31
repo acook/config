@@ -95,8 +95,8 @@ export HISTCONTROL=erasedups
 export HISTSIZE=10000
 shopt -s histappend
 
+# Load RVM if available - some aliases can cause this to fail on some systems so we load it before them
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 # load up aliases and functions
 source ~/.bash_aliases
-
-# Load RVM if available
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
