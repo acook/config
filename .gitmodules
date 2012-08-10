@@ -103,3 +103,6 @@
 [submodule "dotfiles/.vim/bundle/YankRing.vim"]
 	path = dotfiles/.vim/bundle/YankRing.vim
 	url = https://github.com/vim-scripts/YankRing.vim.git
+[submodule "dotfiles/.vim/bundle/treetop.vim"]
+	path = dotfiles/.vim/bundle/treetop.vim
+	url = https://github.com/nanki/treetop.vim.git
