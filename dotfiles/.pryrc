@@ -51,14 +51,15 @@ Pry.prompt = [
     object_info = if object == Object || object.class == Object then
       "#{object.class}##{object.inspect}"
     else
-      object_class_info = "#{object.class.superclass}/#{object.class}"
 
-      if object.is_a? Module then
-        "#{object_class_info}##{object.name}"
+      if object.is_a? Class then
+        "#{object.class}##{object.superclass}/#{object.name}"
+      elsif object.is_a? Module then
+        "#{object.class}##{object.name}"
       elsif defined?(RSpec) && object.is_a?(RSpec::Core::ExampleGroup) then
         "RSpec::Core::ExampleGroup#instance"
       else
-        "#{object_class_info}#instance"
+        "#{object.class.superclass}/#{object.class}#instance"
       end
     end
 
