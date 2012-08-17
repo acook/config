@@ -47,7 +47,22 @@ end
 # Prompt with ruby version
 Pry.prompt = [
   proc { |object, nest_level|
-    "#{RUBY_VERSION} (#{object.is_a?(Module) ? object.name : "#{object.class.name} instance"}):#{nest_level} > "
+
+    object_info = if object == Object || object.class == Object then
+      "#{object.class}##{object.inspect}"
+    else
+      object_class_info = "#{object.class.superclass}/#{object.class}"
+
+      if object.is_a? Module then
+        "#{object_class_info}##{object.name}"
+      elsif defined?(RSpec) && object.is_a?(RSpec::Core::ExampleGroup) then
+        "RSpec::Core::ExampleGroup#instance"
+      else
+        "#{object_class_info}#instance"
+      end
+    end
+
+    "#{RUBY_VERSION} (#{object_info}):#{nest_level} > "
   },
   proc { |object, nest_level|
     "#{RUBY_VERSION} #{nest_level} * "
