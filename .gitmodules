@@ -106,3 +106,6 @@
 [submodule "dotfiles/.vim/bundle/treetop.vim"]
 	path = dotfiles/.vim/bundle/treetop.vim
 	url = https://github.com/nanki/treetop.vim.git
+[submodule "dotfiles/.vim/bundle/gundo.vim"]
+	path = dotfiles/.vim/bundle/gundo.vim
+	url = https://github.com/sjl/gundo.vim.git
