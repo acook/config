@@ -39,8 +39,10 @@
   w  = whatchanged
   nb = checkout -b
   b  = branch
+  amend = commit --amend
   unstash = stash pop
   unstage = reset HEAD --
+  remotes = remote -v
   root = rev-parse --show-toplevel
   origin = remote show origin
   diffs = diff --staged
