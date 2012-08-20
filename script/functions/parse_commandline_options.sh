@@ -1,4 +1,6 @@
 function parse_commandline_options {
+  noninteractive='false'
+
   while getopts ":n" opt; do
     case $opt in
       n)

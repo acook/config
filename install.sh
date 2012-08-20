@@ -13,7 +13,9 @@ export dir=`pwd`
 export dot_dir=$dir/dotfiles
 export backup_dir=$dir/backup
 
+echo Loading aliases...
 source $dir/script/load_aliases.sh
+echo Loading functions...
 source $dir/script/load_functions.sh
 
 parse_commandline_options
@@ -21,10 +23,12 @@ parse_commandline_options
 echo Running pre install scripts...
 load_directory $dir/script/pre_install pre_install
 
+echo Installing configuration files...
 backup_and_link_directory $dot_dir $HOME $backup_dir
 
 echo Running post install scripts...
 load_directory $dir/script/post_install post_install
 
+echo "Backups stored in $backup_dir"
 echo "You should now reload your bash configuration (source ~/.bashrc)"
 echo Done!

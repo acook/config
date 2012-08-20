@@ -1,13 +1,9 @@
 function backup_and_link {
 
-  $filename=$1
-  $source_dir=$2
-  $target_dir=$3
-  $backup_dir=$4
-
-  echo source_dir: $source_dir
-  echo target_dir: $target_dir
-  echo backup_dir: $backup_dir
+  filename="$1"
+  source_dir="$2"
+  target_dir="$3"
+  backup_dir="$4"
 
   if symlink_exists "$target_dir/$filename"; then
     echo -ne "rm: symlink "
