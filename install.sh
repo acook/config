@@ -6,66 +6,25 @@
 # Put all the dotfiles in the same directory as the install script and list them in the file variable.
 # run with `./install.sh`
 
-while getopts ":n" opt; do
-  case $opt in
-    n)
-      noninteractive='true'
-      ;;
-    \?)
-      echo "Ignoring invalid option: -$OPTARG" >&2
-      ;;
-  esac
-done
-
-if [[ $noninteractive != 'true' ]]; then
-  echo "Enter additional info to use for this configuration (pass -n to skip this in the future)."
-  echo -ne "git name: "
-  read $git_name
-  echo -ne "git email: "
-  read $git_email
-  echo -ne "github username: "
-  read $github_username
-  echo -ne "github token: "
-  read $github_token
-fi
+set -o nounset                              # Treat unset variables as an error
 
 cd `dirname $0`
+export dir=`pwd`
+export dot_dir=$dir/dotfiles
+export backup_dir=$dir/backup
 
-dir=`pwd`
-dot_dir=$dir/dotfiles
-backup_dir=$dir/backup
+source $dir/script/load_aliases.sh
+source $dir/script/load_functions.sh
 
-echo dot_dir: $dot_dir
-echo backup_dir: $backup_dir
+parse_commandline_options
 
-mkdir -v "$backup_dir"
-files=`ls -1 -A $dot_dir`
+echo Running pre install scripts...
+load_directory $dir/script/pre_install pre_install
 
-for filename in $files; do
-  if [ -h "$HOME/$filename" ]; then
-    echo -ne "rm: symlink "
-    rm -v "$HOME/$filename"
-  else
-    if [ -f "$HOME/$filename" ]; then
-      echo -ne "mv: "
-      mv -v "$HOME/$filename" "$backup_dir/"
-    fi
-  fi
-  echo -ne "ln: "
-  ln -vs "$dot_dir/$filename" "$HOME/$filename"
-done
+backup_and_link_directory $dot_dir $HOME $backup_dir
 
-echo Pulling remote submodules...
-$dir/update.sh 1>/dev/null
+echo Running post install scripts...
+load_directory $dir/script/post_install post_install
 
-if [[ $noninteractive != 'true' ]]; then
-  echo Writing config settings...
-  git config --global user.name $git_name > /dev/null
-  git config --global user.email $git_email > /dev/null
-  git config --global github.user $github_username > /dev/null
-  git config --global github.token $github_token > /dev/null
-fi
-
-echo "You should now source bashrc (source ~/.bashrc)"
-
+echo "You should now reload your bash configuration (source ~/.bashrc)"
 echo Done!
