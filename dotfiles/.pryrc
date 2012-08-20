@@ -91,7 +91,7 @@ unless defined? Rails
   if File.exist?($rails) && ENV['SKIP_RAILS'].nil?
     puts 'Rails environment available. Type `rails` to get access to the full stack.'
 
-    def find_gemfile path = nil
+    def _find_gemfile path = nil
       default_gemfile_path = (ENV['BUNDLE_GEMFILE'] || '').gsub(/Gemfile/,'')
       path ||= File.expand_path(default_gemfile_path || Dir.pwd)
 
@@ -101,7 +101,7 @@ unless defined? Rails
       else
         next_path = File.expand_path('..', path)
         unless path == next_path then
-          find_gemfile next_path
+          _find_gemfile next_path
         else
           warn 'Gemfile not found!'
           false
@@ -109,14 +109,11 @@ unless defined? Rails
       end
     end
 
-    def bundler_require origin_path = nil
-      gemfile_path = find_gemfile
+    def _bundler_require origin_path = nil
+      gemfile_path = _find_gemfile
       if gemfile_path then
         ENV['BUNDLE_GEMFILE'] = gemfile_path
         Bundler.require(:default, (ENV['RAILS_ENV'] || :development))
-      else
-        warn 'Gemfile not found!'
-        false
       end
     end
 
@@ -124,14 +121,25 @@ unless defined? Rails
       puts "[INFO] loading Rails..."
 
       require 'bundler'
-      if bundler_require then
+
+      begin
+        require 'active_record'
+      rescue LoadError
+      end
+
+      if _bundler_require then
+
         require $rails
+
         require 'rails/console/app'
         require 'rails/console/helpers'
 
-        ActiveRecord::Base.logger = Logger.new(STDOUT)
-      end
+        if defined? ActiveRecord then
+          ActiveRecord::Base.logger = Logger.new(STDOUT)
+        end
 
+        Rails
+      end
     end
   end
 end
