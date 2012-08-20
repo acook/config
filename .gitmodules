@@ -112,3 +112,9 @@
 [submodule "dotfiles/.vim/bundle/vim-slim"]
 	path = dotfiles/.vim/bundle/vim-slim
 	url = https://github.com/bbommarito/vim-slim.git
+[submodule "dotfiles/.vim/bundle/vim-autoclose"]
+	path = dotfiles/.vim/bundle/vim-autoclose
+	url = https://github.com/Townk/vim-autoclose.git
+[submodule "dotfiles/.vim/bundle/fish.vim"]
+	path = dotfiles/.vim/bundle/fish.vim
+	url = https://github.com/guangnan/fish.vim.git
