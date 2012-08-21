@@ -8,6 +8,19 @@
 
 set -o nounset                              # Treat unset variables as an error
 
+# parse commandline options and configure accordingly
+export noninteractive='false'
+while getopts ":n" opt; do
+  case $opt in
+    n)
+      export noninteractive='true'
+      ;;
+    \?)
+      echo "Ignoring invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+
 cd `dirname $0`
 export dir=`pwd`
 export dot_dir=$dir/dotfiles
