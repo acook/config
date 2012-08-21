@@ -29,6 +29,7 @@ backup_and_link_directory $dot_dir $HOME $backup_dir
 echo Running post install scripts...
 load_directory $dir/script/post_install post_install
 
+echo
 echo "Backups stored in $backup_dir"
 echo "You should now reload your bash configuration (source ~/.bashrc)"
 echo Done!

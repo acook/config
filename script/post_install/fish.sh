@@ -5,10 +5,6 @@ function post_install {
   local source_dir="$dot_dir"
   local target_dir="$dir"
 
-  echo source_dir: $source_dir
-  echo target_dir: $target_dir
-  echo backup_dir: $backup_dir
-
   cd "$target_dir"
   mkdir .config
   cd .config
