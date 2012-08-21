@@ -118,3 +118,6 @@
 [submodule "dotfiles/.vim/bundle/fish.vim"]
 	path = dotfiles/.vim/bundle/fish.vim
 	url = https://github.com/guangnan/fish.vim.git
+[submodule "dotfiles/.vim/bundle/vim-guicolorscheme"]
+	path = dotfiles/.vim/bundle/vim-guicolorscheme
+	url = https://github.com/vim-scripts/guicolorscheme.vim.git
