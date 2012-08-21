@@ -58,7 +58,7 @@ if has('gui_running')
 
   " for Gui versions of vim. see :help guioptions for more info
   set guioptions=aAce
-  colorscheme wombat256mod
+  colorscheme monokai_modified
 
   " for MacVim
   if has("macunix")
@@ -71,9 +71,9 @@ elseif version >= 700 && &term != 'cygwin'
   set t_Co=256
   if has('gui')
     let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-    colorscheme wombat256mod
+    colorscheme monokai_modified
   else
-    GuiColorScheme wombat256mod
+    GuiColorScheme monokai_modified
   endif
 
 endif
@@ -157,6 +157,7 @@ set whichwrap+=<,>,h,l
 " enable mouse in console
 set mousemodel=extend
 set mouse=a
+set mousehide
 
 " improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
