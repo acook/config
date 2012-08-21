@@ -1,10 +1,10 @@
 function parse_commandline_options {
-  noninteractive='false'
+  export noninteractive='false'
 
   while getopts ":n" opt; do
     case $opt in
       n)
-        noninteractive='true'
+        export noninteractive='true'
         ;;
       \?)
         echo "Ignoring invalid option: -$OPTARG" >&2
