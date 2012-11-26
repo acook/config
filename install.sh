@@ -31,8 +31,6 @@ source $dir/script/load_aliases.sh
 echo Loading functions...
 source $dir/script/load_functions.sh
 
-parse_commandline_options
-
 echo Running pre install scripts...
 load_directory $dir/script/pre_install pre_install
 
