@@ -14,8 +14,11 @@ case $unamestr in
     # Give precedence to user/local/bin because that's where Homebrew installs their stuff
     export PATH=/usr/local/bin:$PATH
 
+    # Add up Homebrew's Python binary directory to the path
+    export PATH=/usr/local/share/python:$PATH
+
     # Path extension for Haskell Platform on OSX
-    export PATH="$HOME/Library/Haskell/bin:$PATH"
+    export PATH=$PATH:$HOME/Library/Haskell/bin
 
     # I can set alias ls=ls_osx if I don't have gnu coreutils installed
     alias ls_osx="ls -p -F -G -h"
