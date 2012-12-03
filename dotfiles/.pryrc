@@ -37,7 +37,7 @@ end
 # Use vim as my editor
 Pry.config.editor = 'vim'
 # Set the pry-theme
-Pry.config.theme = 'wombat'
+Pry.config.theme = 'monokai'
 
 # My pry is polite
 Pry.config.hooks.add_hook(:after_session, :say_bye) do
