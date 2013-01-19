@@ -101,5 +101,11 @@ shopt -s histappend
 # Load RVM if available - some aliases can cause this to fail on some systems so we load it before them
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+# tune Ruby GC
+export RUBY_GC_MALLOC_LIMIT=60000000
+export RUBY_FREE_MIN=200000
+# Use high performance allocators like jemalloc and tcmalloc
+#export LD_PRELOAD=/usr/lib64/libtcmalloc_minimal.so.0.1.0
+
 # load up aliases and functions
 source ~/.bash_aliases
