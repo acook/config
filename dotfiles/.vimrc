@@ -52,7 +52,7 @@ let g:Powerline_symbols = 'fancy'
 
 " initialize pathogen and load all the plugins in .vim/bundle
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
 
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins = 1 " Highlight Clojure's builtins
@@ -77,6 +77,7 @@ elseif version >= 700 && &term != 'cygwin'
     let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
     colorscheme monokai_modified
   else
+    runtime! bundle/vim-guicolorscheme/plugin/guicolorscheme.vim
     GuiColorScheme monokai_modified
   endif
 
