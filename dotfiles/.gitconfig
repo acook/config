@@ -56,6 +56,7 @@
   top = !eval cd "$(pwd)/$(git rev-parse --show-cdup)" && pwd
   dog = log --decorate --oneline --graph
   ls = !git ls-tree HEAD --name-only | fmt
+  stats = !git diff --stat `git hash-object -t tree /dev/null`
 
 [push]
   default = current
