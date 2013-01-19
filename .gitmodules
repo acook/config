@@ -121,3 +121,6 @@
 [submodule "dotfiles/.vim/bundle/vim-guicolorscheme"]
 	path = dotfiles/.vim/bundle/vim-guicolorscheme
 	url = https://github.com/vim-scripts/guicolorscheme.vim.git
+[submodule "dotfiles/.vim/bundle/vimclojure"]
+	path = dotfiles/.vim/bundle/vimclojure
+	url = git@github.com:acook/vimclojure.git
