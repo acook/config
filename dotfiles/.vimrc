@@ -50,6 +50,8 @@ autocmd BufRead * IndentGuidesEnable
 " configure Powerline, enable fancy symbols
 let g:Powerline_symbols = 'fancy'
 
+python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
+
 " initialize pathogen and load all the plugins in .vim/bundle
 runtime bundle/plugin-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
@@ -61,9 +63,9 @@ let vimclojure#ParenRainbow = 1 " Rainbow parentheses'!
 if has('gui_running')
 
   " for Gui versions of vim. see :help guioptions for more info
-  set guifont=Monaco:h12
-  set guioptions=aAce
   colorscheme monokai_modified
+  set guioptions=aAce
+  set guifont=Menlo\ Regular\ for\ Powerline:h11
 
   " for MacVim
   if has("macunix")
