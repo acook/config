@@ -51,7 +51,7 @@ autocmd BufRead * IndentGuidesEnable
 let g:Powerline_symbols = 'fancy'
 
 " initialize pathogen and load all the plugins in .vim/bundle
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+runtime bundle/plugin-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 " Settings for VimClojure
@@ -77,7 +77,7 @@ elseif version >= 700 && &term != 'cygwin'
     let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
     colorscheme monokai_modified
   else
-    runtime! bundle/vim-guicolorscheme/plugin/guicolorscheme.vim
+    runtime! bundle/plugin-guicolorscheme/plugin/guicolorscheme.vim
     GuiColorScheme monokai_modified
   endif
 
