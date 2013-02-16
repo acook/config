@@ -177,3 +177,6 @@ url = https://github.com/kien/ctrlp.vim.git
 [submodule "dotfiles/.tmux/powerline"]
 	path = dotfiles/.tmux/powerline
 	url = https://github.com/erikw/tmux-powerline.git
+[submodule "dotfiles/.vim/bundle/plugin-gitv"]
+	path = dotfiles/.vim/bundle/plugin-gitv
+	url = git://github.com/gregsexton/gitv.git
