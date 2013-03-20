@@ -47,3 +47,8 @@ alias rspec_debug="bundle exec ruby -d -r 'rspec/autorun' -I './lib' spec/*_spec
 
 # Add an "alert" alias for long running commands. Use semicolor to execute it in sequence
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# If there's an ack-grep command, alias it to ack
+if [[ -n `command -v ack-grep` ]]; then
+  alias ack='ack-grep'
+fi
