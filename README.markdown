@@ -109,4 +109,6 @@ Future
 
 - Ignore failures when unable to find files or commands from my personal script repo.
 - Multiple backups.
+- https://github.com/vim-scripts/paredit.vim
+- https://github.com/tomtom/tcomment_vim
 

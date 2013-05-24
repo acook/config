@@ -69,7 +69,7 @@ if has('gui_running')
 
   " for MacVim
   if has("macunix")
-    set transparency=8
+    set transparency=4
   end
 
 elseif version >= 700 && &term != 'cygwin'
@@ -143,7 +143,9 @@ set number
 
 " Make clipbord work on OS X. This makes copy/paste operations trivial between
 " vim and other applications since they all use the same clipboard now.
-set clipboard=unnamed
+if $TMUX == ''
+  set clipboard=unnamed
+end
 " visual select automatically copies to X11's selection ("middle click") buffer
 set go+=a
 
