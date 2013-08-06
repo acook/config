@@ -1,179 +1,188 @@
-[submodule "dotfiles/.vim/bundle/theme-jellybeans"]
-path = dotfiles/.vim/bundle/theme-jellybeans
-url = https://github.com/nanotech/jellybeans.vim.git
-
-[submodule "dotfiles/.vim/bundle/theme-railscasts"]
-path = dotfiles/.vim/bundle/theme-railscasts
-url = https://github.com/jpo/vim-railscasts-theme.git
-
-[submodule "dotfiles/.vim/bundle/syntax-jQuery"]
-path = dotfiles/.vim/bundle/syntax-jQuery
-url = https://github.com/vim-scripts/jQuery.git
-
-[submodule "dotfiles/.vim/bundle/plugin-nerdcommenter"]
-path = dotfiles/.vim/bundle/plugin-nerdcommenter
-url = https://github.com/scrooloose/nerdcommenter.git
-
-[submodule "dotfiles/.vim/bundle/plugin-syntastic"]
-path = dotfiles/.vim/bundle/plugin-syntastic
-url = https://github.com/scrooloose/syntastic.git
-
-[submodule "dotfiles/.vim/bundle/plugin-abolish"]
-path = dotfiles/.vim/bundle/plugin-abolish
-url = http://github.com/tpope/vim-abolish.git
-
-[submodule "dotfiles/.vim/bundle/syntax-coffee-script"]
-path = dotfiles/.vim/bundle/syntax-coffee-script
-url = https://github.com/kchmck/vim-coffee-script.git
-
-[submodule "dotfiles/.vim/bundle/syntax-cucumber"]
-path = dotfiles/.vim/bundle/syntax-cucumber
-url = https://github.com/tpope/vim-cucumber.git
-
-[submodule "dotfiles/.vim/bundle/plugin-endwise"]
-path = dotfiles/.vim/bundle/plugin-endwise
-url = https://github.com/tpope/vim-endwise.git
-
-[submodule "dotfiles/.vim/bundle/plugin-fugitive"]
-path = dotfiles/.vim/bundle/plugin-fugitive
-url = https://github.com/tpope/vim-fugitive.git
-
-[submodule "dotfiles/.vim/bundle/syntax-git"]
-path = dotfiles/.vim/bundle/syntax-git
-url = https://github.com/tpope/vim-git.git
-
-[submodule "dotfiles/.vim/bundle/syntax-haml"]
-path = dotfiles/.vim/bundle/syntax-haml
-url = https://github.com/tpope/vim-haml.git
-
-[submodule "dotfiles/.vim/bundle/syntax-markdown"]
-path = dotfiles/.vim/bundle/syntax-markdown
-url = https://github.com/tpope/vim-markdown.git
-
-[submodule "dotfiles/.vim/bundle/plugin-rails"]
-path = dotfiles/.vim/bundle/plugin-rails
-url = git://github.com/tpope/vim-rails.git
-
-[submodule "dotfiles/.vim/bundle/plugin-repeat"]
-path = dotfiles/.vim/bundle/plugin-repeat
-url = https://github.com/tpope/vim-repeat.git
-
-[submodule "dotfiles/.vim/bundle/plugin-surround"]
-path = dotfiles/.vim/bundle/plugin-surround
-url = https://github.com/tpope/vim-surround.git
-
-[submodule "dotfiles/.vim/bundle/plugin-toggle-wrap"]
-path = dotfiles/.vim/bundle/plugin-toggle-wrap
-url = git://github.com/bronson/vim-toggle-wrap.git
-
-[submodule "dotfiles/.vim/bundle/plugin-unimpaired"]
-path = dotfiles/.vim/bundle/plugin-unimpaired
-url = https://github.com/tpope/vim-unimpaired.git
-
-[submodule "dotfiles/.vim/bundle/plugin-vimwiki"]
-path = dotfiles/.vim/bundle/plugin-vimwiki
-url = https://github.com/vim-scripts/vimwiki.git
-
-[submodule "dotfiles/.vim/bundle/syntax-javascript"]
-path = dotfiles/.vim/bundle/syntax-javascript
-url = https://github.com/pangloss/vim-javascript.git
-
-[submodule "dotfiles/.vim/bundle/syntax-jst"]
-path = dotfiles/.vim/bundle/syntax-jst
-url = https://github.com/briancollins/vim-jst.git
-
-[submodule "dotfiles/.vim/bundle/plugin-pathogen"]
-path = dotfiles/.vim/bundle/plugin-pathogen
-url = https://github.com/tpope/vim-pathogen.git
-
-[submodule "dotfiles/.vim/bundle/plugin-supertab"]
-path = dotfiles/.vim/bundle/plugin-supertab
-url = https://github.com/ervandew/supertab.git
-
-[submodule "dotfiles/.vim/bundle/plugin-csapprox"]
-path = dotfiles/.vim/bundle/plugin-csapprox
-url = https://github.com/godlygeek/csapprox.git
-
-[submodule "dotfiles/.vim/bundle/plugin-nerdtree"]
-path = dotfiles/.vim/bundle/plugin-nerdtree
-url = https://github.com/scrooloose/nerdtree.git
-
-[submodule "dotfiles/.vim/bundle/plugin-indent-guides"]
-path = dotfiles/.vim/bundle/plugin-indent-guides
-url = https://github.com/nathanaelkane/vim-indent-guides.git
-
-[submodule "dotfiles/.vim/bundle/plugin-powerline"]
-path = dotfiles/.vim/bundle/plugin-powerline
-url = https://github.com/Lokaltog/vim-powerline.git
-
-[submodule "dotfiles/.vim/bundle/theme-badwolf"]
-path = dotfiles/.vim/bundle/theme-badwolf
-url = https://github.com/sjl/badwolf.git
-
-[submodule "dotfiles/.vim/bundle/theme-darkspectrum"]
-path = dotfiles/.vim/bundle/theme-darkspectrum
-url = https://github.com/vim-scripts/darkspectrum.git
-
-[submodule "dotfiles/.vim/bundle/theme-molokai"]
-path = dotfiles/.vim/bundle/theme-molokai
-url = https://github.com/tomasr/molokai
-
-[submodule "dotfiles/.vim/bundle/plugin-taglist"]
-path = dotfiles/.vim/bundle/plugin-taglist
-url = https://github.com/vim-scripts/taglist.vim
-
-[submodule "dotfiles/.vim/bundle/plugin-rainbow"]
-path = dotfiles/.vim/bundle/plugin-rainbow
-url = https://github.com/Soares/rainbow.vim.git
-
-[submodule "dotfiles/.vim/bundle/plugin-lusty"]
-path = dotfiles/.vim/bundle/plugin-lusty
-url = https://github.com/sjbach/lusty.git
-
-[submodule "dotfiles/.vim/bundle/syntax-treetop"]
-path = dotfiles/.vim/bundle/syntax-treetop
-url = https://github.com/nanki/treetop.vim.git
-
-[submodule "dotfiles/.vim/bundle/plugin-gundo"]
-path = dotfiles/.vim/bundle/plugin-gundo
-url = https://github.com/sjl/gundo.vim.git
-
-[submodule "dotfiles/.vim/bundle/syntax-slim"]
-path = dotfiles/.vim/bundle/syntax-slim
-url = https://github.com/slim-template/vim-slim.git
-
-[submodule "dotfiles/.vim/bundle/plugin-autoclose"]
-path = dotfiles/.vim/bundle/plugin-autoclose
-url = https://github.com/Townk/vim-autoclose.git
-
-[submodule "dotfiles/.vim/bundle/syntax-fish"]
-path = dotfiles/.vim/bundle/syntax-fish
-url = https://github.com/guangnan/fish.vim.git
-
-[submodule "dotfiles/.vim/bundle/plugin-guicolorscheme"]
-path = dotfiles/.vim/bundle/plugin-guicolorscheme
-url = https://github.com/vim-scripts/guicolorscheme.vim.git
-
-[submodule "dotfiles/.vim/bundle/syntax-vimclojure"]
-path = dotfiles/.vim/bundle/syntax-vimclojure
-url = https://github.com/acook/vimclojure.git
-
-[submodule "dotfiles/.vim/bundle/plugin-ctrlp"]
-path = dotfiles/.vim/bundle/plugin-ctrlp
-url = https://github.com/kien/ctrlp.vim.git
+# non vim submodules
 
 [submodule "dotfiles/.tmux/powerline"]
-	path = dotfiles/.tmux/powerline
-	url = https://github.com/erikw/tmux-powerline.git
+  path = dotfiles/.tmux/powerline
+  url = https://github.com/erikw/tmux-powerline.git
+
+# vim submodules
+
+[submodule "dotfiles/.vim/bundle/theme-jellybeans"]
+  path = dotfiles/.vim/bundle/theme-jellybeans
+  url = https://github.com/nanotech/jellybeans.vim.git
+
+[submodule "dotfiles/.vim/bundle/theme-railscasts"]
+  path = dotfiles/.vim/bundle/theme-railscasts
+  url = https://github.com/jpo/vim-railscasts-theme.git
+
+[submodule "dotfiles/.vim/bundle/syntax-jQuery"]
+  path = dotfiles/.vim/bundle/syntax-jQuery
+  url = https://github.com/vim-scripts/jQuery.git
+
+[submodule "dotfiles/.vim/bundle/plugin-nerdcommenter"]
+  path = dotfiles/.vim/bundle/plugin-nerdcommenter
+  url = https://github.com/scrooloose/nerdcommenter.git
+
+[submodule "dotfiles/.vim/bundle/plugin-syntastic"]
+  path = dotfiles/.vim/bundle/plugin-syntastic
+  url = https://github.com/scrooloose/syntastic.git
+
+[submodule "dotfiles/.vim/bundle/plugin-abolish"]
+  path = dotfiles/.vim/bundle/plugin-abolish
+  url = http://github.com/tpope/vim-abolish.git
+
+[submodule "dotfiles/.vim/bundle/syntax-coffee-script"]
+  path = dotfiles/.vim/bundle/syntax-coffee-script
+  url = https://github.com/kchmck/vim-coffee-script.git
+
+[submodule "dotfiles/.vim/bundle/syntax-cucumber"]
+  path = dotfiles/.vim/bundle/syntax-cucumber
+  url = https://github.com/tpope/vim-cucumber.git
+
+[submodule "dotfiles/.vim/bundle/plugin-endwise"]
+  path = dotfiles/.vim/bundle/plugin-endwise
+  url = https://github.com/tpope/vim-endwise.git
+
+[submodule "dotfiles/.vim/bundle/plugin-fugitive"]
+  path = dotfiles/.vim/bundle/plugin-fugitive
+  url = https://github.com/tpope/vim-fugitive.git
+
+[submodule "dotfiles/.vim/bundle/syntax-git"]
+  path = dotfiles/.vim/bundle/syntax-git
+  url = https://github.com/tpope/vim-git.git
+
+[submodule "dotfiles/.vim/bundle/syntax-haml"]
+  path = dotfiles/.vim/bundle/syntax-haml
+  url = https://github.com/tpope/vim-haml.git
+
+[submodule "dotfiles/.vim/bundle/syntax-markdown"]
+  path = dotfiles/.vim/bundle/syntax-markdown
+  url = https://github.com/tpope/vim-markdown.git
+
+[submodule "dotfiles/.vim/bundle/plugin-rails"]
+  path = dotfiles/.vim/bundle/plugin-rails
+  url = git://github.com/tpope/vim-rails.git
+
+[submodule "dotfiles/.vim/bundle/plugin-repeat"]
+  path = dotfiles/.vim/bundle/plugin-repeat
+  url = https://github.com/tpope/vim-repeat.git
+
+[submodule "dotfiles/.vim/bundle/plugin-surround"]
+  path = dotfiles/.vim/bundle/plugin-surround
+  url = https://github.com/tpope/vim-surround.git
+
+[submodule "dotfiles/.vim/bundle/plugin-toggle-wrap"]
+  path = dotfiles/.vim/bundle/plugin-toggle-wrap
+  url = git://github.com/bronson/vim-toggle-wrap.git
+
+[submodule "dotfiles/.vim/bundle/plugin-unimpaired"]
+  path = dotfiles/.vim/bundle/plugin-unimpaired
+  url = https://github.com/tpope/vim-unimpaired.git
+
+[submodule "dotfiles/.vim/bundle/plugin-vimwiki"]
+  path = dotfiles/.vim/bundle/plugin-vimwiki
+  url = https://github.com/vim-scripts/vimwiki.git
+
+[submodule "dotfiles/.vim/bundle/syntax-javascript"]
+  path = dotfiles/.vim/bundle/syntax-javascript
+  url = https://github.com/pangloss/vim-javascript.git
+
+[submodule "dotfiles/.vim/bundle/syntax-jst"]
+  path = dotfiles/.vim/bundle/syntax-jst
+  url = https://github.com/briancollins/vim-jst.git
+
+[submodule "dotfiles/.vim/bundle/plugin-pathogen"]
+  path = dotfiles/.vim/bundle/plugin-pathogen
+  url = https://github.com/tpope/vim-pathogen.git
+
+[submodule "dotfiles/.vim/bundle/plugin-supertab"]
+  path = dotfiles/.vim/bundle/plugin-supertab
+  url = https://github.com/ervandew/supertab.git
+
+[submodule "dotfiles/.vim/bundle/plugin-csapprox"]
+  path = dotfiles/.vim/bundle/plugin-csapprox
+  url = https://github.com/godlygeek/csapprox.git
+
+[submodule "dotfiles/.vim/bundle/plugin-nerdtree"]
+  path = dotfiles/.vim/bundle/plugin-nerdtree
+  url = https://github.com/scrooloose/nerdtree.git
+
+[submodule "dotfiles/.vim/bundle/plugin-indent-guides"]
+  path = dotfiles/.vim/bundle/plugin-indent-guides
+  url = https://github.com/nathanaelkane/vim-indent-guides.git
+
+[submodule "dotfiles/.vim/bundle/plugin-powerline"]
+  path = dotfiles/.vim/bundle/plugin-powerline
+  url = https://github.com/Lokaltog/vim-powerline.git
+
+[submodule "dotfiles/.vim/bundle/theme-badwolf"]
+  path = dotfiles/.vim/bundle/theme-badwolf
+  url = https://github.com/sjl/badwolf.git
+
+[submodule "dotfiles/.vim/bundle/theme-darkspectrum"]
+  path = dotfiles/.vim/bundle/theme-darkspectrum
+  url = https://github.com/vim-scripts/darkspectrum.git
+
+[submodule "dotfiles/.vim/bundle/theme-molokai"]
+  path = dotfiles/.vim/bundle/theme-molokai
+  url = https://github.com/tomasr/molokai
+
+[submodule "dotfiles/.vim/bundle/plugin-taglist"]
+  path = dotfiles/.vim/bundle/plugin-taglist
+  url = https://github.com/vim-scripts/taglist.vim
+
+[submodule "dotfiles/.vim/bundle/plugin-rainbow"]
+  path = dotfiles/.vim/bundle/plugin-rainbow
+  url = https://github.com/Soares/rainbow.vim.git
+
+[submodule "dotfiles/.vim/bundle/plugin-lusty"]
+  path = dotfiles/.vim/bundle/plugin-lusty
+  url = https://github.com/sjbach/lusty.git
+
+[submodule "dotfiles/.vim/bundle/syntax-treetop"]
+  path = dotfiles/.vim/bundle/syntax-treetop
+  url = https://github.com/nanki/treetop.vim.git
+
+[submodule "dotfiles/.vim/bundle/plugin-gundo"]
+  path = dotfiles/.vim/bundle/plugin-gundo
+  url = https://github.com/sjl/gundo.vim.git
+
+[submodule "dotfiles/.vim/bundle/syntax-slim"]
+  path = dotfiles/.vim/bundle/syntax-slim
+  url = https://github.com/slim-template/vim-slim.git
+
+[submodule "dotfiles/.vim/bundle/plugin-autoclose"]
+  path = dotfiles/.vim/bundle/plugin-autoclose
+  url = https://github.com/Townk/vim-autoclose.git
+
+[submodule "dotfiles/.vim/bundle/syntax-fish"]
+  path = dotfiles/.vim/bundle/syntax-fish
+  url = https://github.com/guangnan/fish.vim.git
+
+[submodule "dotfiles/.vim/bundle/plugin-guicolorscheme"]
+  path = dotfiles/.vim/bundle/plugin-guicolorscheme
+  url = https://github.com/vim-scripts/guicolorscheme.vim.git
+
+[submodule "dotfiles/.vim/bundle/syntax-vimclojure"]
+  path = dotfiles/.vim/bundle/syntax-vimclojure
+  url = https://github.com/acook/vimclojure.git
+
+[submodule "dotfiles/.vim/bundle/plugin-ctrlp"]
+  path = dotfiles/.vim/bundle/plugin-ctrlp
+  url = https://github.com/kien/ctrlp.vim.git
+
 [submodule "dotfiles/.vim/bundle/plugin-gitv"]
-	path = dotfiles/.vim/bundle/plugin-gitv
-	url = https://github.com/gregsexton/gitv.git
+  path = dotfiles/.vim/bundle/plugin-gitv
+  url = https://github.com/gregsexton/gitv.git
+
 [submodule "dotfiles/.vim/bundle/syntax-rabl"]
-	path = dotfiles/.vim/bundle/syntax-rabl
-	url = https://github.com/yaymukund/vim-rabl.git
+  path = dotfiles/.vim/bundle/syntax-rabl
+  url = https://github.com/yaymukund/vim-rabl.git
+
 [submodule "dotfiles/.vim/external/citrus"]
-	path = dotfiles/.vim/external/citrus
-	url = https://github.com/mjijackson/citrus.git
+  path = dotfiles/.vim/external/citrus
+  url = https://github.com/mjijackson/citrus.git
+
 [submodule "dotfiles/.vim/bundle/plugin-yankstack"]
-	path = dotfiles/.vim/bundle/plugin-yankstack
-	url = https://github.com/maxbrunsfeld/vim-yankstack.git
+  path = dotfiles/.vim/bundle/plugin-yankstack
+  url = https://github.com/maxbrunsfeld/vim-yankstack.git
+
