@@ -8,7 +8,7 @@ url = https://github.com/jpo/vim-railscasts-theme.git
 
 [submodule "dotfiles/.vim/bundle/syntax-jQuery"]
 path = dotfiles/.vim/bundle/syntax-jQuery
-url = git://github.com/vim-scripts/jQuery.git
+url = https://github.com/vim-scripts/jQuery.git
 
 [submodule "dotfiles/.vim/bundle/plugin-nerdcommenter"]
 path = dotfiles/.vim/bundle/plugin-nerdcommenter
@@ -24,7 +24,7 @@ url = http://github.com/tpope/vim-abolish.git
 
 [submodule "dotfiles/.vim/bundle/syntax-coffee-script"]
 path = dotfiles/.vim/bundle/syntax-coffee-script
-url = git://github.com/kchmck/vim-coffee-script.git
+url = https://github.com/kchmck/vim-coffee-script.git
 
 [submodule "dotfiles/.vim/bundle/syntax-cucumber"]
 path = dotfiles/.vim/bundle/syntax-cucumber
@@ -81,14 +81,6 @@ url = https://github.com/pangloss/vim-javascript.git
 [submodule "dotfiles/.vim/bundle/syntax-jst"]
 path = dotfiles/.vim/bundle/syntax-jst
 url = https://github.com/briancollins/vim-jst.git
-
-[submodule "dotfiles/.vim/bundle/plugin-Command-T"]
-path = dotfiles/.vim/bundle/plugin-Command-T
-url = https://github.com/wincent/Command-T.git
-
-[submodule "dotfiles/.vim/bundle/plugin-conque"]
-path = dotfiles/.vim/bundle/plugin-conque
-url = https://github.com/rson/vim-conque.git
 
 [submodule "dotfiles/.vim/bundle/plugin-pathogen"]
 path = dotfiles/.vim/bundle/plugin-pathogen
@@ -175,10 +167,13 @@ url = https://github.com/kien/ctrlp.vim.git
 	url = https://github.com/erikw/tmux-powerline.git
 [submodule "dotfiles/.vim/bundle/plugin-gitv"]
 	path = dotfiles/.vim/bundle/plugin-gitv
-	url = git://github.com/gregsexton/gitv.git
+	url = https://github.com/gregsexton/gitv.git
 [submodule "dotfiles/.vim/bundle/syntax-rabl"]
 	path = dotfiles/.vim/bundle/syntax-rabl
-	url = git://github.com/yaymukund/vim-rabl.git
+	url = https://github.com/yaymukund/vim-rabl.git
 [submodule "dotfiles/.vim/external/citrus"]
 	path = dotfiles/.vim/external/citrus
 	url = https://github.com/mjijackson/citrus.git
+[submodule "dotfiles/.vim/bundle/plugin-yankstack"]
+	path = dotfiles/.vim/bundle/plugin-yankstack
+	url = https://github.com/maxbrunsfeld/vim-yankstack.git
