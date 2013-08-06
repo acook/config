@@ -178,10 +178,6 @@
   path = dotfiles/.vim/bundle/syntax-rabl
   url = https://github.com/yaymukund/vim-rabl.git
 
-[submodule "dotfiles/.vim/external/citrus"]
-  path = dotfiles/.vim/external/citrus
-  url = https://github.com/mjijackson/citrus.git
-
 [submodule "dotfiles/.vim/bundle/plugin-yankstack"]
   path = dotfiles/.vim/bundle/plugin-yankstack
   url = https://github.com/maxbrunsfeld/vim-yankstack.git
