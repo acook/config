@@ -138,10 +138,6 @@ url = https://github.com/Soares/rainbow.vim.git
 path = dotfiles/.vim/bundle/plugin-lusty
 url = https://github.com/sjbach/lusty.git
 
-[submodule "dotfiles/.vim/bundle/plugin-YankRing"]
-path = dotfiles/.vim/bundle/plugin-YankRing
-url = https://github.com/vim-scripts/YankRing.vim.git
-
 [submodule "dotfiles/.vim/bundle/syntax-treetop"]
 path = dotfiles/.vim/bundle/syntax-treetop
 url = https://github.com/nanki/treetop.vim.git
@@ -180,3 +176,9 @@ url = https://github.com/kien/ctrlp.vim.git
 [submodule "dotfiles/.vim/bundle/plugin-gitv"]
 	path = dotfiles/.vim/bundle/plugin-gitv
 	url = git://github.com/gregsexton/gitv.git
+[submodule "dotfiles/.vim/bundle/syntax-rabl"]
+	path = dotfiles/.vim/bundle/syntax-rabl
+	url = git://github.com/yaymukund/vim-rabl.git
+[submodule "dotfiles/.vim/external/citrus"]
+	path = dotfiles/.vim/external/citrus
+	url = https://github.com/mjijackson/citrus.git

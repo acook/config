@@ -25,4 +25,5 @@ function load_directory {
     fi
     cd $source_dir
   done
+
 }
