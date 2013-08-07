@@ -49,7 +49,8 @@ autocmd BufRead * IndentGuidesEnable
 
 " configure Powerline, enable fancy symbols
 let g:Powerline_symbols = 'fancy'
-
+" in order for Vim Powerline to run, we need python, this ensures the libs are
+" loadable on OSX, might need modifying for Linux/Windows
 python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
 
 " initialize pathogen and load all the plugins in .vim/bundle
@@ -67,8 +68,9 @@ if has('gui_running')
   set guioptions=aAce
   set guifont=Menlo\ Regular\ for\ Powerline:h11
 
-  " for MacVim
+  " for MacVim GUI version
   if has("macunix")
+    " make the background partially transparent
     set transparency=4
   end
 
@@ -86,15 +88,21 @@ elseif version >= 700 && &term != 'cygwin'
 
 endif
 
-" Disable balloon popup since theres a plugin that makes it really annoying
+" for all MacVims
+if has("macunix")
+  " allow the usage of the option key
+  set macmeta
+end
+
+" disable balloon popup since theres a plugin that makes it really annoying
 if has("balloon_eval")
   set noballooneval
   set balloondelay=100000
 end
 
-" Syntax hilight based on filetype, which is autmatically determined.
-" The filetype plugin needs to be reinitialized
+" Syntax highlight based on filetype, which is autmatically determined.
 syntax on
+" The filetype plugin needs to be reinitialized after enabling syntax.
 filetype off
 filetype on
 filetype plugin on
@@ -102,6 +110,7 @@ filetype indent on
 
 " Enable syntax folding for blocks and comments.
 set foldmethod=syntax
+" Don't fold blocks less than 3 lines long.
 set foldminlines=3
 set foldlevel=100
 
@@ -141,12 +150,16 @@ set wildmode=list:longest
 " Show line numbers
 set number
 
-" Make clipbord work on OS X. This makes copy/paste operations trivial between
-" vim and other applications since they all use the same clipboard now.
+" for non-tmux environs
 if $TMUX == ''
+  " Make clipbord work on OS X. This makes copy/paste operations trivial between
+  " vim and other applications since they all use the same clipboard now.
   set clipboard=unnamed
 end
-" visual select automatically copies to X11's selection ("middle click") buffer
+
+" visual select automatically copies to..
+" Linux - X11's selection ("middle click") buffer when available
+" OSX   - System clipboard
 set go+=a
 
 " scrolls the buffer before you reach the last line of the window
@@ -197,13 +210,14 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " disable wordwrap when looking at CSVs
 autocmd BufRead *.csv,*.csv*,<csv> set nowrap
 
-" remove whistespace at end of line before write
+" remove whitespace at end of line
 func! StripTrailingWhitespace()
   normal mZ
   %s/\s\+$//e
   normal `Z
 endfunc
-au BufWrite * if ! &bin | call StripTrailingWhitespace() | endif
+" automatically run before write, except binary files
+autocmd BufWrite * if ! &bin | call StripTrailingWhitespace() | endif
 
 " display the file name of the current file in the Terminal (xterm/item/&c) title
 if has('title')
@@ -213,12 +227,13 @@ if has('title')
   "autocmd BufEnter * exe "echo '\033'+bufname("%")+'\007'"
 endif
 
-" shortcuts
+" leader shortcuts START -->
+
 " for rails.vim alternate between test and tested
 map <leader>t  :A<CR>
 map <leader>ts :AS<CR>
 map <leader>tv :AV<CR>
-" foe rails.vim swap to model/control/etc from associated file
+" for rails.vim swap to model/control/etc from associated file
 map <leader>rm :Rmodel<CR>
 map <leader>rc :Rcontroller<CR>
 map <leader>rh :Rhelper<CR>
@@ -227,6 +242,7 @@ map <leader>rf :Rfunctionaltest<CR>
 map <leader>ro :Robserver<CR>
 map <leader>rv :Rview<CR>
 map <leader>rl :Rlocale<CR>
+
 " for CtrlP
 map <leader>ff :CtrlP<CR>
 map <leader>fb :CtrlPBuffer<CR>
@@ -235,12 +251,18 @@ map <leader>fq :CtrlPQuickFix<CR>
 map <leader>fd :CtrlPDir<CR>
 map <leader>fr :CtrlPRTS<CR>
 map <leader>fm :CtrlPMRU<CR>
+
 " for gundo
 map <leader>g :GundoToggle<CR>
+
 " runs diff against the current buffer and the file on disk
 map <leader>d :w !diff % -<CR>
+
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<CR>
+
+" <-- leader shortcuts END
+
 " search hilighting control, enables and disable intelligently and toggles
 nnoremap / :set hlsearch<CR>/
 nnoremap ? :set hlsearch<CR>?
@@ -249,7 +271,7 @@ nnoremap N :set hlsearch<CR>N
 nnoremap <CR> :noh<CR><CR>
 nnoremap <leader>/ :set hlsearch!<CR>
 
-" tab navigation like firefox
+" tab navigation like web browsers
 nmap <C-S-tab> :tabprevious<CR>
 nmap <C-tab> :tabnext<CR>
 map <C-S-tab> :tabprevious<CR>
@@ -263,17 +285,16 @@ imap <C-t> <ESC>:tabnew<CR>
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 cnoremap <C-K> <C-U>
-
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
-" Smart way to move btw. windows
+" quickly move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" make mouse scrolling work in vim!!!
+" make mouse scrolling work in terminal vim!
 map <M-Esc>[62~ <ScrollWheelUp>
 map <M-Esc>[63~ <ScrollWheelDown>
 map <M-Esc>[64~ <S-ScrollWheelUp>
@@ -283,7 +304,7 @@ map! <M-Esc>[63~ <ScrollWheelDown>
 map! <M-Esc>[64~ <S-ScrollWheelUp>
 map! <M-Esc>[65~ <S-ScrollWheelDown>
 
-" make keypad work in vim with iTerm on OS X!
+" make external keypad work in terminal vim OSX!
 map <Esc>Oq 1
 map <Esc>Or 2
 map <Esc>Os 3
