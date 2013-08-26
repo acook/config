@@ -270,8 +270,10 @@ map <leader>fd :CtrlPDir<CR>
 map <leader>fr :CtrlPRTS<CR>
 map <leader>fm :CtrlPMRU<CR>
 
-" for gundo
-map <leader>g :GundoToggle<CR>
+" for undotree
+map <leader>u :UndotreeToggle<CR>
+" for backward compatibility
+map <leader>g :UndotreeToggle<CR>
 
 " runs diff against the current buffer and the file on disk
 map <leader>d :w !diff % -<CR>

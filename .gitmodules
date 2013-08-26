@@ -173,3 +173,6 @@
 [submodule "dotfiles/.vim/bundle/plugin-airline"]
 	path = dotfiles/.vim/bundle/plugin-airline
 	url = https://github.com/bling/vim-airline.git
+[submodule "dotfiles/.vim/bundle/plugin-undotree"]
+	path = dotfiles/.vim/bundle/plugin-undotree
+	url = https://github.com/mbbill/undotree
