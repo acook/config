@@ -53,9 +53,6 @@ autocmd BufRead * IndentGuidesEnable
 
 " configure airline, enable fancy symbols
 let g:airline_theme='powerlineish'
-let g:airline_detect_modified=1
-let g:airline_detect_paste=1
-let g:airline_detect_iminsert=1
 let g:airline_inactive_collapse=0
 let g:airline_powerline_fonts=1
 let g:airline_left_sep = ''
@@ -65,8 +62,7 @@ let g:airline_right_alt_sep = ''
 let g:airline_linecolumn_prefix = ' '
 let g:airline#extensions#branch#symbol = ' '
 let g:airline#extensions#readonly#symbol = ''
-let g:airline#extensions#paste#symbol = 'Þ'
-let g:airline#extensions#whitespace#symbol = 'Ξ'
+let g:airline#extensions#paste#symbol = 'ℙ'
 
 " initialize pathogen and load all the plugins in .vim/bundle
 runtime bundle/plugin-pathogen/autoload/pathogen.vim
