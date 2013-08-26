@@ -11,7 +11,7 @@ How to Use
 
 0. Open a terminal in the same directory as this file.
 0. Run `./install.sh`
-0. `source ~/.bash_profile` 
+0. `source ~/.bash_profile`
 0. Enjoy!
 
 
@@ -30,7 +30,7 @@ Prerequisites
 - **git**       : http://git-scm.com             - Without git the install script will complain at the end and you won't get any of the submodules, but it will still happily do everything else.
 - **coreutils** : http://www.gnu.org/s/coreutils - GNU basic utilities, some aliases and functions in the bash configuration may fail. (Preinstalled on Linux)
 
-Note that my configuration files use GNU syntax, not BSD syntax.
+*Note that my configuration files use GNU syntax, not BSD syntax.*
 
 
 Recommended
@@ -98,6 +98,10 @@ The `<Leader>` is backslash (`\`) by default.
 - Bash-like command line navigation in Command mode.
 - Automatically enables search highlighting when using the standard search commands (`/`,`?`,`n`,`N`).
 - Turn off search highlighting in Normal mode when hitting <Enter> key.
+
+#### Multiple Cursor Editing
+
+Similar to how Sublime Text works, you can have multiple cursors. Hit `<Control>n` to start playing with them.
 
 #### Buffer Changeset Exploration
 
