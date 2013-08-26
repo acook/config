@@ -144,8 +144,7 @@ Similar in overall function to the above utils, but using different stategies an
 
 Useful for exploring directory structures, or keeping open on the side like a project window.
 
-- `:NERDtree`  - Opens tree explorer.
-- `:e .`       - Opens current directory in tree explorer.
+- `:e .`  - Opens current directory in tree explorer.
 
 #### Working with Git
 
