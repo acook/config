@@ -51,6 +51,8 @@ case $unamestr in
       . ~/.keychain/`uname -n`-sh
     fi
 
+    JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+
     #export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     #  vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
     #  -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
