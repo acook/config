@@ -6,8 +6,8 @@ Maintains a (mostly) homogenous configuration setup across Linux and OSX platfor
 *Anthony M. Cook 2013 - http://github.com/acook | @anthony_m_cook | http://anthonymcook.com*
 
 
-How to Use
-----------
+How to Install
+--------------
 
 0. Open a terminal in the same directory as this file.
 0. Run `./install.sh`
@@ -27,6 +27,7 @@ What the `install.sh` script does
 Prerequisites
 -------------
 
+- **bash**      : http://www.gnu.org/s/bash      - The install scripts were written for Bash, as were the configurations. May or may not work on other shells.
 - **git**       : http://git-scm.com             - Without git the install script will complain at the end and you won't get any of the submodules, but it will still happily do everything else.
 - **coreutils** : http://www.gnu.org/s/coreutils - GNU basic utilities, some aliases and functions in the bash configuration may fail. (Preinstalled on Linux)
 
@@ -162,10 +163,3 @@ Rails.vim provides a huge set of helpers for working with Rails projects.
 - `:AV`  - Open test/object in vertical split.
 - `:AS`  - Open test/object in horizontal split.
 - `:A`   - Swap between test/object in current window.
-
-Future
-------
-
-- Ignore failures when unable to find files or commands from the `my-scripts` repo.
-- Multiple backups when installing.
-
