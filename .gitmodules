@@ -110,10 +110,6 @@
   path = dotfiles/.vim/bundle/plugin-indent-guides
   url = https://github.com/nathanaelkane/vim-indent-guides.git
 
-[submodule "dotfiles/.vim/bundle/plugin-powerline"]
-  path = dotfiles/.vim/bundle/plugin-powerline
-  url = https://github.com/Lokaltog/vim-powerline.git
-
 [submodule "dotfiles/.vim/bundle/theme-badwolf"]
   path = dotfiles/.vim/bundle/theme-badwolf
   url = https://github.com/sjl/badwolf.git
@@ -125,10 +121,6 @@
 [submodule "dotfiles/.vim/bundle/theme-molokai"]
   path = dotfiles/.vim/bundle/theme-molokai
   url = https://github.com/tomasr/molokai
-
-[submodule "dotfiles/.vim/bundle/plugin-taglist"]
-  path = dotfiles/.vim/bundle/plugin-taglist
-  url = https://github.com/vim-scripts/taglist.vim
 
 [submodule "dotfiles/.vim/bundle/plugin-rainbow"]
   path = dotfiles/.vim/bundle/plugin-rainbow
