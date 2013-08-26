@@ -118,10 +118,6 @@
   path = dotfiles/.vim/bundle/theme-molokai
   url = https://github.com/tomasr/molokai
 
-[submodule "dotfiles/.vim/bundle/plugin-rainbow"]
-  path = dotfiles/.vim/bundle/plugin-rainbow
-  url = https://github.com/Soares/rainbow.vim.git
-
 [submodule "dotfiles/.vim/bundle/plugin-lusty"]
   path = dotfiles/.vim/bundle/plugin-lusty
   url = https://github.com/sjbach/lusty.git
