@@ -4,6 +4,10 @@
 " don't worry about trying to stick to vi/ex conventions
 set nocompatible
 
+" disable modelines, as I don't use them
+set modelines=0
+set nomodeline
+
 " This is for the Syntastic plugin, we need to set it before it loads
 let g:syntastic_enable_signs = 1
 let g:syntastic_echo_current_error = 1
