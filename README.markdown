@@ -1,5 +1,5 @@
 Dotfile Configuration for OSX and Linux
-================
+=======================================
 
 Maintains a (mostly) homogenous configuration setup across Linux and OSX platforms.
 
@@ -11,6 +11,7 @@ How to Use
 
 0. Open a terminal in the same directory as this file.
 0. Run `./install.sh`
+0. `source ~/.bash_profile` 
 0. Enjoy!
 
 
@@ -21,16 +22,13 @@ What the `install.sh` script does
 - Backs up any existing configuration files.
 - Creates symlinks to the dotfiles in the repo.
 - Pulls all the submodules contained in this repo.
-- Sources your `.bash_profile` script.
 
 
 Prerequisites
 -------------
 
-- **git** : http://git-scm.com - Without git the install script will complain at the end and you won't get any of the submodules, but it will still happily do everything else.
-- **vim** : http://www.vim.org - Several of the configuration files included here are for or involve Vim.
-- **coreutils** : http://www.gnu.org/s/coreutils - GNU basic utilities, some aliases and functions in the bash configuration may fail.
-- **fileutils** : http://www.gnu.org/s/fileutils - GNU file manipulation utilities, some aliases and functions in the bash configuration may fail.
+- **git**       : http://git-scm.com             - Without git the install script will complain at the end and you won't get any of the submodules, but it will still happily do everything else.
+- **coreutils** : http://www.gnu.org/s/coreutils - GNU basic utilities, some aliases and functions in the bash configuration may fail. (Preinstalled on Linux)
 
 Note that my configuration files use GNU syntax, not BSD syntax.
 
@@ -38,17 +36,21 @@ Note that my configuration files use GNU syntax, not BSD syntax.
 Recommended
 -----------
 
-- **homebrew** : http://mxcl.github.com/homebrew - Easily compile and install applications from source. Everything in the **Prequisite** and **Recommended** lists can be easily obtained with brew, even brew itself, sort of. (OSX Only)
-- **RVM** : http://beginrescueend.com - Install Ruby, manage sets of gems, manage multiple versions of Ruby.
-- **ack** : http://betterthangrep.com - Grep-like utility excellent for source code.
-- **colordiff** : http://colordiff.sourceforge.net - I pattern match with color, so this is a must for me.
+- **my-scripts** : https://github.com/acook/my-scripts - The included `.bash_profile` will attempt to load the prompt files from this repo.
+- **vim**        : http://www.vim.org                  - Several of the configuration files included here are for or involve Vim.
+- **homebrew**   : http://mxcl.github.com/homebrew     - Easily compile and install applications from source. Everything in the *Prequisite* and *Recommended* lists can be easily obtained with brew. (OSX Only)
+- **RVM**        : http://beginrescueend.com           - Install Ruby, manage sets of gems, manage multiple versions of Ruby.
+- **diffutils**  : http://www.gnu.org/s/diffutils      - GNU file diffing utilities come in handy too.
+- **ack**        : http://betterthangrep.com           - Grep-like utility excellent for source code.
+- **colordiff**  : http://colordiff.sourceforge.net    - I pattern match with color, so this is a must for me.
 
 
 You can use the script with your own collection of dotfiles
--------------
+-----------------------------------------------------------
 
 0. Fork this repo.
 0. Clear out the dotfiles directory.
+0. Clean up any `script/pre_install` or `script/post_install` files you don't want.
 0. Drop in your own configuration files.
 0. Commit and push to your repo.
 0. Run with `./install.sh`.
@@ -142,10 +144,6 @@ Similar in overall function to the above utils, but using different stategies an
 - `<Leader>lg`  - Opens buffer grep which searches the contents of all buffers in memory.
 - `<Leader>lj`  - Opens buffer juggler for rapidly switching between buffers.
 
-Useful for exploring directory structures, or keeping open on the side like a project window.
-
-- `:e .`  - Opens current directory in tree explorer.
-
 #### Working with Git
 
 The Fugitive and Gitv plugins are used for this functionality.
@@ -164,8 +162,6 @@ Rails.vim provides a huge set of helpers for working with Rails projects.
 Future
 ------
 
-- Ignore failures when unable to find files or commands from my personal script repo.
+- Ignore failures when unable to find files or commands from the `my-scripts` repo.
 - Multiple backups when installing.
-- https://github.com/vim-scripts/paredit.vim
-- https://github.com/tomtom/tcomment_vim
 
