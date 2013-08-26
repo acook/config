@@ -4,7 +4,7 @@
 # Creates symlinks to the new dotfiles
 # Put this in a SCM repo such as mercurial, git, or monotone with the dotfiles you want to install on multiple systems.
 # Put all the dotfiles in the same directory as the install script and list them in the file variable.
-# run with `./install.sh`
+# run with `./install.bash`
 
 set -o nounset                              # Treat unset variables as an error
 
@@ -27,9 +27,9 @@ export dot_dir=$dir/dotfiles
 export backup_dir=$dir/backup
 
 echo Loading aliases...
-source $dir/script/load_aliases.sh
+source $dir/script/load_aliases.bash
 echo Loading functions...
-source $dir/script/load_functions.sh
+source $dir/script/load_functions.bash
 
 echo Running pre install scripts...
 load_directory $dir/script/pre_install pre_install
