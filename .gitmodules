@@ -134,10 +134,6 @@
   path = dotfiles/.vim/bundle/syntax-treetop
   url = https://github.com/nanki/treetop.vim.git
 
-[submodule "dotfiles/.vim/bundle/plugin-gundo"]
-  path = dotfiles/.vim/bundle/plugin-gundo
-  url = https://github.com/sjl/gundo.vim.git
-
 [submodule "dotfiles/.vim/bundle/syntax-slim"]
   path = dotfiles/.vim/bundle/syntax-slim
   url = https://github.com/slim-template/vim-slim.git
