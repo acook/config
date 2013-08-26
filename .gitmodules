@@ -182,3 +182,6 @@
   path = dotfiles/.vim/bundle/plugin-yankstack
   url = https://github.com/maxbrunsfeld/vim-yankstack.git
 
+[submodule "dotfiles/.vim/bundle/plugin-airline"]
+	path = dotfiles/.vim/bundle/plugin-airline
+	url = https://github.com/bling/vim-airline.git
