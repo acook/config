@@ -100,9 +100,9 @@ The `<Leader>` is backslash (`\`) by default.
 #### Buffer Changeset Exploration
 
 Far beyond just undo/redo, Vim stores the entire tree of your changes whether you save or not in an SCM-like system in memory.
-I use the Gundo plugin to open this functionality up to explore the changes and undo tree of your current Vim buffer.
+I use the Undotree plugin to open this functionality up to explore the changes and undo tree of your current Vim buffer.
 
-- `<Leader>g`  - Toggles the changeset tree in a left-side vertical split.
+- `<Leader>u`  - Toggles the changeset tree in a left-side vertical split.
 
 #### File/Directory/Buffer Navigation
 
