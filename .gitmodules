@@ -78,10 +78,6 @@
   path = dotfiles/.vim/bundle/plugin-unimpaired
   url = https://github.com/tpope/vim-unimpaired.git
 
-[submodule "dotfiles/.vim/bundle/plugin-vimwiki"]
-  path = dotfiles/.vim/bundle/plugin-vimwiki
-  url = https://github.com/vim-scripts/vimwiki.git
-
 [submodule "dotfiles/.vim/bundle/syntax-javascript"]
   path = dotfiles/.vim/bundle/syntax-javascript
   url = https://github.com/pangloss/vim-javascript.git
