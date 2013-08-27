@@ -64,6 +64,11 @@ let g:airline#extensions#branch#symbol = ' '
 let g:airline#extensions#readonly#symbol = ''
 let g:airline#extensions#paste#symbol = 'ℙ'
 
+" configure bufferline, don't display in command bar
+let g:bufferline_echo = 0
+let g:bufferline_active_highlight = 'Function'
+let g:bufferline_solo_highlight = 1
+
 " initialize pathogen and load all the plugins in .vim/bundle
 runtime bundle/plugin-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
@@ -71,6 +76,9 @@ execute pathogen#infect()
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins = 1 " Highlight Clojure's builtins
 let vimclojure#ParenRainbow = 1 " Rainbow parentheses'!
+
+" Fixing bufferline's highlighting that Airline breaks
+highlight bufferline_selected guifg=#A6E22E
 
 if has('gui_running')
 
