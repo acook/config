@@ -96,4 +96,4 @@
   trustExitCode = true
 
 [http]
-	sslVerify = false
+  sslVerify = false
