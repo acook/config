@@ -97,3 +97,5 @@
 
 [http]
   sslVerify = false
+[gui]
+	recentrepo = /Users/acook/Projects/vr/Oceans
