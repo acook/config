@@ -170,9 +170,9 @@
 	path = dotfiles/.vim/bundle/plugin-undotree
 	url = https://github.com/mbbill/undotree
 
-[submodule "dotfiles/.vim/bundle/plugin-bufferline"]
-	path = dotfiles/.vim/bundle/plugin-bufferline
-	url = https://github.com/bling/vim-bufferline.git
 [submodule "dotfiles/.vim/bundle/plugin-multiple-cursors"]
 	path = dotfiles/.vim/bundle/plugin-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "dotfiles/.vim/bundle/syntax-io"]
+	path = dotfiles/.vim/bundle/syntax-io
+	url = https://github.com/vim-scripts/Io-programming-language-syntax.git
