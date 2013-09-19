@@ -22,7 +22,7 @@ case $unamestr in
 
     # I can set alias ls=ls_osx if I don't have gnu coreutils installed
     alias ls_osx="ls -p -F -G -h"
-    # Colorize ls
+    # Colorize OSX's ls
     export LSCOLORS=hxdxDxGxbxfxFxBxBxHxHx
 
     # Attempt at fixing OSX tomfoolery
@@ -94,6 +94,9 @@ source git-flow-completion.bash
 # makes sure bash knows it's dealing with a color terminal-emulator and sets the colors for ls
 # LSCOLORS is BSD/OSX format, LS_COLORS is linux format
 export CLICOLOR=1
+
+# Generate colors for GNU's ls
+eval `dircolors ~/.dir_colors`
 
 # bash history shit, removes dups, increases size, and saves on shell exit
 export HISTCONTROL=erasedups
