@@ -53,6 +53,9 @@ case $unamestr in
 
     JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 
+    # Give precedence to /opt/local/bin since that's where I install my hand compiled stuff
+    export PATH=/opt/local/bin:$PATH
+
     #export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     #  vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
     #  -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
