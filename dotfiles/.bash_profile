@@ -90,10 +90,6 @@ fi
 # load up my git-enabled prompt
 source git_prompt
 
-# load up bash completion scripts from other people
-source git-completion.bash
-source git-flow-completion.bash
-
 # makes sure bash knows it's dealing with a color terminal-emulator and sets the colors for ls
 # LSCOLORS is BSD/OSX format, LS_COLORS is linux format
 export CLICOLOR=1
