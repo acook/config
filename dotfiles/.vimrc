@@ -78,7 +78,16 @@ if has('gui_running')
 
   " for Gui versions of vim. see :help guioptions for more info
   set guioptions=aAce
-  set guifont=Menlo\ for\ Powerline\ 10
+
+  if fontdetect#hasFontFamily("Menlo for Powerline")
+    set guifont=Menlo\ for\ Powerline\ 10
+  elseif fontdetect#hasFontFamily("Droid Sans Mono")
+    set guifont=Droid\ Sans\ Mono\ 10
+  elseif fontdetect#hasFontFamily("Andale Mono")
+    set guifont=Andale\ Mono\ 10
+  elseif fontdetect#hasFontFamily("DejaVu Sans Mono")
+    set guifont=DejaVu\ Sans\ Mono\ 10
+  end
 
   " for MacVim GUI version
   if has("macunix")
