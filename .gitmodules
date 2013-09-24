@@ -176,3 +176,6 @@
 [submodule "dotfiles/.vim/bundle/syntax-io"]
 	path = dotfiles/.vim/bundle/syntax-io
 	url = https://github.com/vim-scripts/Io-programming-language-syntax.git
+[submodule "dotfiles/.vim/bundle/plugin-fontdetect"]
+	path = dotfiles/.vim/bundle/plugin-fontdetect
+	url = https://github.com/drmikehenry/vim-fontdetect.git
