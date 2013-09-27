@@ -77,7 +77,7 @@ The `<Leader>` is backslash (`\`) by default.
 
 *Tab Management*
 
-- `<Control>n`            - Open a new tab.
+- `<Control>t`            - Open a new tab.
 - `<Control><Tab>`        - Change to next tab.
 - `<Control><Shift<Tab>`  - Change to previous tab.
 
