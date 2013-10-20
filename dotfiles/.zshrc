@@ -22,7 +22,7 @@ zstyle ':filter-select' extended-search yes # see below
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme https://gist.github.com/3750104.git agnoster
+antigen theme https://gist.github.com/6879576.git agnoster
 
 # Tell antigen that you're done.
 antigen apply
