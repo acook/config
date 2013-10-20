@@ -43,6 +43,7 @@
   unstash = stash pop
   unstage = reset HEAD --
   remotes = remote -v
+  branches = branch -v
   root = rev-parse --show-toplevel
   origin = remote show origin
   diffs = diff --staged
