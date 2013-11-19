@@ -1,0 +1,62 @@
+urxvt.termName:        rxvt
+urxvt.loginShell:      true
+urxvt*urlLauncher:     /usr/bin/chromium
+urxvt*perl-lib:        /usr/lib/urxvt/perl/
+urxvt*perl-ext-common: default,matcher,searchable-scrollback
+urxvt*font:            xft:DejaVu Sans Mono:pixelsize=10
+urxvt*boldFont:        xft:DejaVu Sans Mono:pixelsize=10
+urxvt.scrollBar:       false
+urxvt.saveLines:       65535
+urxvt.secondaryScroll: true
+urxvt.urgentOnBell:    false
+urxvt.visualBell:      false
+urxvt*geometry:        95x25
+urxvt*cutchars:        `"()'*<>[]{|}
+urxvt*matcher.button:  1
+urxvt*depth:           24
+urxvt*shading:         0
+urxvt*transparent:     false
+urxvt.cursorColor:     #dcdcdc
+urxvt.cursorBlink:     true
+
+! Reset
+*foreground:     #d0d0d0
+*background:     #030303
+*highlightColor: #870000
+
+! Black + DarkGrey
+*color0:  #000000
+*color8:  #454545
+
+! DarkRed + Red
+*color1:  #870000
+*color9:  #de0000
+
+! DarkGreen + Green
+*color2:  #91ab3a
+*color10: #9ab53d
+
+! DarkYellow + Yellow
+*color3:  #969696
+*color11: #e5e5e5
+
+! DarkBlue + Blue
+*color4:  #656565
+*color12: #656565
+
+! DarkMangenta + Mangenta
+*color5:  #707070
+*color13: #747474
+
+!DarkCyan + Cyan
+*color6:  #a9a9a9
+*color14: #c4c4c4
+
+! LightGrey + White
+*color7:  #d0d0d0
+*color15: #dedede
+
+xrenoise.use_xcursors:     1
+xrenoise.display:          :0
+xrenoise.display_resource: 0x00,0x09,0x32,0x4C,0x2F,0xED,0xB4,0x57
+xrenoise.executable_path:  /usr/bin/renoise
