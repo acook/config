@@ -1,4 +1,14 @@
-source ~/.user-setup/antigen/antigen.zsh
+#!/usr/bin/env zsh
+
+if [[ -a ~/.user-setup ]]; then
+  USER_SETUP=~/.user-setup
+elif [[ -a ~/.user_setup ]]; then
+  USER_SETUP=~/.user_setup
+else
+  echo "No user-setup directory found, don't forget to download antigen."
+fi
+
+source $USER_SETUP/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
