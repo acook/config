@@ -271,7 +271,8 @@ endfunc
 " automatically run before write, except binary files
 autocmd BufWrite * if ! &bin | call StripTrailingWhitespace() | endif
 
-" display the file name of the current file in the Terminal (xterm/item/&c) title
+" display the path and file name of the current fila
+" in the Terminal's Window/Tab Title
 if has('title')
   " %(  - item group .. %)
   " .20 - truncate path at 20 chars
@@ -280,19 +281,23 @@ if has('title')
   " :~  - reduce home dir to tilde
   " :.  - relative paths
   " :h  - parent dir only
+  " :s  - search and replace modifier
+  " ;   - arbitrary seperator character
+  " $   - pattern: end of string
+  " /   - substitute: trailing slash (if string not empty)
   " %<  - truncate from here
   " %t  - file name (tail/basename)
   " %r  - read only flag
   " %m  - modified flag
   " see :help statusline/titlestring for more info
-  set titlestring=%.20(%{expand(\"%:~:.:h\")}%</%t%(%r%m%)%)
+  set titlestring=%.20(%{expand(\"%:~:.:h:s;$;/;\")}%<%t%(%r%m%)%)
 
   " For xtermish Window Title protocols
   " Also names tmux's panes
   set t_ts=]0;
   set t_fs=
 
-  " for renaming tmux windows too
+  " for renaming tmux windows to "vim"
   "set t_ts=kvim\\]0;
 
   set title
@@ -347,13 +352,13 @@ nnoremap <leader>/ :set hlsearch!<CR>
 
 " tab navigation like web browsers
 nmap <C-S-tab> :tabprevious<CR>
-nmap <C-tab> :tabnext<CR>
-map <C-S-tab> :tabprevious<CR>
-map <C-tab> :tabnext<CR>
+nmap <C-tab>   :tabnext<CR>
+map  <C-S-tab> :tabprevious<CR>
+map  <C-tab>   :tabnext<CR>
 imap <C-S-tab> <ESC>:tabprevious<CR>i
-imap <C-tab> <ESC>:tabnext<CR>i
-nmap <C-t> :tabnew<CR>
-imap <C-t> <ESC>:tabnew<CR>
+imap <C-tab>   <ESC>:tabnext<CR>i
+nmap <C-t>          :tabnew<CR>
+imap <C-t>     <ESC>:tabnew<CR>
 
 " Bash like keys for the command line
 cnoremap <C-A> <Home>
