@@ -192,3 +192,9 @@
 [submodule "dotfiles/.vim/bundle/syntax-tmux"]
 	path = dotfiles/.vim/bundle/syntax-tmux
 	url = https://github.com/zaiste/tmux.vim.git
+[submodule "dotfiles/.vim/bundle/tool-tmuxline"]
+	path = dotfiles/.vim/bundle/tool-tmuxline
+	url = https://github.com/edkolev/tmuxline.vim.git
+[submodule "dotfiles/.vim/bundle/tool-promptline"]
+	path = dotfiles/.vim/bundle/tool-promptline
+	url = https://github.com/edkolev/promptline.vim.git
