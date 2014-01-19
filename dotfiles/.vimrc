@@ -52,9 +52,15 @@ autocmd BufRead * IndentGuidesEnable
 "autocmd! VimEnter,Colorscheme * hi IndentGuidesEven ctermbg=123 guibg=#880055
 
 " configure airline, enable fancy symbols
-let g:airline_theme='powerlineish'
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_inactive_collapse=0
+let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts=1
+
+" paste glyph
+let g:airline#extensions#paste#symbol = 'ℙ'
+
+" new glyphs
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -62,7 +68,15 @@ let g:airline_right_alt_sep = ''
 let g:airline_linecolumn_prefix = ' '
 let g:airline#extensions#branch#symbol = ' '
 let g:airline#extensions#readonly#symbol = ''
-let g:airline#extensions#paste#symbol = 'ℙ'
+
+" old glyphs
+"let g:airline_left_sep = '⮀'
+"let g:airline_left_alt_sep = '⮁'
+"let g:airline_right_sep = '⮂'
+"let g:airline_right_alt_sep = '⮃'
+"let g:airline_linecolumn_prefix = '⭡ '
+"let g:airline#extensions#branch#symbol = '⭠ '
+"let g:airline#extensions#readonly#symbol = '⭤'
 
 " initialize pathogen and load all the plugins in .vim/bundle
 runtime bundle/plugin-pathogen/autoload/pathogen.vim
@@ -79,28 +93,51 @@ if has('gui_running')
   " for Gui versions of vim. see :help guioptions for more info
   set guioptions=aAce
 
-  if fontdetect#hasFontFamily("Menlo for Powerline")
-    set guifont=Menlo\ for\ Powerline\ 10
-  elseif fontdetect#hasFontFamily("Droid Sans Mono")
-    set guifont=Droid\ Sans\ Mono\ 10
-  elseif fontdetect#hasFontFamily("Andale Mono")
-    set guifont=Andale\ Mono\ 10
-  elseif fontdetect#hasFontFamily("DejaVu Sans Mono")
-    set guifont=DejaVu\ Sans\ Mono\ 10
-  end
-
   " for MacVim GUI version
   if has("macunix")
     " make the background partially transparent
     set transparency=4
+
+    " allow the usage of the option key
+    set macmeta
+
+    " Macvim seems to address fonts differently than normal Gvim
+    if fontdetect#hasFontFamily("Meslo LG S DZ for Powerline")
+      set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h12
+    elseif fontdetect#hasFontFamily("Menlo for Powerline")
+      set guifont=Menlo\ for\ Powerline:h12
+    elseif fontdetect#hasFontFamily("Droid Sans Mono")
+      set guifont=Droid\ Sans\ Mono:h12
+    elseif fontdetect#hasFontFamily("DejaVu Sans Mono")
+      set guifont=DejaVu\ Sans\ Mono:h12
+    elseif fontdetect#hasFontFamily("Andale Mono")
+      set guifont=Andale\ Mono:h12
+    end
+
+  else
+
+    if fontdetect#hasFontFamily("Meslo LG S DZ for Powerline")
+      set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline\ 11
+    elseif fontdetect#hasFontFamily("Menlo for Powerline")
+      set guifont=Menlo\ for\ Powerline\ 11
+    elseif fontdetect#hasFontFamily("Droid Sans Mono")
+      set guifont=Droid\ Sans\ Mono\ 11
+    elseif fontdetect#hasFontFamily("DejaVu Sans Mono")
+      set guifont=DejaVu\ Sans\ Mono\ 11
+    elseif fontdetect#hasFontFamily("Andale Mono")
+      set guifont=Andale\ Mono\ 11
+    end
+
   end
 
 elseif version >= 700 && &term != 'cygwin'
 
-  " configure 256 color schemes for terminal using CSApprox or guicolorscheme
+  " force 256 color mode
   set t_Co=256
-  if has('gui')
-    let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+
+  " configure 256 color schemes for terminal using CSApprox or guicolorscheme
+  if has('gui') || v:version > 703
+    let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : 'italic', 'sp' : 'fg' }
     colorscheme monokai_modified
   else
     runtime! bundle/plugin-guicolorscheme/plugin/guicolorscheme.vim
@@ -108,12 +145,6 @@ elseif version >= 700 && &term != 'cygwin'
   endif
 
 endif
-
-" for all MacVims
-if has("macunix")
-  " allow the usage of the option key
-  set macmeta
-end
 
 " disable balloon popup since theres a plugin that makes it really annoying
 if has("balloon_eval")
@@ -171,12 +202,9 @@ set wildmode=list:longest
 " Show line numbers
 set number
 
-" for non-tmux environs
-if $TMUX == ''
-  " Make clipbord work on OS X. This makes copy/paste operations trivial between
-  " vim and other applications since they all use the same clipboard now.
-  set clipboard=unnamed
-end
+" Make clipbord work on OS X. This makes copy/paste operations trivial between
+" vim and other applications since they all use the same clipboard now.
+set clipboard=unnamed
 
 " visual select automatically copies to..
 " Linux - X11's selection ("middle click") buffer when available
@@ -245,11 +273,31 @@ autocmd BufWrite * if ! &bin | call StripTrailingWhitespace() | endif
 
 " display the file name of the current file in the Terminal (xterm/item/&c) title
 if has('title')
+  " %(  - item group .. %)
+  " .20 - truncate path at 20 chars
+  " %{  - eval this .. }
+  " %   - file path (see :help expand)
+  " :~  - reduce home dir to tilde
+  " :.  - relative paths
+  " :h  - parent dir only
+  " %<  - truncate from here
+  " %t  - file name (tail/basename)
+  " %r  - read only flag
+  " %m  - modified flag
+  " see :help statusline/titlestring for more info
+  set titlestring=%.20(%{expand(\"%:~:.:h\")}%</%t%(%r%m%)%)
+
+  " For xtermish Window Title protocols
+  " Also names tmux's panes
+  set t_ts=]0;
+  set t_fs=
+
+  " for renaming tmux windows too
+  "set t_ts=kvim\\]0;
+
   set title
-  autocmd BufEnter * let &titlestring = "vim: " . expand("%:p:~")
-  "set titlestring=%t%(\ [%R%M]%)
-  "autocmd BufEnter * exe "echo '\033'+bufname("%")+'\007'"
 endif
+
 
 " leader shortcuts START -->
 
