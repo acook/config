@@ -95,10 +95,6 @@
   path = dotfiles/.vim/bundle/plugin-supertab
   url = https://github.com/ervandew/supertab.git
 
-[submodule "dotfiles/.vim/bundle/plugin-csapprox"]
-  path = dotfiles/.vim/bundle/plugin-csapprox
-  url = https://github.com/godlygeek/csapprox.git
-
 [submodule "dotfiles/.vim/bundle/plugin-nerdtree"]
   path = dotfiles/.vim/bundle/plugin-nerdtree
   url = https://github.com/scrooloose/nerdtree.git
@@ -138,10 +134,6 @@
 [submodule "dotfiles/.vim/bundle/syntax-fish"]
   path = dotfiles/.vim/bundle/syntax-fish
   url = https://github.com/guangnan/fish.vim.git
-
-[submodule "dotfiles/.vim/bundle/plugin-guicolorscheme"]
-  path = dotfiles/.vim/bundle/plugin-guicolorscheme
-  url = https://github.com/vim-scripts/guicolorscheme.vim.git
 
 [submodule "dotfiles/.vim/bundle/syntax-vimclojure"]
   path = dotfiles/.vim/bundle/syntax-vimclojure
@@ -192,3 +184,6 @@
 [submodule "dotfiles/.vim/bundle/syntax-tmux"]
 	path = dotfiles/.vim/bundle/syntax-tmux
 	url = https://github.com/zaiste/tmux.vim.git
+[submodule "dotfiles/.vim/bundle/plugin-colorsupport"]
+	path = dotfiles/.vim/bundle/plugin-colorsupport
+	url = https://github.com/vim-scripts/colorsupport.vim.git

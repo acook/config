@@ -88,8 +88,6 @@ let vimclojure#ParenRainbow = 1 " Rainbow parentheses'!
 
 if has('gui_running')
 
-  colorscheme monokai_modified
-
   " for Gui versions of vim. see :help guioptions for more info
   set guioptions=aAce
 
@@ -135,16 +133,10 @@ elseif version >= 700 && &term != 'cygwin'
   " force 256 color mode
   set t_Co=256
 
-  " configure 256 color schemes for terminal using CSApprox or guicolorscheme
-  if has('gui') || v:version > 703
-    let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : 'italic', 'sp' : 'fg' }
-    colorscheme monokai_modified
-  else
-    runtime! bundle/plugin-guicolorscheme/plugin/guicolorscheme.vim
-    GuiColorScheme monokai_modified
-  endif
-
 endif
+
+" Load color scheme using colorsupport
+colorscheme monokai_modified
 
 " disable balloon popup since theres a plugin that makes it really annoying
 if has("balloon_eval")
