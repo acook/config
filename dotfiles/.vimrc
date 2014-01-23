@@ -78,6 +78,9 @@ let g:airline#extensions#readonly#symbol = ''
 "let g:airline#extensions#branch#symbol = '⭠ '
 "let g:airline#extensions#readonly#symbol = '⭤'
 
+" for tmuxline
+let g:tmuxline_preset = 'sourmein'
+
 " initialize pathogen and load all the plugins in .vim/bundle
 runtime bundle/plugin-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
