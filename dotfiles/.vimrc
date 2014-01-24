@@ -204,7 +204,9 @@ set number
 
 " Make clipbord work on OS X. This makes copy/paste operations trivial between
 " vim and other applications since they all use the same clipboard now.
-set clipboard=unnamed
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
 
 " visual select automatically copies to..
 " Linux - X11's selection ("middle click") buffer when available
