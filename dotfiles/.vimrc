@@ -230,6 +230,11 @@ set whichwrap+=<,>,h,l
 set mousemodel=extend
 set mouse=a
 set mousehide
+set mouse+=a
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+endif
 
 " improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
