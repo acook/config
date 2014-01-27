@@ -1,10 +1,5 @@
 #!/usr/bin/env ruby
 
-
-# Load plugins (only those I whitelist)
-#Pry.config.should_load_plugins = false
-#Pry.plugins["doc"].activate!
-#Pry.plugins["theme"].activate!
 require 'win32console' if RUBY_PLATFORM =~ /mswin|mingw|cygwin/i
 
 # Use vim as my editor
@@ -17,29 +12,28 @@ Pry.config.hooks.add_hook(:after_session, :say_bye) do
   puts "bye-bye"
 end
 
-# Prompt with ruby version
+# Prompt with ruby version and object information
+
+def Pry.object_info object
+  if object == Object || object.class == Object then
+    "#{object.class}##{object.inspect}"
+  elsif object.is_a? Class then
+    "#{object.class}##{object.superclass}/#{object.name}"
+  elsif object.is_a? Module then
+    "#{object.class}##{object.name}"
+  elsif defined?(RSpec) && defined?(RSpec::Core) && object.is_a?(RSpec::Core::ExampleGroup) then
+    "RSpec::Core::ExampleGroup#instance"
+  else
+    "#{object.class.superclass}/#{object.class}#instance"
+  end
+end
+
 Pry.prompt = [
   proc { |object, nest_level|
-
-    object_info = if object == Object || object.class == Object then
-      "#{object.class}##{object.inspect}"
-    else
-
-      if object.is_a? Class then
-        "#{object.class}##{object.superclass}/#{object.name}"
-      elsif object.is_a? Module then
-        "#{object.class}##{object.name}"
-      elsif defined?(RSpec) && defined?(RSpec::Core) && object.is_a?(RSpec::Core::ExampleGroup) then
-        "RSpec::Core::ExampleGroup#instance"
-      else
-        "#{object.class.superclass}/#{object.class}#instance"
-      end
-    end
-
-    "#{RUBY_VERSION} (#{object_info}):#{nest_level} > "
+    "#{"#{nest_level} " unless nest_level.zero?}#{Pry.object_info object} > "
   },
   proc { |object, nest_level|
-    "#{RUBY_VERSION} #{nest_level} * "
+    "#{nest_level} * "
   }
 ]
 
