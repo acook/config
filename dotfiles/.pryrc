@@ -84,62 +84,15 @@ class Hash
   end
 end
 
+# Launch Pry with access to the entire Rails stack.
 unless defined? Rails
-  # Launch Pry with access to the entire Rails stack. (WiP)
-  $rails = File.join Dir.getwd, 'config', 'environment.rb'
+  if Pathname.pwd.join('config', 'application.rb').exist? then
+    puts 'Rails environment available. Type `rails!` to get access to the full stack.'
 
-  if File.exist?($rails) && ENV['SKIP_RAILS'].nil?
-    puts 'Rails environment available. Type `rails` to get access to the full stack.'
-
-    def _find_gemfile path = nil
-      default_gemfile_path = (ENV['BUNDLE_GEMFILE'] || '').gsub(/Gemfile/,'')
-      path ||= File.expand_path(default_gemfile_path || Dir.pwd)
-
-      filename = File.join(path, 'Gemfile')
-      if File.file?(filename)
-        filename
-      else
-        next_path = File.expand_path('..', path)
-        unless path == next_path then
-          _find_gemfile next_path
-        else
-          warn 'Gemfile not found!'
-          false
-        end
-      end
-    end
-
-    def _bundler_require origin_path = nil
-      gemfile_path = _find_gemfile
-      if gemfile_path then
-        ENV['BUNDLE_GEMFILE'] = gemfile_path
-        Bundler.require(:default, (ENV['RAILS_ENV'] || :development))
-      end
-    end
-
-    def rails
+    def self.rails!
       puts "[INFO] loading Rails..."
 
-      require 'bundler'
-
-      begin
-        require 'active_record'
-      rescue LoadError
-      end
-
-      if _bundler_require then
-
-        require $rails
-
-        require 'rails/console/app'
-        require 'rails/console/helpers'
-
-        if defined? ActiveRecord then
-          ActiveRecord::Base.logger = Logger.new(STDOUT)
-        end
-
-        Rails
-      end
+      require './config/application'
     end
   end
 end
