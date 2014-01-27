@@ -1,33 +1,6 @@
 #!/usr/bin/env ruby
 
 
-begin
-  require 'hirb'
-rescue LoadError
-  # no pretty console output :(
-end
-
-if defined? Hirb
-  # Slightly dirty hack to fully support in-session Hirb.disable/enable toggling
-  Hirb::View.instance_eval do
-    def enable_output_method
-      @output_method = true
-      @old_print = Pry.config.print
-      Pry.config.print = proc do |output, value|
-        Hirb::View.view_or_page_output(value) || @old_print.call(output, value)
-      end
-    end
-
-    def disable_output_method
-      Pry.config.print = @old_print
-      @output_method = nil
-    end
-  end
-
-  Hirb.enable
-end
-
-
 # Load plugins (only those I whitelist)
 #Pry.config.should_load_plugins = false
 #Pry.plugins["doc"].activate!
@@ -69,6 +42,45 @@ Pry.prompt = [
     "#{RUBY_VERSION} #{nest_level} * "
   }
 ]
+
+# Output formatting printers
+
+class Pry
+  class << self
+    attr_accessor :available_printers
+  end
+  self.available_printers = Hash.new
+end
+
+Pry.available_printers[:original] ||= Pry.config.print
+
+begin
+  require 'hirb'
+
+  Pry.available_printers[:hirb] = proc do |output, value|
+    Hirb::View.view_or_page_output value
+  end
+
+  Hirb.enable
+rescue LoadError
+  # Hirb not installed
+end
+
+begin
+  require 'awesome_print'
+
+  Pry.available_printers[:awesome] = proc do |output, value|
+    Pry::Helpers::BaseHelpers.stagger_output "=> #{value.ai}", output
+  end
+rescue LoadError
+  # AwesomePrint not installed
+end
+
+Pry.config.print = proc do |output, value|
+  Pry.available_printers.to_a.reverse.find do |name, block|
+    block.call output, value
+  end
+end
 
 # Toy methods
 # Stealed from https://gist.github.com/807492
