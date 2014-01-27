@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'win32console' if RUBY_PLATFORM =~ /(mswin|mingw|cygwin)32$/i
 
 begin
   require 'hirb'
@@ -33,6 +32,7 @@ end
 #Pry.config.should_load_plugins = false
 #Pry.plugins["doc"].activate!
 #Pry.plugins["theme"].activate!
+require 'win32console' if RUBY_PLATFORM =~ /mswin|mingw|cygwin/i
 
 # Use vim as my editor
 Pry.config.editor = 'vim'
