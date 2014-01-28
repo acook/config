@@ -52,7 +52,7 @@ begin
   require 'hirb'
 
   Pry.available_printers[:hirb] = proc do |output, value|
-    Hirb::View.view_or_page_output value
+    Hirb::View.view_or_page_output(value).is_a?(FalseClass).tap{|r| break true if r.is_a?(FalseClass)}
   end
 
   Hirb.enable
@@ -64,7 +64,7 @@ begin
   require 'awesome_print'
 
   Pry.available_printers[:awesome] = proc do |output, value|
-    Pry::Helpers::BaseHelpers.stagger_output "=> #{value.ai}", output
+    Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)
   end
 rescue LoadError
   # AwesomePrint not installed
