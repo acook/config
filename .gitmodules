@@ -192,3 +192,6 @@
 [submodule "dotfiles/.vim/bundle/syntax-tmux"]
 	path = dotfiles/.vim/bundle/syntax-tmux
 	url = https://github.com/zaiste/tmux.vim.git
+[submodule "dotfiles/.vim/bundle/plugin-eunuch"]
+	path = dotfiles/.vim/bundle/plugin-eunuch
+	url = https://github.com/tpope/vim-eunuch.git
