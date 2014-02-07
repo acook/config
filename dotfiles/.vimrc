@@ -295,6 +295,15 @@ endfunc
 " automatically run before write, except binary files
 autocmd BufWrite * if ! &bin | call StripTrailingWhitespace() | endif
 
+func! Clip() range
+  echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| system-clipboard put')
+endfunction
+
+" visual mode copy to system clipboard
+vmap <leader>y <esc>:'<,'>:w ! system-clipboard put<CR>
+" normal mode paste from system clipboard
+nmap <leader>p <esc>:r ! system-clipboard get<CR>
+
 " display the path and file name of the current fila
 " in the Terminal's Window/Tab Title
 if has('title')
