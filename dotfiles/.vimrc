@@ -33,6 +33,10 @@ let g:ctrlp_user_command = {
       \ 'fallback': 'find %s -type f'
       \ }
 
+" configure CtrlPtjump
+nnoremap <c-]> :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
+
 " Configure Vimwiki
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1

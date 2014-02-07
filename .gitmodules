@@ -195,3 +195,6 @@
 [submodule "dotfiles/.vim/bundle/plugin-eunuch"]
 	path = dotfiles/.vim/bundle/plugin-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
+[submodule "dotfiles/.vim/bundle/extension-ctrlp-tjump"]
+	path = dotfiles/.vim/bundle/extension-ctrlp-tjump
+	url = https://github.com/ivalkeen/vim-ctrlp-tjump.git
