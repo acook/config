@@ -206,6 +206,19 @@ set wildmode=list:longest
 " Show line numbers
 set number
 
+" highlight the line and line number the cursor is on
+set cursorline
+
+" highlight the column the cursor is in
+"set cursorcolumn
+
+" colorize right margin (slightly darker in gvim, slightly lighter in console)
+highlight ColorColumn ctermbg=234 guibg=#181a1b
+let &colorcolumn=join(range(81,400),",")
+
+" highlight characters over 120 the same as errors
+match ErrorMsg '\%>120v.\+'
+
 " Make clipbord work on OS X. This makes copy/paste operations trivial between
 " vim and other applications since they all use the same clipboard now.
 if $TMUX == ''
