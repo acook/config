@@ -38,9 +38,16 @@ case $unamestr in
       source `brew --prefix`/etc/bash-completion
     fi
 
-    # Add homebrew bash completion file
-    if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
-      source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+    brew_completions="`brew --prefix`/Library/Contributions/brew_bash_completion.sh"
+    # load homebrew bash completion file
+    if [ -f $brew_completions ]; then
+      source $brew_completions
+    fi
+
+    git_completions="`brew --prefix`/etc/bash_completion.d/git-completion.bash"
+    # load git completions
+    if [ -f $git_completions ]; then
+      source $git_completions
     fi
 
     ;;
