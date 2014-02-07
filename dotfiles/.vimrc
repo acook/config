@@ -423,6 +423,7 @@ map <Esc>OQ /
 map <Esc>OR *
 map <kPlus> +
 map <Esc>OS -
+map <Esc>OM <CR>
 map! <Esc>Oq 1
 map! <Esc>Or 2
 map! <Esc>Os 3
@@ -438,4 +439,4 @@ map! <Esc>OQ /
 map! <Esc>OR *
 map! <kPlus> +
 map! <Esc>OS -
-
+map! <Esc>OM <CR>
