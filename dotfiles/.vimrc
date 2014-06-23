@@ -170,6 +170,9 @@ set foldmethod=syntax
 set foldminlines=3
 set foldlevel=100
 
+" disable wrap by default
+set nowrap
+
 " indentation configuration
 set cindent
 set smartindent

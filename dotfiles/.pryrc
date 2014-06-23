@@ -37,6 +37,7 @@ Pry.prompt = [
   }
 ]
 
+if false
 # Output formatting printers
 
 class Pry
@@ -46,8 +47,9 @@ class Pry
   self.available_printers = Hash.new
 end
 
-Pry.available_printers[:original] ||= Pry.config.print
+Pry.available_printers[:original] ||= Pry.config.print.dup
 
+if $hirb
 begin
   require 'hirb'
 
@@ -59,7 +61,9 @@ begin
 rescue LoadError
   # Hirb not installed
 end
+end
 
+if $awesome_print
 begin
   require 'awesome_print'
 
@@ -69,11 +73,13 @@ begin
 rescue LoadError
   # AwesomePrint not installed
 end
+end
 
 Pry.config.print = proc do |output, value|
   Pry.available_printers.to_a.reverse.find do |name, block|
     block.call output, value
   end
+end
 end
 
 # Toy methods

@@ -10,6 +10,9 @@ fi
 
 source $USER_SETUP/antigen/antigen.zsh
 
+#exec 2>> ~/zsh_trace.txt
+#set -x
+
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
@@ -32,10 +35,37 @@ zstyle ':filter-select' extended-search yes # see below
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme https://gist.github.com/6879576.git agnoster
+#antigen theme https://gist.github.com/6879576.git agnoster
 
 # Tell antigen that you're done.
 antigen apply
+
+# overwrite with generated prompt when available
+source ~/promptline.theme
+
+# get rid of the whitespace to the right of the RPROMPT
+# If it casues issues (scrolling when prompt is last line) then try this:
+# http://www.zsh.org/mla/workers/2013/msg01176.html
+ZLE_RPROMPT_INDENT=0
+
+# set_window_title and PWD command helpers
+source ~/bin/prompt_helpers
+
+# update window title with directory
+function precmd {
+  set_window_title $(PWD);
+}
+
+# update window title with command
+function preexec {
+  commandline="$1" # the user-entered commandline is passed in as first arg
+  args=${${(z)commandline}[2,-1]} # get command's args
+  new_title=${args:-$(PWD)} # if no args, then use the pwd
+  set_window_title $new_title
+}
+
+# load standard aliases
+source ~/.bash_aliases
 
 export DEFAULT_USER='acook'
 

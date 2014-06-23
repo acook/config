@@ -198,3 +198,9 @@
 [submodule "dotfiles/.vim/bundle/extension-ctrlp-tjump"]
 	path = dotfiles/.vim/bundle/extension-ctrlp-tjump
 	url = https://github.com/ivalkeen/vim-ctrlp-tjump.git
+[submodule "dotfiles/.vim/bundle/syntax-perl"]
+	path = dotfiles/.vim/bundle/syntax-perl
+	url = https://github.com/vim-perl/vim-perl.git
+[submodule "dotfiles/.vim/bundle/plugin-tmux-navigator"]
+	path = dotfiles/.vim/bundle/plugin-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git

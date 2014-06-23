@@ -89,6 +89,9 @@ fi
 # add path to all my useful script and binary directories
 export PATH=$HOME/bin:$HOME/xbin:$PATH
 
+# for ooc programming
+export OOC_LIBS="$HOME/Projects/OOC:/usr/local/Cellar/rock/HEAD"
+
 # enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion

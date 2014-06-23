@@ -39,25 +39,44 @@
   w  = whatchanged
   nb = checkout -b
   b  = branch
+
   amend = commit --amend
+
   unstash = stash pop
   unstage = reset HEAD --
-  remotes = remote -v
+
   branches = branch -v
-  root = rev-parse --show-toplevel
+  remotes = remote -v
   origin = remote show origin
+
   diffs = diff --staged
   diffh = diff HEAD
+
   last = log -1 HEAD
-  unmerged = ls-files --unmerged
-  lg = !GIT_PAGER=less git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  lp = !GIT_PAGER=less git log -p --patience
-  l = !GIT_PAGER=less git log --pretty=oneline --abbrev-commit --decorate
-  subdo = submodule foreach git
-  top = !eval cd "$(pwd)/$(git rev-parse --show-cdup)" && pwd
   dog = log --decorate --oneline --graph
+  hist = !GIT_PAGER=less git log --graph  --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+
+  root = rev-parse --show-toplevel
+  top = !eval cd "$(pwd)/$(git rev-parse --show-cdup)" && pwd
+
   ls = !git ls-tree HEAD --name-only | fmt
+  unmerged = ls-files --unmerged
+
+  subdo = submodule foreach git
   stats = !git diff --stat `git hash-object -t tree /dev/null`
+
+  vimdiff = difftool --diff-filter=M --tool=vimdiff
+  opendiff = difftool --diff-filter=M --tool=opendiff
+  p4diff = difftool --diff-filter=M --tool=p4merge
+
+[mergetool "p4merge"]
+	cmd = ~/Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
+  keepTemporaries = false
+	trustExitCode = false
+  keepBackup = false
+
+[difftool "p4merge"]
+	cmd = ~/Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
 
 [push]
   default = current
@@ -67,6 +86,15 @@
 
 [merge]
   default = current
+	tool = p4merge
+
+[diff]
+	tool = vimdiff
+	prompt = false
+
+[mergetool]
+	keepBackup = false
+	prompt = false
 
 [url "http://github.com/"]
   insteadOf = "gh:"
@@ -88,15 +116,17 @@
   remote = origin
   merge = refs/heads/master
 
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-
-[mergetool "sourcetree"]
-  cmd = /Applications/More/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
-
 [http]
   sslVerify = false
+
+[github]
+	user = acook
+
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+
 [gui]
-	recentrepo = /Users/acook/Projects/vr/Oceans
+	recentrepo = /Users/acook/Projects/Raise.com/giftcards
+
+
