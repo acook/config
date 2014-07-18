@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'win32console' if RUBY_PLATFORM =~ /mswin|mingw|cygwin/i
+require 'pathname'
 
 # Use vim as my editor
 Pry.config.editor = 'vim'
