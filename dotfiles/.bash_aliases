@@ -52,7 +52,3 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [[ -n `command -v ack-grep` ]]; then
   alias ack='ack-grep'
 fi
-
-# stupid fucking Java
-export CLASSPATH=".:$(brew --prefix antlr)/antlr-4.2-complete.jar:$CLASSPATH"
-alias grun='java org.antlr.v4.runtime.misc.TestRig'
