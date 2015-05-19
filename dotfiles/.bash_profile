@@ -4,18 +4,14 @@
 unamestr=$(uname)
 case $unamestr in
   'Darwin')        # OSX
-    # Set up MacPorts paths
-    #export PATH=/opt/local/libexec/gnubin/:/opt/local/bin:/opt/local/sbin:$PATH
-    #export MANPATH=/opt/local/share/man:$MANPATH
+    # increase the maximum number of files each shell can handle
+    ulimit -S -n 2048
 
     # Give precedence to homebrew's version of the GNU utils
     export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
     # Give precedence to user/local/bin because that's where Homebrew installs their stuff
-    export PATH=/usr/local/bin:$PATH
-
-    # Add up Homebrew's Python binary directory to the path
-    export PATH=/usr/local/share/python:$PATH
+    export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 
     # Path extension for Haskell Platform on OSX
     export PATH=$PATH:$HOME/Library/Haskell/bin
@@ -111,6 +107,9 @@ eval `dircolors ~/.dir_colors`
 export HISTCONTROL=erasedups
 export HISTSIZE=10000
 shopt -s histappend
+
+# For automatic gemfile detection in Bundler
+export RUBYGEMS_GEMDEPS="-"
 
 # Load RVM if available - some aliases can cause this to fail on some systems so we load it before them
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
