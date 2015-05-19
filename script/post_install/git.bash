@@ -6,6 +6,8 @@ function post_install {
     echo Writing Git config settings...
     git config --global user.name $git_name > /dev/null
     git config --global user.email $git_email > /dev/null
+    git config --global github.user $github_username > /dev/null
+    echo Done!
   fi
 
 }

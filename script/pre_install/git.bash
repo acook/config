@@ -6,6 +6,8 @@ function pre_install {
     read git_name
     echo -ne "git email: "
     read git_email
+    echo -ne "github username: "
+    read github_username
   fi
 
 }
