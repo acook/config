@@ -126,7 +126,3 @@
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 
-[gui]
-	recentrepo = /Users/acook/Projects/Raise.com/giftcards
-
-

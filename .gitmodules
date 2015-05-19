@@ -204,3 +204,6 @@
 [submodule "dotfiles/.vim/bundle/plugin-tmux-navigator"]
 	path = dotfiles/.vim/bundle/plugin-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "dotfiles/.vim/bundle/syntax-applescript"]
+	path = dotfiles/.vim/bundle/syntax-applescript
+	url = git@github.com:vim-scripts/applescript.vim.git
