@@ -37,50 +37,18 @@ let g:ctrlp_user_command = {
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
 
-" Configure Vimwiki
-let g:vimwiki_hl_headers = 1
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_user_mouse = 1
-let g:vimwiki_folding = 1
-let g:vimwiki_fold_lists = 1
-let g:vimwiki_list_ignore_newline = 0
-let wiki_1 = {}
-let wiki_1.nested_syntaxes = {'python': 'python', 'ruby': 'ruby', 'rails': 'rails', 'yaml': 'yml'}
-
 " configure IndentGuides plugin
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 3
 let g:indent_guides_guide_size  = 1
 autocmd! VimEnter,Colorscheme * hi IndentGuidesOdd ctermbg=236 guibg=#303030 | hi IndentGuidesEven ctermbg=239 guibg=#505050
 autocmd BufRead * IndentGuidesEnable
-"autocmd! VimEnter,Colorscheme * hi IndentGuidesEven ctermbg=123 guibg=#880055
 
 " configure airline, enable fancy symbols
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_inactive_collapse=0
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts=1
-
-" paste glyph
-let g:airline#extensions#paste#symbol = 'ℙ'
-
-" new glyphs
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_linecolumn_prefix = ' '
-let g:airline#extensions#branch#symbol = ' '
-let g:airline#extensions#readonly#symbol = ''
-
-" old glyphs
-"let g:airline_left_sep = '⮀'
-"let g:airline_left_alt_sep = '⮁'
-"let g:airline_right_sep = '⮂'
-"let g:airline_right_alt_sep = '⮃'
-"let g:airline_linecolumn_prefix = '⭡ '
-"let g:airline#extensions#branch#symbol = '⭠ '
-"let g:airline#extensions#readonly#symbol = '⭤'
 
 " initialize pathogen and load all the plugins in .vim/bundle
 runtime bundle/plugin-pathogen/autoload/pathogen.vim
