@@ -207,3 +207,6 @@
 [submodule "dotfiles/.vim/bundle/syntax-applescript"]
 	path = dotfiles/.vim/bundle/syntax-applescript
 	url = git@github.com:vim-scripts/applescript.vim.git
+[submodule "dotfiles/.vim/bundle/promptline.vim"]
+	path = dotfiles/.vim/bundle/promptline.vim
+	url = https://github.com/edkolev/promptline.vim
