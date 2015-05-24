@@ -1,12 +1,12 @@
 [user]
   name = Anthony Cook
   email = anthonymichaelcook@gmail.com
-  editor = vim
 
 [core]
   pager = less -FRSX
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   excludesfile = ~/.gitignore_global
+  editor = vim
 
 [color]
   ui = auto
