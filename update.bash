@@ -11,5 +11,5 @@ git submodule foreach "git fetch -q && git checkout -q origin/HEAD"
 echo Restoring local changes...
 git unstash
 echo Updating Vim plugins...
-vim +PlugUpgrade +PlugUpdate +qa!
+vim -e +PlugUpgrade +PlugUpdate +qa!
 echo Done!
