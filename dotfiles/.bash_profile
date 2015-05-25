@@ -108,9 +108,6 @@ export HISTCONTROL=erasedups
 export HISTSIZE=10000
 shopt -s histappend
 
-# For automatic gemfile detection in Bundler
-export RUBYGEMS_GEMDEPS="-"
-
 # Load RVM if available - some aliases can cause this to fail on some systems so we load it before them
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
