@@ -17,5 +17,5 @@ if [ $git_dirty -ne 0 ]; then
   git unstash
 fi
 echo Updating Vim plugins...
-vim -e +PlugUpgrade +PlugUpdate +qa!
+vim -e +PlugUpgrade +PlugUpdate +qa! 2> /dev/null
 echo Done!
