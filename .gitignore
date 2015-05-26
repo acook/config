@@ -1,4 +1,6 @@
 .DS_Store
 backup
 dotfiles/.vim/.netrwhist
+dotfiles/.vim/bundle
 tags
+plug.vim.old

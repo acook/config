@@ -41,7 +41,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 # overwrite with generated prompt when available
-source ~/promptline.theme
+source ~/bin/xeiprompt
 
 # get rid of the whitespace to the right of the RPROMPT
 # If it casues issues (scrolling when prompt is last line) then try this:
