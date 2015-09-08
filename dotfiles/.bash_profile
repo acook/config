@@ -46,6 +46,9 @@ case $unamestr in
       source $git_completions
     fi
 
+    # Load iTerm integration if available
+    test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
+
     ;;
 
   'Linux')
@@ -119,3 +122,4 @@ shopt -s histappend
 
 # load up aliases and functions
 source ~/.bash_aliases
+
