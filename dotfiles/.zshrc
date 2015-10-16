@@ -79,8 +79,11 @@ case $(uname) in
     export PATH=/usr/local/share/python:$PATH
 
     # Give precedence to user/local/bin because that's where Homebrew installs their stuff
-    export PATH=/usr/local/sbin:$PATH
-    export PATH=/usr/local/bin:$PATH
+    export PATH="/usr/local/sbin:$PATH"
+    export PATH="/usr/local/bin:$PATH"
+
+    # Give precedence to homebrew's version of the GNU utils
+    export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
     # Add homebrew commandline completion file
     completion_file="$(brew --prefix)/Library/Contributions/brew_bash_completion.zsh"
@@ -104,3 +107,6 @@ __rvm_project_rvmrc
 # http://zanshin.net/2013/02/02/zsh-configuration-from-the-ground-up/
 # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 #
+
+# added by travis gem
+[ -f /Users/Anthony/.travis/travis.sh ] && source /Users/Anthony/.travis/travis.sh
