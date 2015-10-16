@@ -6,21 +6,15 @@ let g:syntastic_enable_highlighting = 1
 
 " configure CtrlP
 let g:ctrlp_map = ''
-let g:ctrlp_max_height = 45
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_match_window_bottom = 1
-let g:ctrlp_switch_buffer = 2
-let g:ctrlp_working_path_mode = 2
-let g:ctrlp_mruf_include = '\.py$\|\.rb$|\.coffee|\.haml'
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_match_window = 'max:20'
+let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn)$' }
+"let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript']
 let g:ctrlp_user_command = {
       \ 'types': {
       \ 1: ['.git/', 'cd %s && git ls-files'],
       \ 2: ['.hg/', 'hg --cwd %s locate -I .'],
-      \ },
-      \ 'fallback': 'find %s -type f'
+      \ }
       \ }
 
 " configure CtrlPtjump
