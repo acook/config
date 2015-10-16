@@ -257,20 +257,6 @@ endif
 
 " leader shortcuts START -->
 
-" for rails.vim alternate between test and tested
-map <leader>t  :A<CR>
-map <leader>ts :AS<CR>
-map <leader>tv :AV<CR>
-" for rails.vim swap to model/control/etc from associated file
-map <leader>rm :Rmodel<CR>
-map <leader>rc :Rcontroller<CR>
-map <leader>rh :Rhelper<CR>
-map <leader>ru :Runittest<CR>
-map <leader>rf :Rfunctionaltest<CR>
-map <leader>ro :Robserver<CR>
-map <leader>rv :Rview<CR>
-map <leader>rl :Rlocale<CR>
-
 " for CtrlP
 map <leader>ff :CtrlP<CR>
 map <leader>fb :CtrlPBuffer<CR>
@@ -282,8 +268,6 @@ map <leader>fm :CtrlPMRU<CR>
 
 " for undotree
 map <leader>u :UndotreeToggle<CR>
-" for backward compatibility
-map <leader>g :UndotreeToggle<CR>
 
 " runs diff against the current buffer and the file on disk
 map <leader>d :w !diff % -<CR>
@@ -294,35 +278,35 @@ map <leader>cd :cd %:p:h<CR>
 " <-- leader shortcuts END
 
 " search hilighting control, enables and disable intelligently and toggles
-nnoremap / :set hlsearch<CR>/
-nnoremap ? :set hlsearch<CR>?
-nnoremap n :set hlsearch<CR>n
-nnoremap N :set hlsearch<CR>N
-nnoremap <CR> :noh<CR><CR>
-nnoremap <leader>/ :set hlsearch!<CR>
+noremap / :set hlsearch<CR>/
+noremap ? :set hlsearch<CR>?
+noremap n :set hlsearch<CR>n
+noremap N :set hlsearch<CR>N
+noremap <CR> :noh<CR><CR>
+noremap <leader>/ :set hlsearch!<CR>
 
-" tab navigation like web browsers
-nmap <C-S-tab> :tabprevious<CR>
-nmap <C-tab>   :tabnext<CR>
-map  <C-S-tab> :tabprevious<CR>
+" tab navigation
+map  <C-t>     :tabnew<CR>
+map  <S-tab>   :tabnext<CR>
 map  <C-tab>   :tabnext<CR>
-imap <C-S-tab> <ESC>:tabprevious<CR>i
-imap <C-tab>   <ESC>:tabnext<CR>i
-nmap <C-t>          :tabnew<CR>
-imap <C-t>     <ESC>:tabnew<CR>
+map  <C-S-tab> :tabprevious<CR>
+map! <C-t>     <ESC>:tabnew<CR>
+map! <S-tab>   <ESC>:tabnext<CR>i
+map! <C-tab>   <ESC>:tabnext<CR>i
+map! <C-S-tab> <ESC>:tabprevious<CR>i
 
-" Bash like keys for the command line
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
-cnoremap <C-K> <C-U>
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
+" Bash like keys for the command line and insert mode
+noremap! <C-A> <Home>
+noremap! <C-E> <End>
+noremap! <C-K> <ESC><S-d>i
+noremap! ƒ <S-RIGHT>
+noremap! ∫ <S-LEFT>
 
 " quickly move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 " make mouse scrolling work in terminal vim!
 map <M-Esc>[62~ <ScrollWheelUp>
