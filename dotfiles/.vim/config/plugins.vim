@@ -20,6 +20,7 @@ Plug 'scrooloose/syntastic'
 "Plug 'gregsexton/gitv'
 
 " macros
+Plug 'fatih/vim-go'
 "Plug 'christoomey/vim-tmux-navigator'
 "Plug 'scrooloose/nerdcommenter'
 "Plug 'tpopt/vim-abolish'
