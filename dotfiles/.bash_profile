@@ -30,8 +30,8 @@ case $unamestr in
     # set vim as pager for manual
     #export MANPAGER='col -bx | vim -c ":set ft=man nonu nolist" -R -'
 
-    if [ -f `brew --prefix`/etc/bash-completion ]; then
-      source `brew --prefix`/etc/bash-completion
+    if [ -f $(brew --prefix)/etc/bash-completion ]; then
+      source $(brew --prefix)/etc/bash-completion
     fi
 
     brew_completions="`brew --prefix`/Library/Contributions/brew_bash_completion.sh"
@@ -122,4 +122,6 @@ shopt -s histappend
 
 # load up aliases and functions
 source ~/.bash_aliases
+
+test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
 
