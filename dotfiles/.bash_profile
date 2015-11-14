@@ -123,5 +123,4 @@ shopt -s histappend
 # load up aliases and functions
 source ~/.bash_aliases
 
-test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
-
+source ~/.bash_profile.local
