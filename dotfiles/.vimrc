@@ -213,6 +213,13 @@ endfunc
 " automatically run before write, except binary files
 autocmd BufWrite * if ! &bin | call StripTrailingWhitespace() | endif
 
+" show changes since last save
+if !exists(":DiffOrig")
+    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+          \ | wincmd p | diffthis
+endif
+
+" send selection to clipboard
 func! Clip() range
   echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| system-clipboard put')
 endfunction
