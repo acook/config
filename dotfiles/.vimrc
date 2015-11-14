@@ -215,7 +215,7 @@ autocmd BufWrite * if ! &bin | call StripTrailingWhitespace() | endif
 
 " show changes since last save
 if !exists(":DiffOrig")
-    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+    command DiffOrig vert new | set buftype=nofile | read # | 0d_ | diffthis
           \ | wincmd p | diffthis
 endif
 
