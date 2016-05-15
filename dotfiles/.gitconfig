@@ -121,6 +121,7 @@
 
 [github]
 	user = acook
+	username = acook
 
 [filter "media"]
 	clean = git-media-clean %f
