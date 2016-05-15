@@ -11,11 +11,12 @@ let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn)$' }
 "let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript']
 let g:ctrlp_user_command = {
-      \ 'types': {
-      \ 1: ['.git/', 'cd %s && git ls-files'],
-      \ 2: ['.hg/', 'hg --cwd %s locate -I .'],
-      \ }
-      \ }
+  \ 'types': {
+  \ 1: ['.git/', 'cd %s && git ls-files'],
+  \ 2: ['.hg/', 'hg --cwd %s locate -I .'],
+  \ }
+\ }
+let g:ctrlp_by_filename = 1 " ctrl-d to toggle
 
 " configure CtrlPtjump
 nnoremap <c-]> :CtrlPtjump<cr>
