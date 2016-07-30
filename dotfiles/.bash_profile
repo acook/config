@@ -122,5 +122,5 @@ shopt -s histappend
 
 # load up aliases and functions
 source ~/.bash_aliases
-
-source ~/.bash_profile.local
+# If there's a custom per-machine file available load it up too
+[[ -s "$HOME/.bash_profile.local" ]] && source ~/.bash_profile.local
