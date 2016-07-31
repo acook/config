@@ -3,7 +3,7 @@ Dotfile Configuration for OSX and Linux
 
 Maintains a (mostly) homogenous configuration setup across Linux and OSX platforms.
 
-*Anthony M. Cook 2006-2014 - http://github.com/acook | @anthony_m_cook | http://anthonymcook.com*
+*Anthony M. Cook 2006-2016 - http://github.com/acook | @anthony_m_cook | http://anthonymcook.com*
 
 
 How to Install
@@ -42,7 +42,7 @@ Recommended
 - **homebrew**   : http://mxcl.github.com/homebrew     - Easily compile and install applications from source. Everything in the *Prequisite* and *Recommended* lists can be easily obtained with brew. (OSX Only)
 - **RVM**        : http://beginrescueend.com           - Install Ruby, manage sets of gems, manage multiple versions of Ruby.
 - **diffutils**  : http://www.gnu.org/s/diffutils      - GNU file diffing utilities come in handy too.
-- **ack**        : http://betterthangrep.com           - Grep-like utility excellent for source code.
+- **sift**       : https://sift-tool.org               - A fast and powerful alternative to grep.
 - **colordiff**  : http://colordiff.sourceforge.net    - I pattern match with color, so this is a must for me.
 
 
@@ -94,15 +94,11 @@ The `<Leader>` is backslash (`\`) by default.
 
 *Other Niceties*
 
-- Non-Apple external keyboard tenkey (number keypad) works in terminal Vim on OSX.
+- Tenkey (number keypad) on non-Apple keyboards works in terminal Vim on OSX.
 - Mouse and Trackpad scrolling works in any terminal that can send mouse information.
 - Bash-like command line navigation in Command mode.
 - Automatically enables search highlighting when using the standard search commands (`/`,`?`,`n`,`N`).
 - Turn off search highlighting in Normal mode when hitting <Enter> key.
-
-#### Multiple Cursor Editing
-
-Similar to how Sublime Text works, you can have multiple cursors. Hit `<Control>n` to start playing with them.
 
 #### Buffer Changeset Exploration
 
@@ -135,31 +131,9 @@ When the search window is enabled you can also do a few more things:
 - `<Control>d`  - disables full path search, does filename only matching
 - `:<...>`      - a colon at the end of a file can be followed by a vim command
 
-*The "L" set of Search Utilities* (using the "LustyExplorer" plugin currently)
-
-Similar in overall function to the above utils, but using different stategies and interfaces.
-
-- `<Leader>lf`  - Opens filesystem explorer in Vim's working directory.
-- `<Leader>lr`  - Opens filesystem explorer at the directory of the current file.
-
-  The above utils do not index files, so do no deep fuzzy matching of file names.
-  It can easily delve into directories and match directories and files in a fuzzy manner however.
-
-- `<Leader>lb`  - Opens buffer explorer for switching buffers by name.
-- `<Leader>lg`  - Opens buffer grep which searches the contents of all buffers in memory.
-- `<Leader>lj`  - Opens buffer juggler for rapidly switching between buffers.
-
 #### Working with Git
 
 The Fugitive and Gitv plugins are used for this functionality.
 
 - `:Gitv`    - Show a Gitk-like view of commits in the current repo in a new tab.
 - `:Gblame`  - Show Git's blame on the current file in a vertical split.
-
-#### Ruby and Rails
-
-Rails.vim provides a huge set of helpers for working with Rails projects.
-
-- `:AV`  - Open test/object in vertical split.
-- `:AS`  - Open test/object in horizontal split.
-- `:A`   - Swap between test/object in current window.
