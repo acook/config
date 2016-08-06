@@ -48,6 +48,7 @@
   branches = branch -v
   remotes = remote -v
   origin = remote show origin
+  tags = log --tags --decorate --simplify-by-decoration --oneline
 
   diffs = diff --staged
   diffh = diff HEAD
