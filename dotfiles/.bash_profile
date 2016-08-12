@@ -13,10 +13,10 @@ case $unamestr in
     # Give precedence to user/local/bin because that's where Homebrew installs their stuff
     export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 
-    # Path extension for Haskell Platform on OSX
-    export PATH=$PATH:$HOME/Library/Haskell/bin
+    # Path extension for Brew's version of LLVM utils
+    export PATH=$PATH:/usr/local/opt/llvm/bin
 
-    # I can set alias ls=ls_osx if I don't have gnu coreutils installed
+    # I can set alias ls=ls_osx if gnu coreutils are not installed
     alias ls_osx="ls -p -F -G -h"
     # Colorize OSX's ls
     export LSCOLORS=hxdxDxGxbxfxFxBxBxHxHx
