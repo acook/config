@@ -24,7 +24,6 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 function gr { grep -R $1 $2./*; }
 function grr { grep -R $*; }
-function rg { find . -name '*.*rb' -exec grep "$*" {} \; -print; }
 
 # diff with unified format (why use anything else?!)
 alias diff='diff -U3'
