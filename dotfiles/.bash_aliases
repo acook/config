@@ -4,7 +4,9 @@
 alias :e=vim
 
 # alias less to whatever we set out pager to
-alias less=$PAGER
+if [[ ! -z $PAGER ]]; then
+  alias less="$PAGER"
+fi
 
 # ls with showall, colors, and /'s after directories
 alias ls="ls -AFhxX --color --group-directories-first "
@@ -22,8 +24,8 @@ function ss { find . -name "$1" 2>/dev/null; }
 alias grep='grep -Hns --binary-files=without-match --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-function gr { grep -R $1 $2./*; }
-function grr { grep -R $*; }
+function gr { grep -R "$1" "$2./*"; }
+function grr { grep -R "$@"; }
 
 # diff with unified format (why use anything else?!)
 alias diff='diff -U3'
@@ -33,10 +35,10 @@ alias cx='pushd'
 alias cz='popd'
 
 # prints out the ps header and then displays all processes matching the given argument
-function psg { ps -A | awk 'NR==1; /'$1'/&&!/awk/'; }
+function psg { ps -A | awk 'NR==1; /'"$1"'/&&!/awk/'; }
 
 # spell checker
-function spell { echo $@|aspell -a; }
+function spell { echo "$@" | aspell -a; }
 
 # sooo many letters to type in a day, here's a few less for the history command
 alias h='history'
@@ -48,6 +50,6 @@ alias rspec_debug="bundle exec ruby -d -r 'rspec/autorun' -I './lib' spec/*_spec
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # If there's an ack-grep command, alias it to ack
-if [[ -n `command -v ack-grep` ]]; then
+if [[ -n $(command -v ack-grep) ]]; then
   alias ack='ack-grep'
 fi
