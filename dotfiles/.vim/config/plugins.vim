@@ -9,7 +9,6 @@ Plug 'drmikehenry/vim-fontdetect'
 " interface
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'kien/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ervandew/supertab'
