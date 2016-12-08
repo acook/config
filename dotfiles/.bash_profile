@@ -25,39 +25,39 @@ case $unamestr in
     export ARCHFLAGS="-arch x86_64"
 
     # Tell compiler to use multiple cores
-    export MAKEFLAGS="-j`sysctl hw.ncpu | cut --delimiter=' ' -f 2`"
+    export MAKEFLAGS="-j$(sysctl hw.ncpu | cut --delimiter=' ' -f 2)"
 
     # set vim as pager for manual
     #export MANPAGER='col -bx | vim -c ":set ft=man nonu nolist" -R -'
 
-    if [ -f $(brew --prefix)/etc/bash-completion ]; then
-      source $(brew --prefix)/etc/bash-completion
+    if [[ -f $(brew --prefix)/etc/bash-completion ]]; then
+      source "$(brew --prefix)/etc/bash-completion"
     fi
 
-    brew_completions="`brew --prefix`/Library/Contributions/brew_bash_completion.sh"
+    brew_completions="$(brew --prefix)/Library/Contributions/brew_bash_completion.sh"
     # load homebrew bash completion file
-    if [ -f $brew_completions ]; then
-      source $brew_completions
+    if [[ -f $brew_completions ]]; then
+      source "$brew_completions"
     fi
 
-    git_completions="`brew --prefix`/etc/bash_completion.d/git-completion.bash"
+    git_completions="$(brew --prefix)/etc/bash_completion.d/git-completion.bash"
     # load git completions
-    if [ -f $git_completions ]; then
-      source $git_completions
+    if [[ -f $git_completions ]]; then
+      source "$git_completions"
     fi
 
     # Load iTerm integration if available
-    test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
+    test -e "$HOME/.iterm2_shell_integration.bash" && source "$HOME/.iterm2_shell_integration.bash"
 
     ;;
 
   'Linux')
-    if [[ -n `command -v keychain` ]]; then
+    if [[ -n $(command -v keychain) ]]; then
       keychain id_rsa
-      . ~/.keychain/`uname -n`-sh
+      source "$HOME/.keychain/$(uname -n)-sh"
     fi
 
-    JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+    export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 
     # Give precedence to /opt/local/bin since that's where I install my hand compiled stuff
     export PATH=/opt/local/bin:$PATH
@@ -71,13 +71,13 @@ esac
 export EDITOR=vim
 
 # Handle potential pagers
-if [[ -n `command -v vimpager` ]]; then
+if [[ -n $(command -v vimpager) ]]; then
   export PAGER=vimpager
 else
-  if [[ -n `command -v vimless` ]]; then
+  if [[ -n $(command -v vimless) ]]; then
     export PAGER=vimless
   fi
-  if [[ -n `command -v vimman` ]]; then
+  if [[ -n $(command -v vimman) ]]; then
     export MANPAGER=vimman
   fi
 fi
@@ -104,7 +104,7 @@ source git_prompt
 export CLICOLOR=1
 
 # Generate colors for GNU's ls
-eval `dircolors ~/.dir_colors`
+eval "$(dircolors ~/.dir_colors)"
 
 # bash history shit, removes dups, increases size, and saves on shell exit
 export HISTCONTROL=erasedups
