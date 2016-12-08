@@ -91,6 +91,11 @@ export PATH=$HOME/bin:$HOME/xbin:$PATH
 # for ooc programming
 export OOC_LIBS="$HOME/Projects/OOC:/usr/local/Cellar/rock/HEAD"
 
+# for Docker
+if [[ -n $(command -v docker-machine) ]]; then
+  eval "$(/usr/local/bin/docker-machine env default)"
+fi
+
 # enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
