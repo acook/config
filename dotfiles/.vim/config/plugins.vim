@@ -52,6 +52,7 @@ Plug 'benjaminwhite/Benokai'
 "Plug 'tpope/vim-vividchalk'
 
 " syntax
+Plug 'rhysd/vim-crystal'
 Plug 'zaiste/tmux.vim'
 Plug 'slim-template/vim-slim'
 Plug 'lilydjwg/colorizer'
