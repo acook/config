@@ -117,9 +117,6 @@
   remote = origin
   merge = refs/heads/master
 
-[http]
-  sslVerify = false
-
 [github]
 	user = acook
 	username = acook
