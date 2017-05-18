@@ -55,12 +55,12 @@
 
   last = log -1 HEAD
   dog = log --decorate --oneline --graph
-  hist = !GIT_PAGER=less git log --graph  --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  hist = log --graph  --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
   root = rev-parse --show-toplevel
   top = !eval cd "$(pwd)/$(git rev-parse --show-cdup)" && pwd
 
-  ls = !git ls-tree HEAD --name-only | fmt
+  ls = ls-tree HEAD --name-only
   unmerged = ls-files --unmerged
 
   subdo = submodule foreach git
