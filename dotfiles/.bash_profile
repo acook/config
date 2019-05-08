@@ -1,131 +1,122 @@
 #!/bin/bash
 
-# Platform-specific setups
-unamestr=$(uname)
-case $unamestr in
-  'Darwin')        # OSX
+# For configurations that are specific to a given platform
+PLATFORM="$(uname)"
+case $PLATFORM in
+  'Darwin')
+
     # increase the maximum number of files each shell can handle
     ulimit -S -n 2048
 
-    # Give precedence to homebrew's version of the GNU utils
-    export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-
-    # Give precedence to user/local/bin because that's where Homebrew installs their stuff
-    export PATH=/usr/local/sbin:/usr/local/bin:$PATH
-
-    # Path extension for Brew's version of LLVM utils
-    export PATH=$PATH:/usr/local/opt/llvm/bin
-
-    # I can set alias ls=ls_osx if gnu coreutils are not installed
+    # For macOS native (non GNU) ls command: set defaults and enable colors
     alias ls_osx="ls -p -F -G -h"
-    # Colorize OSX's ls
+    export CLICOLOR=1
     export LSCOLORS=hxdxDxGxbxfxFxBxBxHxHx
 
-    # Attempt at fixing OSX tomfoolery
+    # Attempt at fixing macOS compiler confusion (may not be necessary any more?)
     export ARCHFLAGS="-arch x86_64"
 
-    # Tell compiler to use multiple cores
-    export MAKEFLAGS="-j$(sysctl hw.ncpu | cut --delimiter=' ' -f 2)"
+    # Tell compiler to use the name number of threads as there are cores in the system
+    MAKEFLAGS="-j$(sysctl hw.ncpu | cut --delimiter=' ' -f 2)"
+    export MAKEFLAGS
 
-    # set vim as pager for manual
-    #export MANPAGER='col -bx | vim -c ":set ft=man nonu nolist" -R -'
+    # Only do the rest of this if we detect that Homebrew is installed
+    if [[ -n $(command -v brew) ]]; then
+      # Ensure that the Homebrew prefix variable is set
+      export HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-$(brew --prefix)}"
 
-    if [[ -f $(brew --prefix)/etc/bash-completion ]]; then
-      source "$(brew --prefix)/etc/bash-completion"
-    fi
+      # Give precedence to where Homebrew installs their binaries
+      PATH=$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/libexec/gnubin:$PATH:$HOMEBREW_PREFIX/opt/llvm/bin
 
-    brew_completions="$(brew --prefix)/Library/Contributions/brew_bash_completion.sh"
-    # load homebrew bash completion file
-    if [[ -f $brew_completions ]]; then
-      source "$brew_completions"
-    fi
+      # Load all available Homebrew completion scripts
+      for COMPLETION in $HOMEBREW_PREFIX/etc/bash_completion.d/*; do
+        [[ -s $COMPLETION ]] && source "$COMPLETION"
+      done
 
-    git_completions="$(brew --prefix)/etc/bash_completion.d/git-completion.bash"
-    # load git completions
-    if [[ -f $git_completions ]]; then
-      source "$git_completions"
+      # Load Homebrew base bash completion script
+      COMPLETION=$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh
+      if [[ -s $COMPLETION ]]; then
+        source "$COMPLETION"
+      fi
     fi
 
     # Load iTerm integration if available
-    test -e "$HOME/.iterm2_shell_integration.bash" && source "$HOME/.iterm2_shell_integration.bash"
+    ITERM="$HOME/.iterm2_shell_integration.bash"
+    if [[ -s $ITERM ]]; then
+      source "$ITERM"
+    fi
 
-    ;;
-
+  ;;
   'Linux')
+
     if [[ -n $(command -v keychain) ]]; then
       keychain id_rsa
       source "$HOME/.keychain/$(uname -n)-sh"
     fi
 
-    export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+    JAVA_HOME="$(readlink -f /usr/bin/java | sed "s:bin/java::")"
+    export JAVA_HOME
 
     # Give precedence to /opt/local/bin since that's where I install my hand compiled stuff
     export PATH=/opt/local/bin:$PATH
 
-    #export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
-    #  vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
-    #  -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
-    #  -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+  ;;
 esac
 
-export EDITOR=vim
-
-# Handle potential pagers
-if [[ -n $(command -v vimpager) ]]; then
-  export PAGER=vimpager
-else
-  if [[ -n $(command -v vimless) ]]; then
-    export PAGER=vimless
-  fi
-  if [[ -n $(command -v vimman) ]]; then
-    export MANPAGER=vimman
-  fi
-fi
-
-# enable vi command line editing mode
-#set -o vi
-
-# add path to all my useful script and binary directories
-export PATH=$HOME/bin:$HOME/xbin:$PATH
-
-# for ooc programming
-export OOC_LIBS="$HOME/Projects/OOC:/usr/local/Cellar/rock/HEAD"
-
-# for Docker
-if [[ -n $(command -v docker-machine) ]]; then
-  eval "$(/usr/local/bin/docker-machine env default)"
-fi
-
-# enable programmable completion features
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-  . /etc/bash_completion
-fi
-
-# load up my git-enabled prompt
-source git_prompt
-
-# makes sure bash knows it's dealing with a color terminal-emulator and sets the colors for ls
-# LSCOLORS is BSD/OSX format, LS_COLORS is linux format
-export CLICOLOR=1
-
-# Generate colors for GNU's ls
-eval "$(dircolors ~/.dir_colors)"
-
-# bash history shit, removes dups, increases size, and saves on shell exit
+# Only save one copy of a command
 export HISTCONTROL=erasedups
+# Store more commands than default
 export HISTSIZE=10000
+# Save the history file on exit
 shopt -s histappend
 
-# Load RVM if available - some aliases can cause this to fail on some systems so we load it before them
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Add user's bin directories to PATH
+PATH=$HOME/bin:$HOME/xbin:$PATH
 
-# tune Ruby GC
-#export RUBY_GC_MALLOC_LIMIT=60000000
-#export RUBY_FREE_MIN=200000
-# Use high performance allocators like jemalloc and tcmalloc
-#export LD_PRELOAD=/usr/lib64/libtcmalloc_minimal.so.0.1.0
+# Use VS Code or Vim whenever we need an editor, this affects `git commit`
+if [[ -n $(command -v code) ]]; then
+  export EDITOR=code
+elif [[ -n $(command -v vim) ]]; then
+  export EDITOR=vim
+fi
 
-# load up aliases and functions
-source ~/.bash_aliases
-# If there's a custom per-machine file available load it up too
-[[ -s "$HOME/.bash_profile.local" ]] && source ~/.bash_profile.local
+# Load Git-enabled prompt if available, if not then set a basic default
+GIT_PROMPT="$HOME/bin/git_prompt"
+if [[ -s $GIT_PROMPT ]]; then
+  source "$GIT_PROMPT"
+else
+  export PS1="\[\e[35m\]\W\[\e[m\] \[\e[36m\]\\$\[\e[m\] "
+fi
+
+# Configure colors for GNU's ls
+[[ -s "$HOME/.dir_colors" ]] && eval "$(dircolors "$HOME/.dir_colors")"
+
+# Enable bash's programmable completion features
+COMPLETION="/etc/bash_completion"
+if [[ -s $COMPLETION ]] && ! shopt -oq posix; then
+  source "$COMPLETION"
+fi
+
+# Load up the default SSH key
+if [[ -n $(command -v ssh-agent) ]]; then
+  eval "$(ssh-agent -s)"
+  ssh-add "$HOME/.ssh/id_rsa"
+fi
+
+# Handle potential Ruby version managers
+if [[ -s "$HOME/.rbenv/bin/rbenv" ]]; then
+  # Load rbenv if available (preferred)
+  PATH="$PATH:$HOME/.rbenv/bin"
+  eval "$(rbenv init -)"
+elif [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+  # Load RVM if available
+  # Aliases can cause this to fail on some systems so we load it first
+  source "$HOME/.rvm/scripts/rvm"
+fi
+
+# Source machine-specific configurations if available
+[[ -s "$HOME/.bash_profile.local" ]] && source "$HOME/.bash_profile.local"
+
+# Source aliases if they exist
+# This should be loaded towards the end due to potential conflicts
+[[ -s "$HOME/.bash_aliases" ]] && source "$HOME/.bash_aliases"
