@@ -8,12 +8,19 @@ if [[ ! -z $PAGER ]]; then
   alias less="$PAGER"
 fi
 
+# Homebrew has broken ls, here we try to fix it
+if [[ -n $(command -v gls) ]]; then
+  LSPATH=gls
+else
+  LSPATH=ls
+fi
+
 # ls with showall, colors, and /'s after directories
-alias ls="ls -AFhxX --color --group-directories-first "
+alias ls="$LSPATH -AFhxX --color --group-directories-first "
 #alias ll="ls -A -XSx -l"
-alias ll='ls -alF'
-alias lk="ls -gGhLXS"
-alias l='ls -CF'
+alias ll='$LSPATH -alF'
+alias lk="$LSPATH -gGhLXS"
+alias l='$LSPATH -CF'
 
 # searches for given string in filenames in current and all subdirectories
 function s { find . -name "*$1*" 2>/dev/null; }

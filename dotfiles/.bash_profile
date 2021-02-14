@@ -17,6 +17,7 @@ case $PLATFORM in
     export ARCHFLAGS="-arch x86_64"
 
     # Tell compiler to use the name number of threads as there are cores in the system
+    [[ -n $(command -v gcut) ]] && alias cut="gcut"
     MAKEFLAGS="-j$(sysctl hw.ncpu | cut --delimiter=' ' -f 2)"
     export MAKEFLAGS
 
@@ -29,7 +30,7 @@ case $PLATFORM in
       PATH=$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/libexec/gnubin:$PATH:$HOMEBREW_PREFIX/opt/llvm/bin
 
       # Load all available Homebrew completion scripts
-      for COMPLETION in $HOMEBREW_PREFIX/etc/bash_completion.d/*; do
+      for COMPLETION in "$HOMEBREW_PREFIX"/etc/bash_completion.d/*; do
         [[ -s $COMPLETION ]] && source "$COMPLETION"
       done
 
@@ -89,6 +90,7 @@ else
 fi
 
 # Configure colors for GNU's ls
+[[ -n $(command -v gdircolors) ]] && alias dircolors="gdircolors"
 [[ -s "$HOME/.dir_colors" ]] && eval "$(dircolors "$HOME/.dir_colors")"
 
 # Enable bash's programmable completion features
