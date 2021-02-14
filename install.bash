@@ -21,14 +21,16 @@ while getopts ":n" opt; do
   esac
 done
 
-cd `dirname $0`
-export dir=`pwd`
+cd "$(dirname "$0")" || exit 1
+export dir=$(pwd)
 export dot_dir=$dir/dotfiles
 export backup_dir=$dir/backup
 
 echo Loading aliases...
+# shellcheck source=script/load_aliases.bash
 source $dir/script/load_aliases.bash
 echo Loading functions...
+# shellcheck source=script/load_functions.bash
 source $dir/script/load_functions.bash
 
 echo Running pre install scripts...
