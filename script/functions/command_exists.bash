@@ -1,4 +1,1 @@
-function command_exists {
-  return command -v foo >/dev/null 2>&1
-  return $?
-}
+command_exists() { command -v "$1" > /dev/null 2>&1; }
