@@ -74,6 +74,14 @@ shopt -s histappend
 # Add user's bin directories to PATH
 PATH=$HOME/bin:$HOME/xbin:$PATH
 
+if [[ -n $(command -v nvim) ]]; then
+  alias vim=nvim
+fi
+
+if [[ -n $(command -v code-oss) ]]; then
+  alias code=code-oss
+fi
+
 # Use VS Code or Vim whenever we need an editor, this affects `git commit`
 if [[ -n $(command -v code) ]]; then
   export EDITOR=code
