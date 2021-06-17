@@ -22,7 +22,7 @@ if [ $git_dirty -ne 0 ]; then
 fi
 
 echo Updating Vim plugins...
-vim -e +PlugUpgrade +PlugUpdate +qa! 2> /dev/null
+\vim -e +PlugUpgrade +PlugUpdate +qa! 2> /dev/null
 nvim -e +PlugUpgrade +PlugUpdate +qa! 2> /dev/null
 
 echo Done!
