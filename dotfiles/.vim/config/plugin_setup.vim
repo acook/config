@@ -4,6 +4,12 @@ let g:syntastic_echo_current_error = 1
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_enable_highlighting = 1
 
+" configure YouCompleteMe, to interoperate with SuperTab
+" auto close the completion window
+"let g:ycm_autoclose_preview_window_after_completion = 1
+" only use the `Down` key to select the first item
+"let g:ycm_key_list_select_completion = ['<Down>']
+
 " configure CtrlP
 let g:ctrlp_map = ''
 let g:ctrlp_match_window = 'max:20'
