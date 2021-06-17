@@ -1,9 +1,14 @@
 function backup_and_link {
 
-  filename="$1"
-  source_dir="$2"
-  target_dir="$3"
-  backup_dir="$4"
+  local filename="$1"
+  local source_dir="$2"
+  local target_dir="$3"
+  local backup_dir="$4"
+
+  if !file_exists "$target_dir"; then
+    echo -ne "mkdir: missing target dir "
+    mkdir -pv "$target_dir"
+  fi
 
   if symlink_exists "$target_dir/$filename"; then
     echo -ne "rm: symlink "
@@ -18,4 +23,5 @@ function backup_and_link {
 
   echo -ne "ln: "
   ln -vs "$source_dir/$filename" "$target_dir/$filename"
+
 }
