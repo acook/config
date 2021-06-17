@@ -101,6 +101,22 @@ fi
 [[ -n $(command -v gdircolors) ]] && alias dircolors="gdircolors"
 [[ -s "$HOME/.dir_colors" ]] && eval "$(dircolors "$HOME/.dir_colors")"
 
+if [[ -n $(command -v most) ]]; then
+  export PAGER="most"
+fi
+
+# Set GitHub CLI Tool's Pager since it doesn't agree with most, sadly
+export GH_PAGER="\less -r --mouse -q"
+
+# Attempt to make Less prettier with manpages and GitHub cli
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
 # Enable bash's programmable completion features
 COMPLETION="/etc/bash_completion"
 if [[ -s $COMPLETION ]] && ! shopt -oq posix; then
