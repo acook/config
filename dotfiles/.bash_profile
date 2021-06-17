@@ -108,6 +108,9 @@ fi
 # Set GitHub CLI Tool's Pager since it doesn't agree with most, sadly
 export GH_PAGER="\less -r --mouse -q"
 
+# GPG falls over on some configurations if you don't set the tty
+export GPG_TTY=$(tty)
+
 # Attempt to make Less prettier with manpages and GitHub cli
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
