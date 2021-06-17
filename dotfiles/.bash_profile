@@ -111,6 +111,14 @@ export GH_PAGER="\less -r --mouse -q"
 # GPG falls over on some configurations if you don't set the tty
 export GPG_TTY=$(tty)
 
+# setup GPG agent
+if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+    source ~/.gnupg/.gpg-agent-info
+    export GPG_AGENT_INFO
+else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+fi
+
 # Attempt to make Less prettier with manpages and GitHub cli
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
