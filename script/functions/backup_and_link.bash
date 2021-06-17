@@ -5,7 +5,7 @@ function backup_and_link {
   local target_dir="$3"
   local backup_dir="$4"
 
-  if symlink_exists "$target_dir"; then
+  if broken_symlink "$target_dir"; then
     echo -ne "rm: symlink of target dir "
     rm -v "$target_dir/$filename"
   fi
