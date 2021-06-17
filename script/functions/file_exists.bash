@@ -1,3 +1,3 @@
 function file_exists {
-  [ -f "$1" ]
+  [[ -f $1 ]]
 }
