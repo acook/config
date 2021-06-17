@@ -137,3 +137,7 @@
 	forceSignAnnotated = true
 [init]
 	defaultBranch = main
+
+[includeIf "gitdir/i:*Work*"]
+    path = ~/.gitconfig.work
+
