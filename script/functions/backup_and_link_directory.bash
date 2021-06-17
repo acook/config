@@ -4,6 +4,8 @@ function backup_and_link_directory {
   local target_dir=$2
   local backup_dir=$3
 
+  echo
+  echo linking dir
   echo source_dir: $source_dir
   echo target_dir: $target_dir
   echo backup_dir: $backup_dir
