@@ -130,10 +130,10 @@ if [[ -n $(command -v ssh-agent) ]]; then
 fi
 
 # Handle potential Ruby version managers
-if [[ -s "$HOME/.rbenv/bin/rbenv" ]]; then
+RBENV_EXEC="$HOME/.rbenv/bin/rbenv"
+if [[ -s $RBENV_EXEC ]]; then
   # Load rbenv if available (preferred)
-  PATH="$PATH:$HOME/.rbenv/bin"
-  eval "$(rbenv init -)"
+  eval "$($RBENV_EXEC init -)"
 elif [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   # Load RVM if available
   # Aliases can cause this to fail on some systems so we load it first
