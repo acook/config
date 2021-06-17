@@ -140,6 +140,10 @@ elif [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   source "$HOME/.rvm/scripts/rvm"
 fi
 
+if [[ -n $(command -v cargo) ]]; then
+  PATH="$PATH:$HOME/.cargo/bin/"
+fi
+
 # Source machine-specific configurations if available
 [[ -s "$HOME/.bash_profile.local" ]] && source "$HOME/.bash_profile.local"
 
