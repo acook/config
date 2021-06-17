@@ -10,9 +10,7 @@ function backup_and_link {
     rm -v "$target_dir/$filename"
   fi
 
-  if file_exists "$target_dir"; then
-    echo -ne "" # do nothing
-  else
+  if file_missing "$target_dir"; then
     echo -ne "mkdir: creating missing target dir "
 
     # for whatever reason, mkdir -v may not report any changes, even if it makes them
