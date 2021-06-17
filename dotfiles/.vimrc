@@ -221,13 +221,13 @@ endif
 
 " send selection to clipboard
 func! Clip() range
-  echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| system-clipboard put')
+  echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| system-clipboard')
 endfunction
 
 " visual mode copy to system clipboard
-vmap <leader>y <esc>:'<,'>:w ! system-clipboard put<CR>
+vmap <leader>y <esc>:'<,'>:w ! system-clipboard<CR>
 " normal mode paste from system clipboard
-nmap <leader>p <esc>:r ! system-clipboard get<CR>
+nmap <leader>p <esc>:r ! system-clipboard -r<CR>
 
 " display the path and file name of the current fila
 " in the Terminal's Window/Tab Title
