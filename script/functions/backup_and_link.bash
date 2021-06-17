@@ -5,9 +5,13 @@ function backup_and_link {
   local target_dir="$3"
   local backup_dir="$4"
 
+  if file_missing "$backup_dir"; then
+    mkdir -v "$backup_dir"
+  fi
+
   if broken_symlink "$target_dir"; then
     echo -ne "rm: symlink of target dir "
-    rm -v "$target_dir/$filename"
+    rm -v "$target_dir"
   fi
 
   if file_missing "$target_dir"; then
