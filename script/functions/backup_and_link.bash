@@ -5,9 +5,22 @@ function backup_and_link {
   local target_dir="$3"
   local backup_dir="$4"
 
-  if !file_exists "$target_dir"; then
-    echo -ne "mkdir: missing target dir "
-    mkdir -pv "$target_dir"
+  if symlink_exists "$target_dir"; then
+    echo -ne "rm: symlink of target dir "
+    rm -v "$target_dir/$filename"
+  fi
+
+  if file_exists "$target_dir"; then
+    echo -ne "" # do nothing
+  else
+    echo -ne "mkdir: creating missing target dir "
+
+    # for whatever reason, mkdir -v may not report any changes, even if it makes them
+    # this was noted to happen on macos Big Sur
+    local mkdir_output="$(mkdir -p -v "$target_dir")"
+    local mkdir_report="${mkdir_output:-$target_dir}"
+
+    echo "$mkdir_report"
   fi
 
   if symlink_exists "$target_dir/$filename"; then
