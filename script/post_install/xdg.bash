@@ -8,12 +8,12 @@ function post_install {
   local target_dir="$HOME/.config"
   local backup_dir="$shared_backup_dir/.config"
 
-  backup_and_link_directory "$filename" "$source_dir" "$target_dir" "$backup_dir"
+  backup_and_link_directory "$source_dir" "$target_dir" "$backup_dir"
 
   local source_dir="$dir/xdg_data"
   local target_dir="$HOME/.local"
   local backup_dir="$shared_backup_dir/.local"
 
-  backup_and_link_directory "$filename" "$source_dir" "$target_dir" "$backup_dir"
+  backup_and_link_directory "$source_dir" "$target_dir" "$backup_dir"
 
 }
