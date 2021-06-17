@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/xybre/Source/Work/root.orig/lib'
+let g:netrw_dirhist_6='/home/xybre/Source/Work/root.orig'
+let g:netrw_dirhist_5='/home/xybre/Source/Work'
+let g:netrw_dirhist_4='/home/xybre/Source/Work/root'
+let g:netrw_dirhist_3='/home/xybre/Source/Work/root/lib'
+let g:netrw_dirhist_2='/home/xybre/Source/Work/root'
+let g:netrw_dirhist_1='/home/xybre/Source/Work/root.orig/uspec'
+let g:netrw_dirhist_0='/home/xybre/Source/Work/root.orig'
+let g:netrw_dirhist_9='/home/xybre/Source/Work'
+let g:netrw_dirhist_8='/home/xybre/Source/Work/root'
