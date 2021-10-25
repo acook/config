@@ -42,6 +42,7 @@
 
   amend = commit --amend
 
+  stashs  = stash --keep-index
   unstash = stash pop
   unstage = reset HEAD --
 
