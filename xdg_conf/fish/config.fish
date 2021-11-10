@@ -1,10 +1,40 @@
-set -gx PATH \
-  $HOME/bin $HOME/xbin /opt/local/bin \
-  $HOME/.rbenv/shims $HOME/.rbenv/bin \
-  $HOME/.nimble/bin \
-  $HOME/.cargo/bin \
-  $HOME/go/bin \
-  /sbin /bin /usr/sbin /usr/bin /snap/bin
+#!/usr/bin/env fish
+# rebuild PATH from scratch due to various messy reasons
+set -e PATH
+fapid "/usr/local/bin"
+fapid "/bin"
+fapid "/sbin"
+fapid "/usr/bin"
+fapid "/usr/sbin"
+fapid "$HOME/bin"
+fapid "$HOME/xbin"
+
+switch (osinfo.bash | read -L)
+  case osx
+    if type -q brew
+      # Ensure that the Homebrew prefix variable is set
+      if not set -q HOMEBREW_PREFIX
+        set -gx HOMEBREW_PREFIX (brew --prefix)
+      end
+
+      # Give precedence to where Homebrew installs their binaries
+      fapid "$HOMEBREW_PREFIX/sbin"
+      fapid "$HOMEBREW_PREFIX/bin"
+      fapid -p "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
+      fapid "$HOMEBREW_PREFIX/opt/llvm/bin"
+    else
+      warn " -- WARNING: homebrew not detected"
+    end
+  case linux
+    fish_add_path -a "/opt/local/bin"
+end
+
+fapid "$HOME/.rbenv/shims"
+fapid "$HOME/.rbenv/bin"
+fapid "$HOME/.nimble/bin"
+fapid "$HOME/.cargo/bin"
+fapid "$HOME/go/bin"
+fapid "/usr/local/share/python"
 
 # same as "search string"
 # except that it matches substrings as well
