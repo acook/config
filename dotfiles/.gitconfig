@@ -138,6 +138,9 @@
 [init]
 	defaultBranch = main
 
+[include]
+  path = ~/.gitconfig.local
+
 [includeIf "gitdir/i:*Work*"]
     path = ~/.gitconfig.work
 
