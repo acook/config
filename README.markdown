@@ -1,7 +1,7 @@
-Dotfile Configuration for OSX and Linux
-=======================================
+Dotfile Configuration for macOS and Linux
+=========================================
 
-Maintains a (mostly) homogenous configuration setup across Linux and OSX platforms.
+Maintains a (mostly) homogenous configuration setup across Linux and macOS platforms.
 
 *Anthony M. Cook 2006-2021 - http://github.com/acook | @anthony_m_cook | http://anthonymcook.com*
 
