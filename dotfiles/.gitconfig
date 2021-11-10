@@ -130,7 +130,7 @@
 	smudge = git-lfs smudge %f
 	required = true
 [gpg]
-	program = gpg2
+	program = gpg
 [commit]
 	gpgSign = true
 [tag]
