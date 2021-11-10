@@ -2,6 +2,8 @@
 
 function post_install {
 
+  echo "Setting up XDG paths..."
+
   local shared_backup_dir="$backup_dir"
 
   local source_dir="$dir/xdg_conf"
