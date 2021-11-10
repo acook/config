@@ -58,6 +58,10 @@ function ls
   command ls -AFhxX --color --group-directories-first $argv
 end
 
+function rg
+  command rg --no-messages $argv
+end
+
 # for hydro prompt
 set hydro_color_error ff00af
 set hydro_color_git ff00af
