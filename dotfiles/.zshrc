@@ -2,13 +2,15 @@
 
 if [[ -a ~/.user-setup ]]; then
   USER_SETUP=~/.user-setup
+  source $USER_SETUP/antigen/antigen.zsh
 elif [[ -a ~/.user_setup ]]; then
   USER_SETUP=~/.user_setup
+  source $USER_SETUP/antigen/antigen.zsh
+elif [[ -a /usr/local/share/antigen/antigen.zsh ]]; then
+  source /usr/local/share/antigen/antigen.zsh
 else
   echo "No user-setup directory found, don't forget to download antigen."
 fi
-
-source $USER_SETUP/antigen/antigen.zsh
 
 #exec 2>> ~/zsh_trace.txt
 #set -x
@@ -46,7 +48,7 @@ source ~/bin/xeiprompt
 # get rid of the whitespace to the right of the RPROMPT
 # If it casues issues (scrolling when prompt is last line) then try this:
 # http://www.zsh.org/mla/workers/2013/msg01176.html
-ZLE_RPROMPT_INDENT=0
+export ZLE_RPROMPT_INDENT=0
 
 # set_window_title and PWD command helpers
 source ~/bin/prompt_helpers
@@ -58,9 +60,9 @@ function precmd {
 
 # update window title with command
 function preexec {
-  commandline="$1" # the user-entered commandline is passed in as first arg
-  args=${${(z)commandline}[2,-1]} # get command's args
-  new_title=${args:-$(PWD)} # if no args, then use the pwd
+  local commandline="$1" # the user-entered commandline is passed in as first arg
+  local args=${${(z)commandline}[2,-1]} # get command's args
+  local new_title=${args:-$(PWD)} # if no args, then use the pwd
   set_window_title $new_title
 }
 
@@ -87,8 +89,8 @@ case $(uname) in
 
     # Add homebrew commandline completion file
     completion_file="$(brew --prefix)/Library/Contributions/brew_bash_completion.zsh"
-    if [ -f $completion_file ]; then
-      source $completion_file
+    if [[ -f $completion_file ]]; then
+      source "$completion_file"
     fi
 
   ;;
@@ -96,8 +98,7 @@ esac
 
 # For RVM
 unsetopt auto_name_dirs
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-__rvm_project_rvmrc
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" && __rvm_project_rvmrc
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
