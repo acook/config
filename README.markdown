@@ -3,7 +3,7 @@ Dotfile Configuration for OSX and Linux
 
 Maintains a (mostly) homogenous configuration setup across Linux and OSX platforms.
 
-*Anthony M. Cook 2006-2016 - http://github.com/acook | @anthony_m_cook | http://anthonymcook.com*
+*Anthony M. Cook 2006-2021 - http://github.com/acook | @anthony_m_cook | http://anthonymcook.com*
 
 
 How to Install
@@ -27,9 +27,9 @@ What the `install.sh` script does
 Prerequisites
 -------------
 
-- **bash**      : http://www.gnu.org/s/bash      - The install scripts were written for Bash, as were the configurations. May or may not work on other shells.
+- **bash**      : http://www.gnu.org/s/bash      - The install scripts were written for `bash`, but there are configuration files for `fish` and `zsh` as well.
 - **git**       : http://git-scm.com             - Without git the install script will complain at the end and you won't get any of the submodules, but it will still happily do everything else.
-- **coreutils** : http://www.gnu.org/s/coreutils - GNU basic utilities, some aliases and functions in the bash configuration may fail. (Preinstalled on Linux)
+- **coreutils** : http://www.gnu.org/s/coreutils - GNU basic utilities, some aliases and functions in the bash configuration may fail. (Preinstalled on Linux), use Homebrew to install on macOS)
 
 *Note that my configuration files use GNU syntax, not BSD syntax.*
 
@@ -38,20 +38,18 @@ Recommended
 -----------
 
 - **my-scripts** : https://github.com/acook/my-scripts - The included `.bash_profile` will attempt to load the prompt files from this repo.
-- **vim**        : http://www.vim.org                  - Several of the configuration files included here are for or involve Vim.
-- **homebrew**   : http://mxcl.github.com/homebrew     - Easily compile and install applications from source. Everything in the *Prequisite* and *Recommended* lists can be easily obtained with brew. (OSX Only)
-- **RVM**        : http://beginrescueend.com           - Install Ruby, manage sets of gems, manage multiple versions of Ruby.
+- **neovim**        : https://neovim.io/               - Several of the configuration files included here are for or involve NeoVim (and Vim).
 - **diffutils**  : http://www.gnu.org/s/diffutils      - GNU file diffing utilities come in handy too.
-- **sift**       : https://sift-tool.org               - A fast and powerful alternative to grep.
 - **colordiff**  : http://colordiff.sourceforge.net    - I pattern match with color, so this is a must for me.
-
+- **ripgrep**       : https://github.com/BurntSushi/ripgrep               - A fast and powerful alternative to grep.
+- **homebrew**   : http://mxcl.github.com/homebrew     - Easily compile and install applications from source. Everything in the *Prequisite* and *Recommended* lists can be easily obtained with brew.
 
 You can use the script with your own collection of dotfiles
 -----------------------------------------------------------
 
 0. Fork this repo.
 0. Clear out the dotfiles directory.
-0. Clean up any `script/pre_install` or `script/post_install` files you don't want.
+0. Clean up any `script/pre_install` or `script/post_install` files you don't want or add your own.
 0. Drop in your own configuration files.
 0. Commit and push to your repo.
 0. Run with `./install.sh`.
@@ -94,7 +92,7 @@ The `<Leader>` is backslash (`\`) by default.
 
 *Other Niceties*
 
-- Tenkey (number keypad) on non-Apple keyboards works in terminal Vim on OSX.
+- Tenkey (number keypad) on non-Apple keyboards works in terminal Vim on macOS.
 - Mouse and Trackpad scrolling works in any terminal that can send mouse information.
 - Bash-like command line navigation in Command mode.
 - Automatically enables search highlighting when using the standard search commands (`/`,`?`,`n`,`N`).
