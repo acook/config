@@ -6,7 +6,7 @@ function backup_and_link {
   local backup_dir="$4"
 
   if file_missing "$backup_dir"; then
-    mkdir -v "$backup_dir"
+    mkdir -p -v "$backup_dir"
   fi
 
   if broken_symlink "$target_dir"; then
