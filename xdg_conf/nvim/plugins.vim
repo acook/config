@@ -65,6 +65,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'        " pandoc should be activated last in 
 
 " tools
 "Plug 'edkolev/promptline'
+Plug 'edkolev/tmuxline.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()

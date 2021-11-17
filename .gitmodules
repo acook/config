@@ -1,6 +1,2 @@
 # non vim submodules
 
-[submodule "dotfiles/.tmux/powerline"]
-  path = dotfiles/.tmux/powerline
-  url = https://github.com/erikw/tmux-powerline.git
-
