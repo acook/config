@@ -43,14 +43,11 @@ Pry.config.prompt = Pry::Prompt.new(
 )
 
 # Output formatting printers
-
-if $awesome_print
-  begin
-    require "awesome_print"
-    AwesomePrint.pry!
-  rescue LoadError
-    # AwesomePrint not installed
-  end
+begin
+  require "awesome_print"
+  AwesomePrint.pry!
+rescue LoadError
+  # AwesomePrint not installed
 end
 
 # Launch Pry with access to the entire Rails stack.
