@@ -42,48 +42,14 @@ Pry.config.prompt = Pry::Prompt.new(
   ]
 )
 
-if false
-  # Output formatting printers
+# Output formatting printers
 
-  class Pry
-    class << self
-      attr_accessor :available_printers
-    end
-    self.available_printers = Hash.new
-  end
-
-  Pry.available_printers[:original] ||= Pry.config.print.dup
-
-  if $hirb
-    begin
-      require 'hirb'
-
-      Pry.available_printers[:hirb] = proc do |output, value|
-        Hirb::View.view_or_page_output(value).is_a?(FalseClass).tap{|r| break true if r.is_a?(FalseClass)}
-      end
-
-      Hirb.enable
-    rescue LoadError
-      # Hirb not installed
-    end
-  end
-
-  if $awesome_print
-    begin
-      require 'awesome_print'
-
-      Pry.available_printers[:awesome] = proc do |output, value|
-        Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)
-      end
-    rescue LoadError
-      # AwesomePrint not installed
-    end
-  end
-
-  Pry.config.print = proc do |output, value|
-    Pry.available_printers.to_a.reverse.find do |name, block|
-      block.call output, value
-    end
+if $awesome_print
+  begin
+    require "awesome_print"
+    AwesomePrint.pry!
+  rescue LoadError
+    # AwesomePrint not installed
   end
 end
 
