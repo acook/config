@@ -29,7 +29,10 @@ def Pry.object_info object
   end
 end
 
-Pry.prompt = [
+Pry.config.prompt = Pry::Prompt.new(
+  :obj_info,
+  "Display local object in prompt similar to the PWD in a command shell.",
+[
   proc { |object, nest_level|
     "#{"#{nest_level} " unless nest_level.zero?}#{Pry.object_info object} > "
   },
@@ -37,6 +40,7 @@ Pry.prompt = [
     "#{nest_level} * "
   }
 ]
+)
 
 if false
 # Output formatting printers
