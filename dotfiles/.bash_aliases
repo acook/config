@@ -4,15 +4,15 @@
 alias :e=vim
 
 # alias less to whatever we set out pager to
-if [[ ! -z $PAGER ]]; then
+if [[ -n $PAGER ]]; then
   alias less="$PAGER"
 fi
 
 # Homebrew has broken ls, here we try to fix it
 if [[ -n $(command -v gls) ]]; then
-  LSPATH=gls
+  LSPATH="gls"
 else
-  LSPATH=ls
+  LSPATH="ls"
 fi
 
 # ls with showall, colors, and /'s after directories
