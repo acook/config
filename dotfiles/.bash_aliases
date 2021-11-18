@@ -60,3 +60,13 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [[ -n $(command -v ack-grep) ]]; then
   alias ack='ack-grep'
 fi
+
+# Uses fzf and fd to search for directories inside of a git repo
+cdg() {
+    local GIT_ROOT
+    local DIR
+    GIT_ROOT="$(git rev-parse --show-toplevel)"
+    DIR="$(fd --type d --hidden --follow --exclude .git . "$GIT_ROOT" | fzf -q "$*" -1)"
+    echo "$DIR"
+    cd "${DIR:-.}"
+}
