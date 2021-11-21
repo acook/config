@@ -11,8 +11,6 @@ Plug 'itchyny/lightline.vim'    " this might be neat to add https://github.com/m
 Plug 'nathanaelkane/vim-indent-guides' " show tab depths
 "Plug 'ervandew/supertab'        " better tab completion
 Plug 'mbbill/undotree'          " allow you to navigate undo branches
-"Plug 'scrooloose/syntastic'     " integration with language features, although it's not been working well
-Plug 'ycm-core/YouCompleteMe'   " autocomplete, language error messages, similar to syntastic
 Plug 'lilydjwg/colorizer'       " display colors in their color like #FF0
 "Plug 'terryma/vim-multiple-cursors'
 "Plug 'sjbach/lusty'            " a better file explorer
@@ -20,6 +18,24 @@ Plug 'lilydjwg/colorizer'       " display colors in their color like #FF0
 "Plug 'gregsexton/gitv'
 "Plug 'junegunn/limelight'      " only syntax highlight a portion of the document to make it easier to focus
 "Plug 'junegunn/goyo'           " distraction free mode for vim
+
+" deps
+Plug 'nvim-lua/plenary.nvim'
+
+" completion
+"Plug 'scrooloose/syntastic'     " integration with language features, although it's not been working well
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+
+" diagnostics
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/trouble.nvim'
+Plug 'ray-x/lsp_signature.nvim'
 
 " macros
 "Plug 'christoomey/vim-tmux-navigator'
