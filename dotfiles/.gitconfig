@@ -144,3 +144,5 @@
 [includeIf "gitdir/i:*Work*"]
     path = ~/.gitconfig.work
 
+[include]
+  path = ~/.gitconfig.local
