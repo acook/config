@@ -151,8 +151,14 @@ elif [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   source "$HOME/.rvm/scripts/rvm"
 fi
 
+# Set up Cargo for Rust development
 if [[ -n $(command -v cargo) ]]; then
   PATH="$PATH:$HOME/.cargo/bin/"
+fi
+
+# Set up for adb for Android deployments
+if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
+ export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
 fi
 
 # Source machine-specific configurations if available
