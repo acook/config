@@ -29,6 +29,8 @@ switch (osinfo.bash | read -L)
     fish_add_path -a "/opt/local/bin"
 end
 
+status --is-interactive; and rbenv init - fish | source
+
 fapid "$HOME/.rbenv/shims"
 fapid "$HOME/.rbenv/bin"
 fapid "$HOME/.nimble/bin"
