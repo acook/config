@@ -41,6 +41,7 @@
   b  = branch
 
   amend = commit --amend
+  rebase = pull --rebase
 
   stashs  = stash --keep-index
   unstash = stash pop
