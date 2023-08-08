@@ -154,6 +154,7 @@ fi
 # Set up Cargo for Rust development
 if [[ -n $(command -v cargo) ]]; then
   PATH="$PATH:$HOME/.cargo/bin/"
+  source "$HOME/.cargo/env"
 fi
 
 # Set up for adb for Android deployments
