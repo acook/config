@@ -159,7 +159,7 @@ fi
 
 # Set up for adb for Android deployments
 if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
- export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
+  export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
 fi
 
 # Source machine-specific configurations if available
