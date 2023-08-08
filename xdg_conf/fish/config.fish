@@ -31,10 +31,9 @@ switch (osinfo.bash | read -L)
     echo "no os detected"
 end
 
+fapid "$HOME/.rbenv/bin"
 status --is-interactive; and rbenv init - fish | source
 
-fapid "$HOME/.rbenv/shims"
-fapid "$HOME/.rbenv/bin"
 fapid "$HOME/.nimble/bin"
 fapid "$HOME/.cargo/bin"
 fapid "$HOME/go/bin"
