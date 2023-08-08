@@ -26,7 +26,9 @@ switch (osinfo.bash | read -L)
       warn " -- WARNING: homebrew not detected"
     end
   case linux
-    fish_add_path -a "/opt/local/bin"
+    fapid -a "/opt/local/bin"
+  case '*'
+    echo "no os detected"
 end
 
 status --is-interactive; and rbenv init - fish | source
