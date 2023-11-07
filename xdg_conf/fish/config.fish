@@ -38,6 +38,7 @@ fapid "$HOME/.nimble/bin"
 fapid "$HOME/.cargo/bin"
 fapid "$HOME/go/bin"
 fapid "/usr/local/share/python"
+fapid "$HOME/.local/bin"
 
 # same as "search string"
 # except that it matches substrings as well
