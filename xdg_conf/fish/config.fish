@@ -32,7 +32,11 @@ switch (osinfo.bash | read -L)
 end
 
 fapid "$HOME/.rbenv/bin"
-status --is-interactive; and rbenv init - fish | source
+if type -q rbenv
+  status --is-interactive; and rbenv init - fish | source
+  fapid "$HOME/.rbenv/shims"
+  fapid "$HOME/.rbenv/bin"
+end
 
 fapid "$HOME/.nimble/bin"
 fapid "$HOME/.cargo/bin"
