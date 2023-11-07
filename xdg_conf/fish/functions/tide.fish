@@ -1,12 +1,12 @@
-function tide
+function tide --description 'Manage your Tide prompt'
     argparse --stop-nonopt v/version h/help -- $argv
 
     if set -q _flag_version
-        printf '%s\n' "tide, version 5.0.1"
+        echo 'tide, version 6.0.1'
     else if set -q _flag_help
         _tide_help
     else if functions --query _tide_sub_$argv[1]
-        _tide_sub_$argv[1] $argv[2..-1]
+        _tide_sub_$argv[1] $argv[2..]
     else
         _tide_help
         return 1
@@ -14,7 +14,7 @@ function tide
 end
 
 function _tide_help
-    printf '%s\n' \
+    printf %s\n \
         'Usage: tide [options] subcommand [options]' \
         '' \
         'Options:' \
@@ -23,5 +23,6 @@ function _tide_help
         '' \
         'Subcommands:' \
         '  configure   run interactive configuration wizard' \
+        '  reload      reload tide configuration' \
         '  bug-report  print info for use in bug reports'
 end

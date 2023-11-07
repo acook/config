@@ -1,4 +1,6 @@
 function style
+    set -g _tide_configure_current_options
+
     _tide_title 'Prompt Style'
 
     _tide_option 1 Lean
@@ -13,15 +15,15 @@ function style
     _load_config rainbow
     _tide_display_prompt
 
-    _tide_menu
+    _tide_menu (status function) --no-restart
     switch $_tide_selected_option
-        case 1
+        case Lean
             _load_config lean
             set -g _tide_configure_style lean
-        case 2
+        case Classic
             _load_config classic
             set -g _tide_configure_style classic
-        case 3
+        case Rainbow
             _load_config rainbow
             set -g _tide_configure_style rainbow
     end
@@ -29,5 +31,6 @@ function style
 end
 
 function _load_config -a name
-    string replace --regex '^' 'set -g fake_' <(status dirname)/../../configs/$name.fish | source
+    string replace -r '^' 'set -g fake_' <(status dirname)/../../icons.fish | source
+    string replace -r '^' 'set -g fake_' <(status dirname)/../../configs/$name.fish | source
 end
