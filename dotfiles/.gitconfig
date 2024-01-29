@@ -74,6 +74,11 @@
   opendiff = difftool --diff-filter=M --tool=opendiff
   p4diff = difftool --diff-filter=M --tool=p4merge
 
+  oldest = "!git log --follow --pretty=%H -- \"$*\" | tail -n 1 #"
+  oldestdate = "!git isodate $(git oldest \"$*\") #"
+
+  isodate = show --format=%ad --date=format:'%Y-%m-%dT%H:%M:%S%z' --no-patch
+
 [mergetool "p4merge"]
 	cmd = ~/Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
   keepTemporaries = false
