@@ -76,6 +76,18 @@ function setdefault --no-scope-shadowing
     set -q $argv[1] || set $argv[1] $argv[2..-1]
 end
 
+if test -e /home/linuxbrew/.linuxbrew/bin/brew
+  env SHELL=fish /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
+end
+
+if test -d (brew --prefix)"/share/fish/completions"
+  set -p fish_complete_path (brew --prefix)/share/fish/completions
+end
+
+if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+  set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+end
+
 setdefault LOCAL_FISH_CONFIG ~/.local.config.fish
 
 if test -e $LOCAL_FISH_CONFIG
