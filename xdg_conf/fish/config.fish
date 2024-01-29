@@ -76,6 +76,10 @@ function setdefault --no-scope-shadowing
     set -q $argv[1] || set $argv[1] $argv[2..-1]
 end
 
+if type -q bat
+  set MANPAGER "bat --language man --style=plain"
+end
+
 if test -e /home/linuxbrew/.linuxbrew/bin/brew
   env SHELL=fish /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
 end
