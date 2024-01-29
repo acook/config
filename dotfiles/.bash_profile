@@ -105,6 +105,10 @@ if [[ -n $(command -v most) ]]; then
   export PAGER="most"
 fi
 
+if [[ -n $(command -v bat) ]]; then
+  export MANPAGER="bat --language man --style=plain"
+fi
+
 # Set GitHub CLI Tool's Pager since it doesn't agree with most, sadly
 export GH_PAGER="\less -r --mouse -q"
 
