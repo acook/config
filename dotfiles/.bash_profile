@@ -158,7 +158,7 @@ elif [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
 fi
 
 # Set up Cargo for Rust development
-if [[ -n $(command -v cargo) ]]; then
+if [[ -d "$HOME/.cargo/bin" ]]; then
   PATH="$PATH:$HOME/.cargo/bin/"
   source "$HOME/.cargo/env"
 fi
