@@ -142,14 +142,12 @@ fi
 # Load up the default SSH key
 if [[ -n $(command -v ssh-agent) ]]; then
   eval "$(ssh-agent -s)"
-  ssh-add "$HOME/.ssh/id_rsa"
 fi
 
 # Handle potential Ruby version managers
 RBENV_EXEC="$HOME/.rbenv/bin/rbenv"
 if [[ -s $RBENV_EXEC ]]; then
   # Load rbenv if available (preferred)
-  PATH="$PATH:$HOME/.rbenv/bin/"
   eval "$($RBENV_EXEC init -)"
 elif [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   # Load RVM if available
