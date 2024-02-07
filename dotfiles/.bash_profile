@@ -133,9 +133,10 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # Enable bash's programmable completion features
-COMPLETION="/etc/bash_completion"
-if [[ -s $COMPLETION ]] && ! shopt -oq posix; then
-  source "$COMPLETION"
+if [[ -s "/etc/bash_completion" ]] && ! shopt -oq posix; then
+  source "/etc/bash_completion"
+elif [[ -s "/usr/share/bash-completion/bash_completion" ]]; then
+  source "/usr/share/bash-completion/bash_completion"
 fi
 
 # Load up the default SSH key
