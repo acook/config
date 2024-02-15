@@ -28,10 +28,16 @@ end
 # load all files in my secondary config directory (away from fisher's mess)
 if status --is-interactive
   for f in $FISHCONFIGDIR/conf.user.d/*
+    #echo "loading: $f"
     if test -f "$f"
       source "$f"
     end
   end
+end
+
+# usage: setdefault <varname> <fallback>
+function setdefault --no-scope-shadowing
+  set -q $argv[1] || set $argv[1] $argv[2..-1]
 end
 
 setdefault LOCAL_FISH_CONFIG ~/.local.config.fish
