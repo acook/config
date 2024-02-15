@@ -9,22 +9,11 @@ fapid "/usr/sbin"
 fapid "$HOME/bin"
 fapid "$HOME/xbin"
 
+set -l FISHCONFIGDIR (realpath (status dirname))
+
 switch (osinfo.bash | read -L)
   case osx
-    if type -q brew
-      # Ensure that the Homebrew prefix variable is set
-      if not set -q HOMEBREW_PREFIX
-        set -gx HOMEBREW_PREFIX (brew --prefix)
-      end
-
-      # Give precedence to where Homebrew installs their binaries
-      fapid "$HOMEBREW_PREFIX/sbin"
-      fapid "$HOMEBREW_PREFIX/bin"
-      fapid -p "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
-      fapid "$HOMEBREW_PREFIX/opt/llvm/bin"
-    else
-      warn " -- WARNING: homebrew not detected"
-    end
+    # insert any macos specific changes
   case linux
     fapid -a "/opt/local/bin"
   case '*'
@@ -80,16 +69,10 @@ if type -q bat
   set MANPAGER "bat --language man --style=plain"
 end
 
-if test -e /home/linuxbrew/.linuxbrew/bin/brew
-  env SHELL=fish /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
-end
-
-if test -d (brew --prefix)"/share/fish/completions"
-  set -p fish_complete_path (brew --prefix)/share/fish/completions
-end
-
-if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-  set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+for f in $FISHCONFIGDIR/conf.d2/*
+  if test -f "$f"
+    source "$f"
+  end
 end
 
 setdefault LOCAL_FISH_CONFIG ~/.local.config.fish
