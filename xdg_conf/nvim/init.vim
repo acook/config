@@ -15,7 +15,7 @@ let $plugd = "" . xdg . "/nvim/plugins.vim"
 source $plugd
 
 " load directory of additional configs
-let $rd = "" . xdg . "/nvim/rd.d/**/*.vim"
+let $rd = expand(xdg . '/nvim/rd.d/\*\*/\*.vim')
 runtime $rd
 
 let color = "molokai"
