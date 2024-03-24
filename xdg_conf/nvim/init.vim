@@ -4,7 +4,10 @@ set nomodeline
 " prepare plugin settings
 source $HOME/.vim/config/plugin_setup.vim
 " specify plugins to load
-source $HOME/.config/nvim/plugins.vim
+source $XDG_CONFIG_HOME/nvim/plugins.vim
+
+" load directory of additional configs
+runtime $XDG_CONFIG_HOME/nvim/rd.d/**/*.vim
 
 let color = "molokai"
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : 'italic', 'sp' : 'fg' }
