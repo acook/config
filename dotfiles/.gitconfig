@@ -43,9 +43,9 @@
   w  = whatchanged
   nb = checkout -b
   b  = branch
+  down = pull --rebase
 
   amend = commit --amend
-  rebase = pull --rebase
 
   stashs  = stash --keep-index
   unstash = stash pop
