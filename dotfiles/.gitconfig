@@ -3,10 +3,14 @@
   email = github@anthonymcook.com
 
 [core]
-  pager = less -FRSX
+  #pager = less -FRSX
+  pager = delta
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   excludesfile = ~/.gitignore_global
   editor = nvim
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
 
 [color]
   ui = auto
@@ -86,7 +90,27 @@
   keepBackup = false
 
 [difftool "p4merge"]
-	cmd = ~/Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
+  cmd = ~/Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
+
+[delta]
+  navigate = true
+  features = decorations
+  default-language = bash
+
+[delta "interactive"]
+  keep-plus-minus-markers = false
+
+[delta "decorations"]
+  syntax-theme = Monokai Extended Origin
+  commit-decoration-style = blue ol
+  commit-style = raw
+  file-style = omit
+  hunk-header-decoration-style = blue box
+  hunk-header-file-style = red
+  hunk-header-line-number-style = "#067a00"
+  hunk-header-style = file line-number syntax
+  line-numbers = true
+  side-by-side = true
 
 [push]
   default = current
