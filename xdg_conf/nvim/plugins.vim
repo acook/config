@@ -78,6 +78,7 @@ Plug 'Prosumma/vim-rebol'
 Plug 'elixir-editors/vim-elixir'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'        " pandoc should be activated last in case it needs a syntax file
+Plug 'isobit/vim-caddyfile'
 
 " tools
 "Plug 'edkolev/promptline'
