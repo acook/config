@@ -1,13 +1,22 @@
 set modelines=0
 set nomodeline
 
+" XDG_CONFIG_HOME may not always be set
+if len($XDG_CONFIG_HOME) == 0
+  let xdg = "~/.config"
+else
+  let xdg = "$XDG_CONFIG_HOME"
+endif
+
 " prepare plugin settings
 source $HOME/.vim/config/plugin_setup.vim
 " specify plugins to load
-source $XDG_CONFIG_HOME/nvim/plugins.vim
+let $plugd = "" . xdg . "/nvim/plugins.vim"
+source $plugd
 
 " load directory of additional configs
-runtime $XDG_CONFIG_HOME/nvim/rd.d/**/*.vim
+let $rd = "" . xdg . "/nvim/rd.d/**/*.vim"
+runtime $rd
 
 let color = "molokai"
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : 'italic', 'sp' : 'fg' }
