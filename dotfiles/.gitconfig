@@ -120,11 +120,13 @@
 
 [merge]
   default = current
+  conflictstyle = diff3
   tool = p4merge
 
 [diff]
-	tool = vimdiff
   prompt = false
+  colorMoved = default
+  #tool = vimdiff
 
 [mergetool]
   keepBackup = false
