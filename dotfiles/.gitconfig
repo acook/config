@@ -84,9 +84,9 @@
   isodate = show --format=%ad --date=format:'%Y-%m-%dT%H:%M:%S%z' --no-patch
 
 [mergetool "p4merge"]
-	cmd = ~/Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
+  cmd = ~/Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
   keepTemporaries = false
-	trustExitCode = false
+  trustExitCode = false
   keepBackup = false
 
 [difftool "p4merge"]
@@ -120,15 +120,15 @@
 
 [merge]
   default = current
-	tool = p4merge
+  tool = p4merge
 
 [diff]
 	tool = vimdiff
-	prompt = false
+  prompt = false
 
 [mergetool]
-	keepBackup = false
-	prompt = false
+  keepBackup = false
+  prompt = false
 
 [url "http://github.com/"]
   insteadOf = "gh:"
@@ -151,25 +151,25 @@
   merge = refs/heads/master
 
 [github]
-	user = acook
-	username = acook
+  user = acook
+  username = acook
 
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 [gpg]
-	program = gpg
+  program = gpg
 [commit]
 	gpgSign = true
 [tag]
 	forceSignAnnotated = true
 [init]
-	defaultBranch = main
+  defaultBranch = main
 
 [include]
   path = ~/.gitconfig.local
