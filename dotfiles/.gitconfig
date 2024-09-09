@@ -179,3 +179,5 @@
 [includeIf "gitdir/i:*Work*"]
   path = ~/.gitconfig.work
 
+[checkout]
+	defaultRemote = origin
