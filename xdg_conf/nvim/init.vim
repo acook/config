@@ -48,7 +48,7 @@ set hidden                                                                      
 set conceallevel=2 concealcursor=i                                              "neosnippets conceal marker
 set splitright                                                                  "Set up new vertical splits positions
 set splitbelow                                                                  "Set up new horizontal splits positions
-set inccommand=nosplit                                                          "Show substitute changes immidiately in separate split
+set inccommand=nosplit                                                          "Show substitute changes immediately in separate split
 set exrc                                                                        "Allow using local vimrc
 set secure                                                                      "Forbid autocmd in local vimrc
 set grepprg=rg\ --smart-case\ --color=never\ --no-heading\ -H\ -n\ --column     "Use ripgrep for grepping
@@ -86,7 +86,7 @@ set wildmenu
 " ambiguity.
 set wildmode=list:longest
 
-" Make clipbord work on OS X. This makes copy/paste operations trivial between
+" Make clipboard work on OS X. This makes copy/paste operations trivial between
 " vim and other applications since they all use the same clipboard now.
 if $TMUX == ''
   set clipboard+=unnamed
@@ -159,7 +159,7 @@ augroup vimrc
   autocmd InsertLeave * set cul                                                 "Add cursorline highlight in normal mode
   autocmd FocusGained,BufEnter * silent! exe 'checktime'                        "Refresh file when vim gets focus
   autocmd FileType vim inoremap <buffer><silent><C-Space> <C-x><C-v>
-  autocmd FileType markdown setlocal spell
+  autocmd FileType markdown setlocal spell                                      "Enable spellchecking in Markdown files
   autocmd FileType json setlocal equalprg=python\ -m\ json.tool
 augroup END
 
