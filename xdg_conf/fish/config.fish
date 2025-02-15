@@ -12,17 +12,17 @@ fapid "$HOME/xbin"
 
 set -l FISHCONFIGDIR (realpath (status dirname))
 
-switch (osinfo.bash | read -L)
-  case osx
+switch (uname)
+  case Darwin
     # insert any macos specific changes
-  case linux
+  case Linux
     fapid -a "/opt/local/bin"
 
     function ls
       command ls -AFhxX --color --group-directories-first $argv
     end
   case '*'
-    echo "unknown os detected"
+    echo "unknown os detected: "(uname)
 end
 
 # load all files in my secondary config directory (away from fisher's mess)
