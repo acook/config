@@ -37,11 +37,6 @@ if status --is-interactive
   end
 end
 
-# usage: setdefault <varname> <fallback>
-function setdefault --no-scope-shadowing
-  set -q $argv[1] || set $argv[1] $argv[2..-1]
-end
-
 setdefault LOCAL_FISH_CONFIG ~/.local.config.fish
 
 if test -e $LOCAL_FISH_CONFIG
