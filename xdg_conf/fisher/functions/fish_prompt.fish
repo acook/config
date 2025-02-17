@@ -38,7 +38,7 @@ if contains newline $_tide_left_items # two line prompt initialization
         eval "
 function fish_prompt
     _tide_status=\$status _tide_pipestatus=\$pipestatus if not set -e _tide_repaint
-        jobs -q && set -lx _tide_jobs
+        jobs -q && jobs -p | count | read -lx _tide_jobs
         $fish_path -c \"set _tide_pipestatus \$_tide_pipestatus
 set _tide_parent_dirs \$_tide_parent_dirs
 PATH=\$(string escape \"\$PATH\") CMD_DURATION=\$CMD_DURATION fish_bind_mode=\$fish_bind_mode set $prompt_var (_tide_2_line_prompt)\" &
@@ -66,7 +66,7 @@ end"
         eval "
 function fish_prompt
     _tide_status=\$status _tide_pipestatus=\$pipestatus if not set -e _tide_repaint
-        jobs -q && set -lx _tide_jobs
+        jobs -q && jobs -p | count | read -lx _tide_jobs
         $fish_path -c \"set _tide_pipestatus \$_tide_pipestatus
 set _tide_parent_dirs \$_tide_parent_dirs
 PATH=\$(string escape \"\$PATH\") CMD_DURATION=\$CMD_DURATION fish_bind_mode=\$fish_bind_mode set $prompt_var (_tide_2_line_prompt)\" &
@@ -98,7 +98,7 @@ else # one line prompt initialization
 function fish_prompt
     set -lx _tide_status \$status
     _tide_pipestatus=\$pipestatus if not set -e _tide_repaint
-        jobs -q && set -lx _tide_jobs
+        jobs -q && jobs -p | count | read -lx _tide_jobs
         $fish_path -c \"set _tide_pipestatus \$_tide_pipestatus
 set _tide_parent_dirs \$_tide_parent_dirs
 PATH=\$(string escape \"\$PATH\") CMD_DURATION=\$CMD_DURATION fish_bind_mode=\$fish_bind_mode set $prompt_var (_tide_1_line_prompt)\" &
@@ -125,7 +125,7 @@ end"
         eval "
 function fish_prompt
     _tide_status=\$status _tide_pipestatus=\$pipestatus if not set -e _tide_repaint
-        jobs -q && set -lx _tide_jobs
+        jobs -q && jobs -p | count | read -lx _tide_jobs
         $fish_path -c \"set _tide_pipestatus \$_tide_pipestatus
 set _tide_parent_dirs \$_tide_parent_dirs
 PATH=\$(string escape \"\$PATH\") CMD_DURATION=\$CMD_DURATION fish_bind_mode=\$fish_bind_mode set $prompt_var (_tide_1_line_prompt)\" &
@@ -153,13 +153,19 @@ if test "$tide_prompt_transient_enabled" = true
     function _tide_enter_transient
         # If the commandline will be executed, or is empty
         if commandline --is-valid || test -z "$(commandline)"
-            set -g _tide_transient
-            set -g _tide_repaint
-            commandline -f repaint
+            # Pager open usually means selecting, not running
+            # Can be untrue, but it's better than the alternative
+            if not commandline --paging-mode
+                set -g _tide_transient
+                set -g _tide_repaint
+                commandline -f repaint
+            end
         end
         commandline -f execute
     end
 
     bind \r _tide_enter_transient
+    bind \n _tide_enter_transient
     bind -M insert \r _tide_enter_transient
+    bind -M insert \n _tide_enter_transient
 end

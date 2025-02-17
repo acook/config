@@ -25,6 +25,8 @@ switch (uname)
     echo "unknown os detected: "(uname)
 end
 
+source "$FISHCONFIGDIR/fisher_setup.fish"
+
 # load all files in my secondary config directory (away from fisher's mess)
 if status --is-interactive
   for f in $FISHCONFIGDIR/conf.user.d/*
