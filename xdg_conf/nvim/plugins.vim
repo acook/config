@@ -7,6 +7,11 @@ Plug 'godlygeek/csapprox'
 " interface
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'       " consider https://github.com/junegunn/fzf.vim
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'crispgm/telescope-heading.nvim'
+Plug 'AckslD/nvim-neoclip.lua'
+"Plug 'gbprod/yanky.nvim'        " Similar to NeoClip above
 Plug 'itchyny/lightline.vim'    " this might be neat to add https://github.com/mengelbrecht/lightline-bufferline
 Plug 'nathanaelkane/vim-indent-guides' " show tab depths
 "Plug 'ervandew/supertab'        " better tab completion
