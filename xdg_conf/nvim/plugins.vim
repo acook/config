@@ -22,9 +22,14 @@ Plug 'lilydjwg/colorizer'       " display colors in their color like #FF0
 " deps
 Plug 'nvim-lua/plenary.nvim'
 
+" lsp
+Plug 'williamboman/mason.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+
 " completion
 "Plug 'scrooloose/syntastic'     " integration with language features, although it's not been working well
-Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -79,6 +84,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'        " pandoc should be activated last in case it needs a syntax file
 Plug 'isobit/vim-caddyfile'
+Plug 'ollykel/v-vim'
 
 " tools
 "Plug 'edkolev/promptline'
