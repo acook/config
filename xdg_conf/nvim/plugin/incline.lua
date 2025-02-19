@@ -7,6 +7,7 @@ local status, _ = pcall(require, "lualine")
 if status then
   local lc = require("lualine").get_config()
   if lc.options then
+    -- for some reason this wasn't working so I hard coded it for now
     --theme = require("lualine.themes." .. lc.options.theme)
     theme = require("lualine.themes.powerline")
 
@@ -18,6 +19,8 @@ if status then
     I.rbg = theme.replace.a.bg
     I.vfg = theme.visual.a.fg
     I.vbg = theme.visual.a.bg
+    I.zfg = theme.inactive.a.fg
+    I.zbg = theme.inactive.a.bg
   end
 end
 
@@ -52,7 +55,9 @@ require('incline').setup {
     overlap = { borders = true, tabline = true, winbar = true, statusline = true },
     margin = { vertical = 0, horizontal = 0 },
     placement = { vertical = 'top' },
-    winhighlight = { Normal = 'InclineNormalNC' },
+    winhighlight = {
+      inactive = { Normal = 'InclineNormalNC' },
+    },
   },
   render = function(props)
     local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
@@ -63,22 +68,26 @@ require('incline').setup {
     local modified = vim.bo[props.buf].modified
 
     m = vim.api.nvim_get_mode().mode
-    if m:match("n") then
+    if not props.focused then
+      I.fg = I.zfg
+      I.bg = I.zbg
+    elseif m:match('n') then
       I.fg = I.nfg
       I.bg = I.nbg
-    elseif m:match("i") then
+    elseif m:match('i') then
       I.fg = I.ifg
       I.bg = I.ibg
-    elseif m:match("R") then
+    elseif m:match('R') then
       I.fg = I.rfg
       I.bg = I.rbg
-    elseif m:match("v") or m:match("V") or m:match("") then
+    elseif m:match('v') or m:match('V') or m:match('') then
       I.fg = I.vfg
       I.bg = I.vbg
     else
-      I.fg = "#000000"
-      I.bg = "#FFFFFF"
+      I.fg = '#000000'
+      I.bg = '#FFFFFF'
     end
+
     --print('MODE:' .. m .. '(' .. I.bg .. ')')
 
     return {
