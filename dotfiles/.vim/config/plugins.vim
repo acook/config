@@ -15,9 +15,8 @@ Plug 'ervandew/supertab'
 Plug 'mbbill/undotree'
 Plug 'scrooloose/syntastic'
 "Plug 'terryma/vim-multiple-cursors'
-"Plug 'sjbach/lusty'
 "Plug 'scrooloose/nerdtree'
-"Plug 'gregsexton/gitv'
+"Plug 'sankhesh/gitv'                " interactive git browser
 
 " macros
 Plug 'fatih/vim-go'
@@ -42,7 +41,6 @@ Plug 'tomasr/molokai'
 "Plug 'XRDX/vim-color'
 "Plug 'croaker/mustang-vim'
 "Plug 'mitsuhiko/fruity-vim-colorscheme'
-Plug 'eddsteel/vim-lanai'
 Plug 'jaromero/vim-monokai-refined'
 "Plug 'lsdr/monokai'
 "Plug 'sickill/vim-monokai'
@@ -52,6 +50,7 @@ Plug 'benjaminwhite/Benokai'
 "Plug 'tpope/vim-vividchalk'
 
 " syntax
+Plug 'euclidianAce/BetterLua.vim'
 Plug 'rhysd/vim-crystal'
 Plug 'zaiste/tmux.vim'
 Plug 'slim-template/vim-slim'
