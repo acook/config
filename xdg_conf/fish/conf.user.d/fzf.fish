@@ -12,3 +12,5 @@ if type -q fzf_configure_bindings
   fzf_configure_bindings --history=\e\cr
 end
 
+# tell the fzf plugin to prioritize filenames
+set -x fzf_directory_opts --scheme=path
