@@ -31,14 +31,35 @@ require('telescope').setup{
       override_generic_sorter = true,  -- override the generic sorter
       override_file_sorter = true,     -- override the file sorter
       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                        -- the default case_mode is "smart_case"
+                                       -- the default case_mode is "smart_case"
     }
   }
 }
 
--- To get fzf loaded and working with telescope, you need to call
--- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('heading')
 require('neoclip').setup()
 require('telescope').load_extension('neoclip')
+require('telescope').load_extension('ctags_outline')
+require('telescope').load_extension('filelinks')
+require("telescope").load_extension('zoxide')
+
+local filelinks = require('telescope').extensions['filelinks']
+filelinks.setup({
+    -- Wiki Links
+    format_string = '[[%s|%s]]',
+    url_first = false
+})
+-- insert mode for writing continuously
+--vim.keymap.set('i', '<C-l>', filelinks.make_filelink, { desc = '[<C>]reate [l]ink in Insert Mode' })
+-- normal mode
+--vim.keymap.set('n', '<Leader>ml', filelinks.make_filelink, { desc = '[m]ake file [l]ink' })
+
+-- for ctags
+-- show current buf outline
+--:Telescope ctags_outline
+--require('telescope').extensions.ctags_outline.outline()
+
+-- show all opened buf outline(use current buf filetype)
+--:Telescope ctags_outline buf=all
+--require('telescope').extensions.ctags_outline.outline({buf='all'})

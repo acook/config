@@ -1,40 +1,62 @@
 " VimPlug format plugin loading
 call plug#begin('~/.vim/bundle')
 
+" deps
+Plug 'nvim-lua/plenary.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
 " background
 Plug 'godlygeek/csapprox'
 
 " interface
 Plug 'airblade/vim-gitgutter'
-Plug 'ctrlpvim/ctrlp.vim'       " consider https://github.com/junegunn/fzf.vim
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'crispgm/telescope-heading.nvim'
-Plug 'AckslD/nvim-neoclip.lua'
-"Plug 'gbprod/yanky.nvim'        " Similar to NeoClip above
-Plug 'itchyny/lightline.vim'    " this might be neat to add https://github.com/mengelbrecht/lightline-bufferline
+" https://github.com/nvim-telescope/telescope-media-files.nvim " has lots of external deps
 Plug 'nathanaelkane/vim-indent-guides' " show tab depths
-"Plug 'ervandew/supertab'        " better tab completion
 Plug 'mbbill/undotree'          " allow you to navigate undo branches
 Plug 'lilydjwg/colorizer'       " display colors in their color like #FF0
 "Plug 'terryma/vim-multiple-cursors'
-"Plug 'sjbach/lusty'            " a better file explorer
-"Plug 'scrooloose/nerdtree'     " another file explorer
-"Plug 'gregsexton/gitv'
-"Plug 'junegunn/limelight'      " only syntax highlight a portion of the document to make it easier to focus
+"Plug 'NeogitOrg/neogit'         " interactive git history explorer
+"Plug 'junegunn/limelight.vim'      " only syntax highlight a portion of the document to make it easier to focus
 "Plug 'junegunn/goyo'           " distraction free mode for vim
 
-" deps
-Plug 'nvim-lua/plenary.nvim'
+" statusline / tabline / bufferline / windowline / commandline / etc
+Plug 'nvim-lualine/lualine.nvim' " lua featureful but fast statusline
+Plug 'b0o/incline.nvim'          " floating pane labels, ideal for global statuslines
+"Plug 'willothy/nvim-cokeline'    " customizable bufferline framework
+"Plug 'gorbit99/codewindow.nvim' " a colorized minimap using braille characters
+"Plug 'MunifTanjim/nui.nvim'     " UI component library, used by noice
+"Plug 'nvim-notify'              " fancy notifications for plugins
+"Plug 'folke/noice.nvim'         " completely overhaul the Vim commandline experience
+"Plug 'houtsnip/vim-emacscommandline' " better navigation for the Vim commandline
+"Plug 'gelguy/wilder.nvim'            " improve suggestions for the Vim commandline
+
+" file / buffer navigation
+Plug 'ctrlpvim/ctrlp.vim'       " fallback for features Telescope lacks, probably removed soon
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.*' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'crispgm/telescope-heading.nvim'
+Plug 'fcying/telescope-ctags-outline.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'PhilippFeO/telescope-filelinks.nvim'
+Plug 'jvgrootveld/telescope-zoxide' " Telescope integration for zoxide
+Plug 'Zane-/cder.nvim'           " Telescope plugin to change Vim's CWD/PWD
+Plug 'AckslD/nvim-neoclip.lua'   " Telescope plugin to interact with the clipboard
+"Plug 'gbprod/yanky.nvim'         " Similar to NeoClip above
+"Plug 'Xuyuanp/yanil'             " a file explorer
+"Plug 'nvim-neo-tree/neo-tree.nvim' " a file explorer
 
 " lsp
 Plug 'williamboman/mason.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'ray-x/lsp_signature.nvim'
+"Plug 'Saghen/blink.cmp'         " "beta quality" completion plugin for LSP
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " does parsing and stuff
 
 " completion
 "Plug 'scrooloose/syntastic'     " integration with language features, although it's not been working well
+"Plug 'ervandew/supertab'        " better tab completion
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -43,9 +65,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
 " diagnostics
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
-Plug 'ray-x/lsp_signature.nvim'
 
 " macros
 "Plug 'christoomey/vim-tmux-navigator'
@@ -53,6 +73,7 @@ Plug 'ray-x/lsp_signature.nvim'
 "Plug 'tpopt/vim-abolish'
 "Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim'
 "Plug 'tpope/vim-repeat'
 "Plug 'tpope/vim-surround'
 "Plug 'tpope/vim-unimpaired'
@@ -67,6 +88,7 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'tomasr/molokai'
 
 " syntax
+Plug 'euclidianAce/BetterLua.vim'
 Plug 'fatih/vim-go'
 Plug 'rhysd/vim-crystal'
 Plug 'zaiste/tmux.vim'
@@ -95,5 +117,6 @@ Plug 'ollykel/v-vim'
 "Plug 'edkolev/promptline'
 Plug 'edkolev/tmuxline.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'epwalsh/obsidian.nvim', { 'tag': '*' }
 
 call plug#end()

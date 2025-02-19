@@ -110,6 +110,7 @@ set mousehide
 set mouse+=a
 
 highlight Pmenu ctermbg=238 gui=bold
+lua require('init')
 
 " set the spellcheck language
 setlocal spell spelllang=en_us
@@ -180,14 +181,15 @@ map <leader>d :w !diff % -<CR>
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<CR>
 
-" for CtrlP
-map <leader>ff :CtrlP<CR>
-map <leader>fb :CtrlPBuffer<CR>
-map <leader>ft :CtrlPTag<CR>
-map <leader>fq :CtrlPQuickFix<CR>
+" for CtrlP and Telescope
+map <leader>ff :Telescope find_files<CR>
+map <leader>fb :Telescope buffers<CR>
+map <leader>ft :Telescope tags<CR>
+map <leader>fq :Telescope quickfix<CR>
 map <leader>fd :CtrlPDir<CR>
 map <leader>fr :CtrlPRTS<CR>
 map <leader>fm :CtrlPMRU<CR>
+map <leader>fu :CtrlPUndo<CR>
 
 " for undotree
 map <leader>u :UndotreeToggle<CR>
