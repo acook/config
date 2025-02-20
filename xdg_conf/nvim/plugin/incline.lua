@@ -78,11 +78,9 @@ require('incline').setup {
     local modified = vim.bo[props.buf].modified
 
     local colors = get_colors(props, ft_color)
-    local background = xei.bghex('Normal')
 
     return {
-      {'', guifg = colors.bg, guibg = background},
-      ft_icon and { '', ft_icon, ' ', guifg = colors.fg } or '',
+      ft_icon and { ' ', ft_icon, ' ', guifg = colors.fg } or '',
       ' ',
       { filename, gui = modified and 'bold,italic' or 'bold' },
       ' ',
