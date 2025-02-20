@@ -46,13 +46,13 @@ function get_fallback_colors(props, ft_color)
 end
 
 function get_colors(props, ft_color)
-  if not ft_color then
+  if not ft_color then -- unknown filetypes have no color
     ft_color = '#000000'
   end
   local status, lualine = pcall(require, "lualine")
-  if status then
+  if status then -- lualine detected
     return get_lualine_colors(lualine, props, ft_color)
-  else
+  else -- lualine not detected
     return get_fallback_colors(props, ft_color)
   end
 end
@@ -67,9 +67,6 @@ require('incline').setup {
     overlap = { borders = true, tabline = true, winbar = true, statusline = true },
     margin = { vertical = 0, horizontal = 0 },
     placement = { vertical = 'top' },
-    winhighlight = {
-      inactive = { Normal = 'InclineNormalNC' },
-    },
   },
   render = function(props)
     local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
@@ -89,5 +86,5 @@ require('incline').setup {
       guifg = colors.fg,
       guibg = colors.bg,
     }
-  end,
+  end
 }
