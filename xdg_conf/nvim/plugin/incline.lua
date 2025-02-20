@@ -26,7 +26,7 @@ function get_lualine_colors(lualine, props, ft_color)
     bg = theme.replace.a.bg
   elseif m:match('v') or m:match('V') or m:match('') then
     fg = theme.visual.a.fg
-    bg = theme.visual.a.fg
+    bg = theme.visual.a.bg
   else -- unknown mode!
     fg = '#000000'
     bg = '#FFFFFF'
