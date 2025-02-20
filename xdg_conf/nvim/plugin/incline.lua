@@ -1,49 +1,61 @@
 local helpers = require 'incline.helpers'
 local devicons = require 'nvim-web-devicons'
 
-local I = {}
+function get_lualine_colors(lualine, props, ft_color)
+  local fg, bg, ifg, ibg
+  local theme_name = lualine.get_config().options.theme
+  local theme = require("lualine.themes." .. theme_name)
+  local m = vim.api.nvim_get_mode().mode
 
-local status, _ = pcall(require, "lualine")
-if status then
-  local lc = require("lualine").get_config()
-  if lc.options then
-    -- for some reason this wasn't working so I hard coded it for now
-    --theme = require("lualine.themes." .. lc.options.theme)
-    theme = require("lualine.themes.powerline")
+  ifg = helpers.contrast_color(ft_color)
+  ibg = ft_color
 
-    I.nfg = theme.normal.a.fg
-    I.nbg = theme.normal.a.bg
-    I.ifg = theme.insert.a.fg
-    I.ibg = theme.insert.a.bg
-    I.rfg = theme.replace.a.fg
-    I.rbg = theme.replace.a.bg
-    I.vfg = theme.visual.a.fg
-    I.vbg = theme.visual.a.bg
-    I.zfg = theme.inactive.a.fg
-    I.zbg = theme.inactive.a.bg
+  if not props.focused then -- inactive window pane
+    fg = theme.inactive.a.fg
+    bg = theme.inactive.a.bg
+    ifg = theme.inactive.a.fg
+    ibg = theme.inactive.a.bg
+  elseif m:match('n') then
+    fg = theme.normal.a.fg
+    bg = theme.normal.a.bg
+  elseif m:match('i') then
+    fg = theme.insert.a.fg
+    bg = theme.insert.a.bg
+  elseif m:match('R') then
+    fg = theme.replace.a.fg
+    bg = theme.replace.a.bg
+  elseif m:match('v') or m:match('V') or m:match('') then
+    fg = theme.visual.a.fg
+    bg = theme.visual.a.fg
+  else -- unknown mode!
+    fg = '#000000'
+    bg = '#FFFFFF'
+  end
+
+  return {fg = fg, bg = bg, ifg = ifg, ibg = ibg}
+end
+
+function get_fallback_colors(props, ft_color)
+  -- set fallback colors here
+  if not props.focused then -- inactive window pane
+    return {fg = '#999999', bg = '#000000', ibg = '#000000', ifg = '#999999'}
+  else -- active window pane
+    local ft_contrast = helpers.contrast_color(ft_color)
+    return {fg = ft_contrast, bg = ft_color, ifg = ft_contrast, ibg = ft_color}
   end
 end
 
-if not I.nbg then
-  -- fallback colors would go here
-  --I.nbg = '#FF0000'
-  --I.nbg = '#00FF00'
-end
-
-function dump(o)
-  if type(o) == 'table' then
-    local s = '{ '
-    for k,v in pairs(o) do
-      if type(k) ~= 'number' then k = '"'..k..'"' end
-      s = s .. '['..k..'] = ' .. dump(v) .. ','
-    end
-    return s .. '} '
+function get_colors(props, ft_color)
+  if not ft_color then
+    ft_color = '#000000'
+  end
+  local status, lualine = pcall(require, "lualine")
+  if status then
+    return get_lualine_colors(lualine, props, ft_color)
   else
-    return tostring(o)
+    return get_fallback_colors(props, ft_color)
   end
 end
-
---print(dump(theme['replace']))
 
 require('incline').setup {
   ignore = {
@@ -62,41 +74,20 @@ require('incline').setup {
   render = function(props)
     local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
     if filename == '' then
-      filename = '[No Name]'
+      filename = ''
     end
     local ft_icon, ft_color = devicons.get_icon_color(filename)
     local modified = vim.bo[props.buf].modified
 
-    m = vim.api.nvim_get_mode().mode
-    if not props.focused then
-      I.fg = I.zfg
-      I.bg = I.zbg
-    elseif m:match('n') then
-      I.fg = I.nfg
-      I.bg = I.nbg
-    elseif m:match('i') then
-      I.fg = I.ifg
-      I.bg = I.ibg
-    elseif m:match('R') then
-      I.fg = I.rfg
-      I.bg = I.rbg
-    elseif m:match('v') or m:match('V') or m:match('') then
-      I.fg = I.vfg
-      I.bg = I.vbg
-    else
-      I.fg = '#000000'
-      I.bg = '#FFFFFF'
-    end
-
-    --print('MODE:' .. m .. '(' .. I.bg .. ')')
+    local colors = get_colors(props, ft_color)
 
     return {
-      ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
+      ft_icon and { ' ', ft_icon, ' ', guibg = colors.ibg, guifg = colors.ifg } or '',
       ' ',
       { filename, gui = modified and 'bold,italic' or 'bold' },
       ' ',
-      guifg = I.fg,
-      guibg = I.bg,
+      guifg = colors.fg,
+      guibg = colors.bg,
     }
   end,
 }
