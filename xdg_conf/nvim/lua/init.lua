@@ -1,8 +1,7 @@
--- make the separation line between windows the same as the gutter color
+local xei = require 'xei'
 
-local gutter = vim.api.nvim_get_hl_by_name('SignColumn', true)
-local winsep = vim.api.nvim_get_hl_by_name('WinSeparator', true)
-
-winsep.foreground = gutter.background
+-- set the color of the window pane separator
+local dim, _ = xei.hlhl({ {'SignColumn', 'bg'}, {'CursorLine','bg'}, {'Conceal', 'fg'} })
+local winsep = { fg = dim }
 vim.api.nvim_set_hl(0, 'WinSeparator', winsep)
 

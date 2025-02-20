@@ -1,5 +1,6 @@
 local helpers = require 'incline.helpers'
 local devicons = require 'nvim-web-devicons'
+local xei = require 'xei'
 
 function get_lualine_colors(lualine, props, ft_color)
   local fg, bg, ifg, ibg
@@ -77,9 +78,11 @@ require('incline').setup {
     local modified = vim.bo[props.buf].modified
 
     local colors = get_colors(props, ft_color)
+    local background = xei.bghex('Normal')
 
     return {
-      ft_icon and { ' ', ft_icon, ' ', guibg = colors.ibg, guifg = colors.ifg } or '',
+      {'', guifg = colors.bg, guibg = background},
+      ft_icon and { '', ft_icon, ' ', guifg = colors.fg } or '',
       ' ',
       { filename, gui = modified and 'bold,italic' or 'bold' },
       ' ',
@@ -88,3 +91,4 @@ require('incline').setup {
     }
   end
 }
+

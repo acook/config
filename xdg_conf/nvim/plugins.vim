@@ -18,6 +18,7 @@ Plug 'lilydjwg/colorizer'       " display colors in their color like #FF0
 "Plug 'NeogitOrg/neogit'         " interactive git history explorer
 "Plug 'junegunn/limelight.vim'      " only syntax highlight a portion of the document to make it easier to focus
 "Plug 'junegunn/goyo'           " distraction free mode for vim
+Plug 'nvim-zh/colorful-winsep.nvim' " highlight the active window like tmux does
 
 " statusline / tabline / bufferline / windowline / commandline / etc
 Plug 'nvim-lualine/lualine.nvim' " lua featureful but fast statusline
