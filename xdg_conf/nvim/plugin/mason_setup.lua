@@ -6,7 +6,7 @@ local lspconfig = require('lspconfig')
 function xdghome()
   local xdg_home = os.getenv('XDG_CONFIG_HOME')
 
-  if xdg_home:len() > 0 then
+  if xdg_home and string.len(xdg_home) > 0 then
     return xdg_home .. '/'
   else
     local home = os.getenv('HOME')
