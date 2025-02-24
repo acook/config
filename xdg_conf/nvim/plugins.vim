@@ -30,6 +30,7 @@ Plug 'b0o/incline.nvim'          " floating pane labels, ideal for global status
 "Plug 'folke/noice.nvim'         " completely overhaul the Vim commandline experience
 "Plug 'houtsnip/vim-emacscommandline' " better navigation for the Vim commandline
 "Plug 'gelguy/wilder.nvim'            " improve suggestions for the Vim commandline
+Plug 'nanozuki/tabby.nvim'
 
 " file / buffer navigation
 Plug 'ctrlpvim/ctrlp.vim'       " fallback for features Telescope lacks, probably removed soon

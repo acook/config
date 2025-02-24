@@ -71,6 +71,24 @@ local function hlhl(names, part)
   return 'NONE', 'NONE'
 end
 
+local function len(table)
+  local i = 0
+  for _ in pairs(table) do i = i + 1 end
+  return i
+end
+
+local circ_nums = {'󰲡', '󰲣', '󰲥', '󰲧', '󰲩', '󰲫', '󰲭', '󰲯', '󰲱', '󰲳'}
+local function circ(num)
+  return circ_nums[num] or circ_nums[10]
+end
+
+local fcirc_nums = {'󰲠', '󰲢', '󰲤', '󰲦', '󰲨', '󰲪', '󰲬', '󰲮', '󰲰', '󰲲'}
+local function fcirc(num)
+  return fcirc_nums[num] or fcirc_nums[10]
+end
+
+
+
 local inspect = require('inspect').inspect
 
 local function pp(value)
@@ -84,5 +102,8 @@ return {
   hlhl = hlhl,
   fghex = fghex,
   bghex = bghex,
+  len = len,
+  circ = circ,
+  fcirc = fcirc,
   pp = pp,
 }

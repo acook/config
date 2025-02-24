@@ -57,24 +57,7 @@ require('lualine').setup {
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
-  tabline = {
-    lualine_a = {
-      {
-        'tabs',
-        max_length = vim.o.columns,
-        mode = 2,
-        use_mode_colors = true,
-        symbols = {
-          modified = ' ●';
-        }
-      }
-    },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
-  },
+  tabline = {},
   winbar = {},
   inactive_winbar = {},
   extensions = {}

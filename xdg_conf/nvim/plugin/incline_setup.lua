@@ -50,22 +50,30 @@ function get_colors(props, ft_color)
   if not ft_color then -- unknown filetypes have no color
     ft_color = '#000000'
   end
+
   local status, lualine = pcall(require, "lualine")
+  local colors
+
   if status then -- lualine detected
-    return get_lualine_colors(lualine, props, ft_color)
-  else -- lualine not detected
-    return get_fallback_colors(props, ft_color)
+    colors = get_lualine_colors(lualine, props, ft_color)
   end
+
+  return colors or get_fallback_colors(props, ft_color)
 end
 
 require('incline').setup {
+	hide = {
+    only_win = true,
+    cursorline = true,
+    focused_win = false
+  },
   ignore = {
     filetypes = { 'neo-tree' }
   },
   window = {
     padding = 0,
     margin = { horizontal = 0 },
-    overlap = { borders = true, tabline = true, winbar = true, statusline = true },
+    overlap = { borders = true, tabline = false, winbar = true, statusline = true },
     margin = { vertical = 0, horizontal = 0 },
     placement = { vertical = 'top' },
   },
