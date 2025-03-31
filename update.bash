@@ -10,7 +10,7 @@ if [ $git_dirty -ne 0 ]; then
 fi
 
 echo Updating local repo...
-git pull --rebase origin master
+git pull --rebase origin main
 
 echo Updating remote submodules...
 git submodule update --init --recursive
