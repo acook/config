@@ -12,10 +12,4 @@ function post_install {
 
   backup_and_link_directory "$source_dir" "$target_dir" "$backup_dir"
 
-  local source_dir="$dir/xdg_data"
-  local target_dir="${XDG_DATA_HOME:-$HOME/.local/share}"
-  local backup_dir="$shared_backup_dir/.local/share"
-
-  backup_and_link_directory "$source_dir" "$target_dir" "$backup_dir"
-
 }
