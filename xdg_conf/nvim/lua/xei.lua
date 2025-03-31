@@ -15,6 +15,10 @@ local function hl(name)
   return vim.api.nvim_get_hl(0, {name=name,create=false})
 end
 
+local function sethl(name, val)
+  vim.api.nvim_set_hl(0, name, val)
+end
+
 -- get colorscheme fg as hex
 local function fghex(name)
   local fg = vim.api.nvim_get_hl(0, {name=name,create=false}).fg
@@ -102,6 +106,7 @@ return {
   hlhl = hlhl,
   fghex = fghex,
   bghex = bghex,
+  sethl = sethl,
   len = len,
   circ = circ,
   fcirc = fcirc,
