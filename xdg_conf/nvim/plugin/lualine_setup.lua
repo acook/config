@@ -1,6 +1,7 @@
 if true then
 require('lualine').setup {
   options = {
+    theme = 'moloxei',
     icons_enabled = true,
     disabled_filetypes = {
       statusline = {},
