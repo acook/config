@@ -63,6 +63,7 @@
   dog = log --decorate --oneline --graph
   hist = log --graph  --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
+  parent = log --pretty=%P -n 1
   children = "!bash -c 'c=${1:-HEAD}; set -- $(git rev-list --all --not \"$c\"^@ --children | grep $(git rev-parse \"$c\") ); shift; echo $*' -"
 
   root = rev-parse --show-toplevel
