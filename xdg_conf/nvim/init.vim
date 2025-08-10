@@ -95,7 +95,8 @@ endif
 " visual select automatically copies to..
 " Linux - X11's selection ("middle click") buffer when available
 " OSX   - System clipboard
-set go+=a
+" NeoVim removed this option for some reason???
+"set go+=a
 
 " sets backspace key functions, allows it to backspace over end of line
 " characters, start of line, and indentation
