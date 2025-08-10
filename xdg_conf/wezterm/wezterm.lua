@@ -2,7 +2,6 @@
 
 local wezterm = require 'wezterm'
 local act = wezterm.action
-local config = {}
 
 local TRANSPARENT = wezterm.color.from_hsla(0,0,0,0)
 local lime = wezterm.color.parse('#bced09')
@@ -12,7 +11,9 @@ local ivory = wezterm.color.parse('#FFFDF0')
 local dark = wezterm.color.parse('#333333')
 
 config = {
-  font = wezterm.font('Fira Code'),
+  window_close_confirmation = 'AlwaysPrompt',
+
+  font = wezterm.font('Fira Code Nerd Font'),
 
   -- color_scheme = 'Molokai',
   color_scheme = 'Monokai Remastered',
@@ -65,7 +66,7 @@ config = {
     {
       key = 'r',
       mods = 'LEADER',
-      action = wezterm.action.ReloadConfiguration,
+      action = act.ReloadConfiguration,
     },
     {
       key = 'k',
@@ -74,8 +75,12 @@ config = {
         act.ClearScrollback 'ScrollbackAndViewport',
         act.SendKey { key = 'L', mods = 'CTRL' },
       },
-
-    }
+    },
+    {
+      key = 'w',
+      mods = 'CMD',
+      action = act.CloseCurrentTab { confirm = true },
+    },
   },
 }
 
