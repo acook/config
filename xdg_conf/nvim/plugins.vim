@@ -32,6 +32,7 @@ Plug 'b0o/incline.nvim'          " floating pane labels, ideal for global status
 "Plug 'houtsnip/vim-emacscommandline' " better navigation for the Vim commandline
 "Plug 'gelguy/wilder.nvim'            " improve suggestions for the Vim commandline
 Plug 'nanozuki/tabby.nvim'
+"Plug 'rebelot/heirline.nvim'     " possible replacement for lualine
 
 " file / buffer navigation
 Plug 'ctrlpvim/ctrlp.vim'       " fallback for features Telescope lacks, probably removed soon
@@ -47,6 +48,7 @@ Plug 'AckslD/nvim-neoclip.lua'   " Telescope plugin to interact with the clipboa
 "Plug 'gbprod/yanky.nvim'         " Similar to NeoClip above
 "Plug 'Xuyuanp/yanil'             " a file explorer
 "Plug 'nvim-neo-tree/neo-tree.nvim' " a file explorer
+"Plug 'vijaymarupudi/nvim-fzf'      " batteries included fuzzy finder built on fzf, may replace Telescope
 
 " lsp
 Plug 'williamboman/mason.nvim'
