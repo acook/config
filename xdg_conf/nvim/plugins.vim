@@ -19,6 +19,7 @@ Plug 'lilydjwg/colorizer'       " display colors in their color like #FF0
 "Plug 'junegunn/limelight.vim'      " only syntax highlight a portion of the document to make it easier to focus
 "Plug 'junegunn/goyo'           " distraction free mode for vim
 Plug 'nvim-zh/colorful-winsep.nvim' " highlight the active window like tmux does
+Plug 'KabbAmine/vCoolor.vim' " invoke GUI color pickers on multiple platforms
 
 " statusline / tabline / bufferline / windowline / commandline / etc
 Plug 'nvim-lualine/lualine.nvim' " lua featureful but fast statusline
