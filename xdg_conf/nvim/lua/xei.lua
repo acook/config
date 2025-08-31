@@ -92,11 +92,26 @@ local function fcirc(num)
 end
 
 
+--require without raising an error if the file is missing
+local function prequire(m)
+  local ok, err = pcall(require, m)
+  if not ok then return nil, err end
+  return err
+end
 
-local inspect = require('inspect').inspect
+local inspector = prequire('inspect')
+if inspector then
+  inspect = inspector.inspect
+else
+  inspect = nil
+end
 
 local function pp(value)
-  print(inspect(value))
+  if inspect then
+    print(inspect(value))
+  else
+    print(value)
+  end
 end
 
 return {
