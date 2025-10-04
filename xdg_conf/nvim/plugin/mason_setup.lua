@@ -1,25 +1,12 @@
+-- Mason is a package manager used for LSP servers and similar
+-- https://github.com/mason-org/mason.nvim
 
-require("mason").setup()
+local xei = require 'xei'
+local status, mason = pcall(require, 'mason')
 
-local lspconfig = require('lspconfig')
-
-function xdghome()
-  local xdg_home = os.getenv('XDG_CONFIG_HOME')
-
-  if xdg_home and string.len(xdg_home) > 0 then
-    return xdg_home .. '/'
-  else
-    local home = os.getenv('HOME')
-
-    if home:len() > 0 then
-      return home .. '/.config/'
-    else
-      return '.config/'
-    end
-  end
+if not status then
+  xei.warn("plugin not found: mason")
+  return
 end
 
-lspconfig.vls.setup {
-    cmd = { xdghome() .. 'v-analyzer/bin/v-analyzer' },
-}
-
+mason.setup()
