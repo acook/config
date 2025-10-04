@@ -1,5 +1,32 @@
 local M = {}
 
+function M.has(table, element)
+  for _, value in pairs(table) do
+    if value == element then
+      return true
+    end
+  end
+  return false
+end
+
+function M.hasstr(table, pattern)
+  for _, value in pairs(table) do
+    if string.find(value, pattern) then
+      return true
+    end
+  end
+  return false
+end
+
+function M.any(table, func)
+  for _, value in pairs(table) do
+    if func(value) then
+      return true
+    end
+  end
+  return false
+end
+
 function M.num_to_hex(num)
   return ("%06x"):format(num)
 end
@@ -92,12 +119,23 @@ function M.fcirc(num)
   return fcirc_nums[num] or fcirc_nums[10]
 end
 
-
 --require without raising an error if the file is missing
-local function prequire(m)
+function M.prequire(m)
   local ok, err = pcall(require, m)
   if not ok then return nil, err end
   return err
+end
+
+function M.echo(msg)
+  vim.api.nvim_echo({{msg}}, true, {})
+end
+
+function M.warn(msg)
+  vim.api.nvim_echo({{msg, 'WarningMsg'}}, true, {})
+end
+
+function M.err(msg)
+  vim.api.nvim_echo({{msg}}, true, {err=true})
 end
 
 local inspector = prequire('inspect')
@@ -112,6 +150,22 @@ function M.pp(value)
     print(inspect(value))
   else
     print(value)
+  end
+end
+
+function M.xdghome()
+  local xdg_home = os.getenv('XDG_CONFIG_HOME')
+
+  if xdg_home and string.len(xdg_home) > 0 then
+    return xdg_home .. '/'
+  else
+    local home = os.getenv('HOME')
+
+    if home:len() > 0 then
+      return home .. '/.config/'
+    else
+      return '.config/'
+    end
   end
 end
 
