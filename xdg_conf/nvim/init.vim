@@ -15,8 +15,10 @@ let $plugd = "" . xdg . "/nvim/plugins.vim"
 source $plugd
 
 " load directory of additional configs
-let $rd = expand(xdg . '/nvim/rd.d/\*\*/\*.vim')
-runtime $rd
+let $rc = '' . xdg . '/nvim/rc.d/'
+for script in globpath($rc, '*.vim', 0, 1)
+  execute 'source' script
+endfor
 
 let color = "molokai"
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : 'italic', 'sp' : 'fg' }
