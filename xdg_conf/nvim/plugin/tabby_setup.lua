@@ -1,15 +1,21 @@
 -- nanozuki/tabby.nvim
 local xei = require 'xei'
+local tabby = xei.use('tabby')
+
+if not tabby then
+  return
+end
+
 local api = require('tabby.module.api')
 local win_name = require('tabby.feature.win_name')
 
 function get_lualine_colors()
-  local status, lualine = pcall(require, "lualine")
+  local lualine = xei.optional('lualine')
   local colors
 
-  if status then
+  if lualine then
     local theme_name = lualine.get_config().options.theme
-    local theme = require("lualine.themes." .. theme_name)
+    local theme = require('lualine.themes.' .. theme_name)
 
     -- FIXME: this is the exact color that will be made into Normal.bg
     -- So find another way to get this color
@@ -74,7 +80,7 @@ local theme = {
 	tail = 'TabLine',
 }
 
-require('tabby').setup({
+tabby.setup({
 	line = function(line)
 		return {
 			{

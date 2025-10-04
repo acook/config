@@ -140,16 +140,16 @@ end
 
 local inspector = prequire('inspect')
 if inspector then
-  inspect = inspector.inspect
+  M.inspect = inspector.inspect
 else
-  inspect = nil
+  M.inspect = nil
 end
 
 function M.pp(value)
-  if inspect then
-    print(inspect(value))
+  if M.inspect then
+    M.echo(M.inspect(value))
   else
-    print(value)
+    M.echo(value)
   end
 end
 
@@ -167,6 +167,42 @@ function M.xdghome()
       return '.config/'
     end
   end
+end
+
+function M.optional(module_name)
+  local success, module = pcall(require, module_name)
+  if success then
+    return module
+  end
+  return nil
+end
+
+function M.use(module_name)
+  local module = M.optional(module_name)
+
+  if not module then
+    M.warn("module "..module_name.." not found")
+    return
+  end
+
+  return module
+end
+
+function M.plugin(plugin_name, config, silent)
+  local plugin = {}
+  if silent then
+    plugin = M.optional(plugin_name)
+  else
+    plugin = M.use(plugin_name)
+  end
+  if plugin then
+    if config then
+      plugin.setup(config)
+    else
+      plugin.setup()
+    end
+  end
+  return plugin
 end
 
 return M

@@ -1,6 +1,12 @@
-local helpers = require 'incline.helpers'
-local devicons = require 'nvim-web-devicons'
 local xei = require 'xei'
+local incline = xei.use('incline')
+
+if not incline then
+  return
+end
+
+local helpers = require 'incline.helpers'
+local devicons xei.optional('nvim-web-devicons')
 
 function get_lualine_colors(lualine, props, ft_color)
   local fg, bg, ifg, ibg
@@ -51,17 +57,17 @@ function get_colors(props, ft_color)
     ft_color = '#000000'
   end
 
-  local status, lualine = pcall(require, "lualine")
+  local lualine = xei.optional('lualine')
   local colors
 
-  if status then -- lualine detected
+  if lualine then -- lualine detected
     colors = get_lualine_colors(lualine, props, ft_color)
   end
 
   return colors or get_fallback_colors(props, ft_color)
 end
 
-require('incline').setup {
+incline.setup {
 	hide = {
     only_win = true,
     cursorline = true,
@@ -72,7 +78,6 @@ require('incline').setup {
   },
   window = {
     padding = 0,
-    margin = { horizontal = 0 },
     overlap = { borders = true, tabline = false, winbar = true, statusline = true },
     margin = { vertical = 0, horizontal = 0 },
     placement = { vertical = 'top' },
@@ -82,7 +87,9 @@ require('incline').setup {
     if filename == '' then
       filename = ''
     end
-    local ft_icon, ft_color = devicons.get_icon_color(filename)
+    if devicons then
+      local ft_icon, ft_color = devicons.get_icon_color(filename)
+    end
     local modified = vim.bo[props.buf].modified
 
     local colors = get_colors(props, ft_color)

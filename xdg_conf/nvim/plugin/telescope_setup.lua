@@ -1,4 +1,5 @@
-require('telescope').setup{
+local xei = require 'xei'
+local telescope = xei.plugin('telescope', {
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,
@@ -34,7 +35,11 @@ require('telescope').setup{
                                        -- the default case_mode is "smart_case"
     }
   }
-}
+})
+
+if not telescope then
+  return
+end
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('heading')

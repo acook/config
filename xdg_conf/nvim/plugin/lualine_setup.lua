@@ -1,5 +1,6 @@
-if true then
-require('lualine').setup {
+local xei = require 'xei'
+
+local conf = {
   options = {
     theme = 'moloxei',
     icons_enabled = true,
@@ -63,4 +64,6 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
-end
+
+local lualine = xei.plugin('lualine', conf)
+

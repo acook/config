@@ -1,5 +1,5 @@
-local xei = require('xei')
-require("colorful-winsep").setup({
+local xei = require 'xei'
+plugin = xei.plugin('colorful-winsep', {
   -- highlight for Window separator
   hi = {
     fg = xei.fghex('SignColumn')
