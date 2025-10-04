@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd `dirname $0`
+cd "$(dirname "$0")"
 git diff-index --quiet HEAD --
 git_dirty=$?
 
@@ -18,11 +18,11 @@ git submodule foreach "git fetch -q && git checkout -q origin/HEAD"
 
 if [ $git_dirty -ne 0 ]; then
   echo Restoring local changes...
-  git unstash
+  git stash pop
 fi
 
 echo Updating Vim plugins...
-\vim -e +PlugUpgrade +PlugUpdate +qa! 2> /dev/null
-nvim -e +PlugUpgrade +PlugUpdate +qa! 2> /dev/null
+\vim +PlugUpgrade +PlugUpdate +qa!
+nvim +PlugUpgrade +PlugUpdate +qa!
 
 echo Done!
