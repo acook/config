@@ -36,7 +36,7 @@ Plug 'nanozuki/tabby.nvim'
 
 " file / buffer navigation
 Plug 'ctrlpvim/ctrlp.vim'       " fallback for features Telescope lacks, probably removed soon
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.*' }
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'crispgm/telescope-heading.nvim'
 Plug 'fcying/telescope-ctags-outline.nvim'
