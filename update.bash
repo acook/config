@@ -25,6 +25,6 @@ echo Updating Vim plugins...
 \vim +PlugUpgrade +PlugUpdate +qa!
 nvim +PlugUpgrade +PlugUpdate +qa!
 # we have to do this in headless mode otherwise Mason will operate async, which means it will get killed before finishing its task
-nvim --headless +"exe 'source' stdpath('config').'/neovim_setup.vim'" +qa!
+nvim --headless +"exe 'source' stdpath('config').'/neovim_first_setup.vim'" +qa!
 
 echo Done!
