@@ -1,3 +1,5 @@
+-- Incline is a plugin for creating lightweight floating statuslines. It works great with Neovim's global statusline (:set laststatus=3).
+-- https://github.com/b0o/incline.nvim
 local xei = require 'xei'
 local incline = xei.use('incline')
 
@@ -83,10 +85,7 @@ incline.setup {
     placement = { vertical = 'top' },
   },
   render = function(props)
-    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
-    if filename == '' then
-      filename = ''
-    end
+    local filename = xei.filename()
     if devicons then
       local ft_icon, ft_color = devicons.get_icon_color(filename)
     end
