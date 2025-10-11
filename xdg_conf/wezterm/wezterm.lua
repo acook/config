@@ -84,4 +84,8 @@ config = {
   },
 }
 
+if os.execute('infocmp wezterm') then
+  config.term = 'wezterm'
+end
+
 return config
