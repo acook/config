@@ -196,7 +196,8 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " treat question marks as part of a word in ruby
-autocmd BufRead *.rb,*.rake,*.rhtml,<ruby> set isk=?,@,48-57,_,192-255
+autocmd FileType ruby,eruby set isk=?,@,48-57,_,192-255
+autocmd FileType ruby,eruby set path+=lib
 
 " nginx.conf
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
