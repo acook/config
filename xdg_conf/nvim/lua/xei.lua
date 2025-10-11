@@ -119,13 +119,6 @@ function M.fcirc(num)
   return fcirc_nums[num] or fcirc_nums[10]
 end
 
---require without raising an error if the file is missing
-function M.prequire(m)
-  local ok, err = pcall(require, m)
-  if not ok then return nil, err end
-  return err
-end
-
 function M.echo(msg)
   vim.api.nvim_echo({{msg}}, true, {})
 end
@@ -136,21 +129,6 @@ end
 
 function M.err(msg)
   vim.api.nvim_echo({{msg}}, true, {err=true})
-end
-
-local inspector = prequire('inspect')
-if inspector then
-  M.inspect = inspector.inspect
-else
-  M.inspect = nil
-end
-
-function M.pp(value)
-  if M.inspect then
-    M.echo(M.inspect(value))
-  else
-    M.echo(value)
-  end
 end
 
 function M.xdghome()
@@ -203,6 +181,21 @@ function M.plugin(plugin_name, config, silent)
     end
   end
   return plugin
+end
+
+local inspector = M.optional('inspect')
+if inspector then
+  M.inspect = inspector.inspect
+else
+  M.inspect = nil
+end
+
+function M.pp(value)
+  if M.inspect then
+    M.echo(M.inspect(value))
+  else
+    M.echo(value)
+  end
 end
 
 function M.filename(buf)
