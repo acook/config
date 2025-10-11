@@ -205,4 +205,29 @@ function M.plugin(plugin_name, config, silent)
   return plugin
 end
 
+function M.filename(buf)
+  buf = buf or 0
+  local name = ''
+  local path = vim.api.nvim_buf_get_name(buf)
+  local basename = vim.fn.fnamemodify(path, ':t')
+
+  if path ~= '' then
+    name = basename
+  end
+
+  return name
+end
+
+function M.titlestring(buf)
+  buf = buf or 0
+  local title = M.filename(buf)
+  local modified = vim.bo[buf].modified
+
+  if modified then
+    title = title .. ' ●'
+  end
+
+  return title
+end
+
 return M
