@@ -143,11 +143,8 @@ let &colorcolumn=join(range(81,400),",")
 " highlight characters over 120 the same as errors
 match ErrorMsg '\%>120v.\+'
 
-" Make clipbord work on OS X. This makes copy/paste operations trivial between
-" vim and other applications since they all use the same clipboard now.
-if $TMUX == ''
-  set clipboard+=unnamed
-endif
+" use the GUI "primary" clipboard by default
+set clipboard+=unnamedplus
 
 " visual select automatically copies to..
 " Linux - X11's selection ("middle click") buffer when available
@@ -220,13 +217,10 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
-" send selection to clipboard
-func! Clip() range
-  echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| system-clipboard')
-endfunction
-
 " visual mode copy to system clipboard
-vmap <leader>y <esc>:'<,'>:w ! system-clipboard<CR>
+vmap <leader>y y:echo call('system', ['system-clipboard', getreg()])<CR>
+" normal mode copy to system clipboard
+nmap <leader>y :echo call('system', ['system-clipboard', getreg()])<CR>
 " normal mode paste from system clipboard
 nmap <leader>p <esc>:r ! system-clipboard -r<CR>
 

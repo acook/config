@@ -88,11 +88,8 @@ set wildmenu
 " ambiguity.
 set wildmode=list:longest
 
-" Make clipboard work on OS X. This makes copy/paste operations trivial between
-" vim and other applications since they all use the same clipboard now.
-if $TMUX == ''
-  set clipboard+=unnamed
-endif
+" use the GUI "primary" clipboard by default
+set clipboard+=unnamedplus
 
 " visual select automatically copies to..
 " Linux - X11's selection ("middle click") buffer when available
@@ -153,11 +150,6 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
-" send selection to clipboard
-func! Clip() range
-  echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| system-clipboard')
-endfunction
-
 augroup vimrc
   autocmd!
   autocmd InsertEnter * set nocul                                               "Remove cursorline highlight
@@ -175,7 +167,9 @@ augroup END
 "map <C-p> p`[
 
 " visual mode copy to system clipboard
-vmap <leader>y <esc>:'<,'>:w ! system-clipboard<CR>
+vmap <leader>y y:echo call('system', ['system-clipboard', getreg()])<CR>
+" normal mode copy to system clipboard
+nmap <leader>y :echo call('system', ['system-clipboard', getreg()])<CR>
 " normal mode paste from system clipboard
 nmap <leader>p <esc>:r ! system-clipboard -r<CR>
 
