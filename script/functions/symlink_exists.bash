@@ -1,3 +1,1 @@
-function symlink_exists {
-  [ -h "$1" ]
-}
+function symlink_exists { [[ -h $1 ]]; }

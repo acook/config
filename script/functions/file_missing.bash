@@ -1,3 +1,1 @@
-function file_missing {
-  [[ ! -e $1 ]]
-}
+function file_missing { [[ ! -e $1 ]]; }

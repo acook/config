@@ -1,3 +1,1 @@
-function file_exists {
-  [[ -f $1 ]]
-}
+function file_exists { [[ -f $1 ]]; }

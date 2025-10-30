@@ -1,3 +1,1 @@
-function directory_exists {
-  [ -d $1 ]
-}
+function directory_exists { [[ -d $1 ]]; }
