@@ -29,6 +29,7 @@ highlight Normal ctermbg=NONE
 
 set noshowmode                                                                  "Don't show modes since the statusline already does that
 set title                                                                       "change the terminal's title
+set titlestring=%{v:lua.require('xei').titlestring()}
 set number                                                                      "Line numbers are good
 set gdefault                                                                    "Set global flag for search and replace
 set cursorline                                                                  "Highlight current line
