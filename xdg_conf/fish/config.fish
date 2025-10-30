@@ -16,7 +16,7 @@ switch (uname)
   case Darwin
     # insert any macos specific changes
   case Linux
-    fapid -a "/opt/local/bin"
+    fapid "/opt/local/bin"
 
     function ls
       command ls -AFhxX --color --group-directories-first $argv
