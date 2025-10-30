@@ -2,7 +2,10 @@ function fapid -d "Add path to PATH if dir exists"
   # "fish add path if dir"
   # the fish_add_to_path internal function seems broken,
   # it always replaces instead of appending/prepending entries
-  # this does pretty much the same thing
+  #
+  # the bug in fish_add_to_path is long fixed at this point
+  #
+  # this does pretty much the same thing that fish_add_to_path is supposed to do
 
   argparse 'p/prepend' 'a/append' 'v/verbose' 'h/help' -- $argv
   or return 255
