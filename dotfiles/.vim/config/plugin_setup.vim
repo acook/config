@@ -71,7 +71,7 @@ endfunction
 let vimclojure#HighlightBuiltins = 1 " Highlight Clojure's builtins
 let vimclojure#ParenRainbow = 1 " Rainbow parentheses'!
 
-" ruby
+" rubycomplete - https://github.com/vim-scripts/rubycomplete.vim
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
@@ -80,3 +80,6 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " Pandoc
 let g:pandoc#syntax#codeblocks#embeds#langs = ["ruby", "rebol", "clojure", "elixir", "bash=sh", "c"]
 
+" ALE - https://github.com/dense-analysis/ale
+" only works if ALE isn't using NeoVim diagnostics
+let g:ale_virtualtext_cursor = 'current' " only show suggestions for current line
