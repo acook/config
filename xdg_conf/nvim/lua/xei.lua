@@ -147,6 +147,7 @@ function M.xdghome()
   end
 end
 
+-- load a lua module, return nil if it fails to load
 function M.optional(module_name)
   local success, module = pcall(require, module_name)
   if success then
@@ -155,6 +156,7 @@ function M.optional(module_name)
   return nil
 end
 
+-- load a lua module, display a warning if missing
 function M.use(module_name)
   local module = M.optional(module_name)
 
@@ -166,6 +168,7 @@ function M.use(module_name)
   return module
 end
 
+-- load a lua module and run its `setup` function
 function M.plugin(plugin_name, config, silent)
   local plugin = {}
   if silent then
