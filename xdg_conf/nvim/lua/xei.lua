@@ -131,13 +131,17 @@ function M.err(msg)
   vim.api.nvim_echo({{msg}}, true, {err=true})
 end
 
+function M.home()
+    return os.getenv('HOME')
+end
+
 function M.xdghome()
   local xdg_home = os.getenv('XDG_CONFIG_HOME')
 
   if xdg_home and string.len(xdg_home) > 0 then
     return xdg_home .. '/'
   else
-    local home = os.getenv('HOME')
+    local home = M.home()
 
     if home:len() > 0 then
       return home .. '/.config/'
@@ -145,6 +149,29 @@ function M.xdghome()
       return '.config/'
     end
   end
+end
+
+function M.load_config(config_file, default)
+  local config_data = {}
+  local f, err = loadfile(config_file, 't', config_data)
+
+  if f then
+    f()
+  elseif default then
+    config_data = default
+  else
+    M.warn(err)
+  end
+
+  return config_data
+end
+
+function M.wiki_conf()
+  return M.load_config(M.home() .. '/.config/nvim/wiki.conf', {
+    name = 'Wiki',
+    path = '/Sync/Wiki'
+    daily = 'Daily'
+  })
 end
 
 -- load a lua module, return nil if it fails to load
