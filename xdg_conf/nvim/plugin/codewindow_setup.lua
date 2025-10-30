@@ -10,4 +10,6 @@ if not codewindow then
   return
 end
 
+vim.api.nvim_command('highlight! link CodewindowBackground SignColumn')
+
 codewindow.apply_default_keybinds()
