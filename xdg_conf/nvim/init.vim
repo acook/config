@@ -20,6 +20,8 @@ for script in globpath($rc, '*.vim', 0, 1)
   execute 'source' script
 endfor
 
+set background=dark
+set termguicolors
 let color = "molokai"
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : 'italic', 'sp' : 'fg' }
 execute "colorscheme" color
