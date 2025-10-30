@@ -27,7 +27,7 @@ Plug 'nvim-lualine/lualine.nvim'       " lua featureful but fast statusline
 Plug 'b0o/incline.nvim'                " floating pane labels, ideal for global statuslines
 Plug 'nanozuki/tabby.nvim'             " tabline
 "Plug 'willothy/nvim-cokeline'          " customizable bufferline framework
-"Plug 'gorbit99/codewindow.nvim'        " a colorized minimap using braille characters
+Plug 'gorbit99/codewindow.nvim'        " a colorized minimap using braille characters
 "Plug 'MunifTanjim/nui.nvim'            " UI component library, used by noice
 "Plug 'nvim-notify'                     " fancy notifications for plugins
 "Plug 'folke/noice.nvim'                " completely overhaul the Vim commandline experience
