@@ -169,7 +169,7 @@ end
 function M.wiki_conf()
   return M.load_config(M.home() .. '/.config/nvim/wiki.conf', {
     name = 'Wiki',
-    path = '/Sync/Wiki'
+    path = '/Sync/Wiki',
     daily = 'Daily'
   })
 end
