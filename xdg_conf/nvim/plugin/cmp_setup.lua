@@ -66,15 +66,16 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-e>'] = cmp.mapping.abort(), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
-  }, {
+  sources = cmp.config.sources(
+    {
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' },
+    },
     { name = 'buffer' },
-  })
+    {
+      name = 'path',
+    }
+  )
 })
 
 -- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
@@ -88,6 +89,9 @@ cmp.setup({
 })
 require("cmp_git").setup() ]]--
 
+-- cmp-cmdline, requires cmp above (if you enabled `native_menu`, this won't work anymore).
+-- https://github.com/hrsh7th/cmp-cmdline
+
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
@@ -96,15 +100,19 @@ cmp.setup.cmdline({ '/', '?' }, {
   }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+-- Use cmdline & path source for ':'
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
-    { name = 'cmdline' }
+    {
+      name = 'cmdline',
+      option = {
+        ignore_cmds = { 'Man', '!' }
+      }
+    }
   }),
-  matching = { disallow_symbol_nonprefix_matching = false }
 })
 
 -- Set up lspconfig.
