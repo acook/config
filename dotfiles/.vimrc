@@ -68,7 +68,7 @@ elseif version >= 700 && &term != 'cygwin'
   else
     execute "GuiColorScheme" color
   endif
-
+  set termguicolors
 endif
 
 " disable balloon popup since theres a plugin that makes it really annoying
