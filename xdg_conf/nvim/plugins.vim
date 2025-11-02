@@ -64,17 +64,18 @@ Plug 'williamboman/mason.nvim'            " package manager for LSP
 Plug 'neovim/nvim-lspconfig'              " LSP configurations
 Plug 'williamboman/mason-lspconfig.nvim'  " integration between Mason and LSPconfig
 Plug 'ray-x/lsp_signature.nvim'           " tooltip with LSP info
-"Plug 'Saghen/blink.cmp'                   " "beta quality" completion plugin for LSP
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " does parsing and stuff
 
 " completion
-"Plug 'ervandew/supertab'                  " better tab completion
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/nvim-cmp'
+"Plug 'ervandew/supertab'                  " better tab completion (compatible with vanlla vim)
+Plug 'hrsh7th/cmp-nvim-lsp'               " cmp source for LSP
+Plug 'hrsh7th/cmp-buffer'                 " cmp source for words in buffers, required by cmp-cmdline
+Plug 'hrsh7th/cmp-path'                   " cmp source for file paths
+" Plug 'petertriho/cmp-git'                " cmp source for git
+Plug 'hrsh7th/cmp-cmdline'                " completion for command line and search
+Plug 'hrsh7th/vim-vsnip'                  " snippets, required by nvim-cmp
+Plug 'hrsh7th/nvim-cmp'                   " extensible completion plugin
+"Plug 'Saghen/blink.cmp'                   " extensible completion plugin
 Plug 'nvimtools/none-ls.nvim'             " inject LSP diagnostics (i think something else uses this??)
 Plug 'ZhiyuanLck/smart-pairs'             " automatically add closing quotes and brackets
 Plug 'RRethy/nvim-treesitter-endwise'     " supposed to be like tpope's but faster
