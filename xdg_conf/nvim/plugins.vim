@@ -76,10 +76,10 @@ Plug 'hrsh7th/cmp-cmdline'                " completion for command line and sear
 Plug 'hrsh7th/vim-vsnip'                  " snippets, required by nvim-cmp
 Plug 'hrsh7th/nvim-cmp'                   " extensible completion plugin
 "Plug 'Saghen/blink.cmp'                   " extensible completion plugin
-Plug 'nvimtools/none-ls.nvim'             " inject LSP diagnostics (i think something else uses this??)
-Plug 'ZhiyuanLck/smart-pairs'             " automatically add closing quotes and brackets
-Plug 'RRethy/nvim-treesitter-endwise'     " supposed to be like tpope's but faster
-"Plug 'tpope/vim-endwise'                  " automatically add end-style keywords
+"Plug 'nvimtools/none-ls.nvim'             " inject LSP diagnostics (i think something else uses this??)
+"Plug 'ZhiyuanLck/smart-pairs'             " automatically add closing quotes and brackets, buggy??
+"Plug 'RRethy/nvim-treesitter-endwise'     " supposed to be like tpope's but faster, buggy! empty early lines in a Lua file will cause errors
+Plug 'tpope/vim-endwise'                  " automatically add end-style keywords
 
 " diagnostics
 Plug 'folke/trouble.nvim'                 " like a superset of quickfix and similar lists
