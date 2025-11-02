@@ -96,7 +96,7 @@ Plug 'tpope/vim-surround'                 " maipulate enclosing quotes and brack
 "Plug 'tpope/vim-unimpaired'               " adds normal mode commands that are like inverse versions of existing commands, for consistency and ergonomics
 Plug 'tpope/vim-eunuch'                   " perform shell-like commands :Remove :Move and :SudoWrite
 Plug 'tpope/vim-characterize'             " displays extra info about characters under the cursor when using ga
-"Plug 'chrisbra/unicode.vim'               " search for Vim digraphs for Unicode characters
+Plug 'chrisbra/unicode.vim'               " search for Vim digraphs for Unicode characters
 "Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'AndrewRadev/bufferize.vim'          " evaluate a Vim/Ex command and stores its output in a buffer
 
