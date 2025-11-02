@@ -30,7 +30,6 @@ source "$FISHCONFIGDIR/fisher_setup.fish"
 # load all files in my secondary config directory (away from fisher's mess)
 if status --is-interactive
   for f in $FISHCONFIGDIR/conf.user.d/*
-    #echo "loading: $f"
     if test -f "$f"
       source "$f"
     end
