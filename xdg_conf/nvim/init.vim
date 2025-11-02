@@ -14,12 +14,6 @@ source $HOME/.vim/config/plugin_setup.vim
 let $plugd = "" . xdg . "/nvim/plugins.vim"
 source $plugd
 
-" load directory of additional configs
-let $rc = '' . xdg . '/nvim/rc.d/'
-for script in globpath($rc, '*.vim', 0, 1)
-  execute 'source' script
-endfor
-
 set background=dark
 set termguicolors
 let color = "molokai"
@@ -28,6 +22,12 @@ execute "colorscheme" color
 "Makes background the default, so it can be transparent in terminals that
 "support it. Everything will be unreadable if the terminal is light!
 highlight Normal ctermbg=NONE
+
+" load directory of additional configs
+let $rc = '' . xdg . '/nvim/rc.d/'
+for script in globpath($rc, '*.vim', 0, 1)
+  execute 'source' script
+endfor
 
 set noshowmode                                                                  "Don't show modes since the statusline already does that
 set title                                                                       "change the terminal's title
