@@ -17,6 +17,7 @@ switch (uname)
     # insert any macos specific changes
   case Linux
     fapid "/opt/local/bin"
+    fapid "/opt/pkg/unicon/current/bin"
 
     function ls
       command ls -AFhxX --color --group-directories-first $argv

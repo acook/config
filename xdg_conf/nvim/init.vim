@@ -21,7 +21,7 @@ let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : 'italic', 'sp' : 'fg' }
 execute "colorscheme" color
 "Makes background the default, so it can be transparent in terminals that
 "support it. Everything will be unreadable if the terminal is light!
-highlight Normal ctermbg=NONE
+highlight Normal ctermbg=NONE guibg=NONE
 
 " load directory of additional configs
 let $rc = '' . xdg . '/nvim/rc.d/'
