@@ -53,17 +53,17 @@
 
   branches = branch -v
   remotes = remote -v
-  origin = remote show origin
   tags = tag -n -l
+  origin = remote show origin
 
-  diffs = diff --staged
-  diffh = diff HEAD
-
-  last = log -1 HEAD
   dog = log --decorate --oneline --graph
   hist = log --graph  --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
+  # show the message for the most recent commit, also shows if it is signed
+  last = log --show-signature -1 HEAD
+  # find parent of the given commit
   parent = log --pretty=%P -n 1
+  # find all of the children for a given commit
   children = "!bash -c 'c=${1:-HEAD}; set -- $(git rev-list --all --not \"$c\"^@ --children | grep $(git rev-parse \"$c\") ); shift; echo $*' -"
 
   root = rev-parse --show-toplevel
@@ -73,25 +73,72 @@
   unmerged = ls-files --unmerged
 
   subdo = submodule foreach git
+  # show the total size of files
   stats = !git diff --stat `git hash-object -t tree /dev/null`
 
-  vimdiff = difftool --diff-filter=M --tool=vimdiff
-  opendiff = difftool --diff-filter=M --tool=opendiff
-  p4diff = difftool --diff-filter=M --tool=p4merge
+  diffs = diff --staged
+  diffh = diff HEAD
 
+  vimdiff = difftool --tool=vimdiff
+  p4diff = difftool --tool=p4merge
+  meld = difftool --tool=meld
+  nvd = difftool --tool=nvimdiff
+  komp = difftool --tool=kompare
+  ddiff = difftool --tool=diffuse
+
+  vimdiffs = vimdiff --staged
+  p4diffs = p4diff --staged
+  melds = meld --staged
+  nvds = ndiff --staged
+  komps = kdiff --staged
+  ddiffs = ddiff --staged
+
+  # show the oldest commit
   oldest = "!git log --follow --pretty=%H -- \"$*\" | tail -n 1 #"
+  # show the date of the oldest commit
   oldestdate = "!git isodate $(git oldest \"$*\") #"
 
+  # show the date of the current (or specified) commit
   isodate = show --format=%ad --date=format:'%Y-%m-%dT%H:%M:%S%z' --no-patch
 
+[merge]
+  default = current
+  conflictstyle = diff3
+  tool = nvimdiff
+  guitool = meld
+
+[mergetool]
+  keepBackup = false
+  prompt = false
+
 [mergetool "p4merge"]
-  cmd = ~/Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
+  cmd = p4merge "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
   keepTemporaries = false
   trustExitCode = false
   keepBackup = false
 
+[mergetool "meld"]
+  cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+
+[mergetool "meldbase"]
+  cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
+
+[diff]
+  prompt = false
+  colorMoved = default
+  tool = meld
+
+[difftool]
+  prompt = false
+
+[difftool "meld"]
+  cmd = meld "$LOCAL" "$REMOTE"
+
 [difftool "p4merge"]
-  cmd = ~/Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
+  cmd = p4merge "$LOCAL" "$REMOTE"
+
+[difftool "nvimdiff"]
+  cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [delta]
   navigate = true
@@ -113,27 +160,49 @@
   line-numbers = true
   side-by-side = true
 
+[init]
+  defaultBranch = main
+
+[checkout]
+	defaultRemote = origin
+
 [push]
   default = current
 
 [pull]
   default = current
 
-[merge]
-  default = current
-  conflictstyle = diff3
-  tool = p4merge
+[branch "main"]
+  remote = origin
+  merge = refs/heads/main
 
-[diff]
-  prompt = false
-  colorMoved = default
-  #tool = vimdiff
+[filter "media"]
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
 
-[mergetool]
-  keepBackup = false
-  prompt = false
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 
-[url "http://github.com/"]
+[gpg]
+  program = gpg
+
+[commit]
+	gpgSign = true
+
+[tag]
+	forceSignAnnotated = true
+
+[url "https://codeberg.org/"]
+  insteadOf = "cb:"
+
+[url "git@codeberg.org:"]
+  pushInsteadOf = "https://codeberg.org/"
+  pushInsteadOf = "http://codeberg.org/"
+  pushInsteadOf = "cb:"
+
+[url "https://github.com/"]
   insteadOf = "gh:"
 
 [url "git@github.com:"]
@@ -149,36 +218,9 @@
   pushInsteadOf = "http://gist.github.com/"
   pushInsteadOf = "gist:"
 
-[branch "master"]
-  remote = origin
-  merge = refs/heads/master
-
-[github]
-  user = acook
-  username = acook
-
-[filter "media"]
-  clean = git-media-clean %f
-  smudge = git-media-smudge %f
-
-[filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
-  required = true
-[gpg]
-  program = gpg
-[commit]
-	gpgSign = true
-[tag]
-	forceSignAnnotated = true
-[init]
-  defaultBranch = main
-
 [include]
   path = ~/.gitconfig.local
 
 [includeIf "gitdir/i:*Work*"]
   path = ~/.gitconfig.work
 
-[checkout]
-	defaultRemote = origin
