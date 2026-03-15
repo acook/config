@@ -5,7 +5,7 @@ if exists("g:neovide")
   let g:neovide_remember_window_size = v:true
 
   let g:transparency = 0.9
-  let g:neovide_transparency = 0.98
+  let g:neovide_opacity = 0.90
   let g:neovide_window_blurred = v:true
 
   let g:neovide_padding_top = 5
