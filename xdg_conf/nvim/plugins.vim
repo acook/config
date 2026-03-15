@@ -44,6 +44,7 @@ Plug 'mattn/ctrlp-matchfuzzy'          " use Vim's builtin fuzzy matcher for ctr
 "Plug 'gbprod/yanky.nvim'               " Similar to NeoClip above
 "Plug 'nvim-neo-tree/neo-tree.nvim'     " a file explorer
 "Plug 'vijaymarupudi/nvim-fzf'          " batteries included fuzzy finder built on fzf, may replace Telescope
+"Plug 'hrsh7th/nvim-deck'               " list selection plugin (similar to what telescope and ctrlp do)
 " TELESCOPE
 Plug 'nvim-telescope/telescope.nvim'   " pop-up fuzzy search
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
