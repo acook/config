@@ -19,12 +19,11 @@ Plug 'mbbill/undotree'                 " allow you to navigate undo branches
 "Plug 'NeogitOrg/neogit'                " interactive git history explorer
 "Plug 'junegunn/limelight.vim'          " only syntax highlight a portion of the document to make it easier to focus
 "Plug 'junegunn/goyo'                   " distraction free mode for vim
-Plug 'nvim-zh/colorful-winsep.nvim'    " highlight the active window pane like tmux does
+"Plug 'nvim-zh/colorful-winsep.nvim'    " highlight the active window pane like tmux does
 Plug 'KabbAmine/vCoolor.vim'           " invoke GUI color pickers on multiple platforms
 
 " statusline / tabline / bufferline / windowline / commandline / etc
 Plug 'nvim-lualine/lualine.nvim'       " lua featureful but fast statusline
-Plug 'b0o/incline.nvim'                " floating pane labels, ideal for global statuslines
 Plug 'nanozuki/tabby.nvim'             " tabline
 "Plug 'willothy/nvim-cokeline'          " customizable bufferline framework
 Plug 'gorbit99/codewindow.nvim'        " a colorized minimap using braille characters
@@ -107,7 +106,7 @@ Plug 'tomasr/molokai'
 " syntax
 "Plug 'lilydjwg/colorizer'                 " changes the color of hex codes into the color they represent, like #FF0
 "Plug 'BourgeoisBear/clrzr'                " as above, maybe faster, but less compatible
-Plug 'norcalli/nvim-colorizer.lua'        " changes the color of hex codes into the color they represent, like #FF0, lua
+Plug 'catgoose/nvim-colorizer.lua'         " changes the color of hex codes into the color they represent, like #FF0, lua
 "Plug 'euclidianAce/BetterLua.vim'         " supposed to improve Lua syntax hiliting, but it is old
 Plug 'fatih/vim-go'
 Plug 'rhysd/vim-crystal'

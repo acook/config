@@ -1,4 +1,4 @@
--- nanozuki/tabby.nvim
+-- https://github.com/nanozuki/tabby.nvim
 local xei = require 'xei'
 local tabby = xei.use('tabby')
 

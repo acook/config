@@ -1,5 +1,5 @@
 local xei = require 'xei'
-plugin = xei.plugin('colorful-winsep', {
+xei.optional('colorful-winsep', {
   -- highlight for Window separator
   hi = {
     fg = xei.fghex('SignColumn')

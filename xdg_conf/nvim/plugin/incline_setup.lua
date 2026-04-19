@@ -1,7 +1,7 @@
 -- Incline is a plugin for creating lightweight floating statuslines. It works great with Neovim's global statusline (:set laststatus=3).
 -- https://github.com/b0o/incline.nvim
 local xei = require 'xei'
-local incline = xei.use('incline')
+local incline = xei.optional('incline')
 
 if not incline then
   return
@@ -47,7 +47,7 @@ end
 function get_fallback_colors(props, ft_color)
   -- set fallback colors here
   if not props.focused then -- inactive window pane
-    return {fg = '#999999', bg = '#000000', ibg = '#000000', ifg = '#999999'}
+    return {fg = '#999999', bg = none, ibg = none, ifg = '#999999'}
   else -- active window pane
     local ft_contrast = helpers.contrast_color(ft_color)
     return {fg = ft_contrast, bg = ft_color, ifg = ft_contrast, ibg = ft_color}
@@ -56,7 +56,7 @@ end
 
 function get_colors(props, ft_color)
   if not ft_color then -- unknown filetypes have no color
-    ft_color = '#000000'
+    ft_color = 'none'
   end
 
   local lualine = xei.optional('lualine')

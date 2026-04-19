@@ -1,3 +1,4 @@
+-- https://github.com/nvim-lualine/lualine.nvim
 local xei = require 'xei'
 
 local conf = {
@@ -11,7 +12,7 @@ local conf = {
     ignore_focus = {},
     always_divide_middle = true,
     always_show_tabline = false,
-    globalstatus = true,
+    globalstatus = false,
     refresh = {
       statusline = 100,
       tabline = 100,
@@ -40,8 +41,12 @@ local conf = {
     lualine_z = {'location'}
   },
   inactive_sections = {
-    lualine_a = {},
-    lualine_b = {
+    lualine_a = {
+      {
+        -- center the component and disable the separator
+        '%=',
+        separator = "",
+      },
       {
         'filename',
         newfile_status = true,
@@ -54,10 +59,11 @@ local conf = {
         }
       }
     },
+    lualine_b = {},
     lualine_c = {},
     lualine_x = {},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_y = {},
+    lualine_z = {}
   },
   tabline = {},
   winbar = {},
