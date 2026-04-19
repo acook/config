@@ -29,6 +29,7 @@ Prerequisites
 
 - **bash**      : http://www.gnu.org/s/bash      - The install scripts were written for `bash`, but there are configuration files for `fish` and `zsh` as well.
 - **git**       : http://git-scm.com             - Without git the install script will complain at the end and you won't get any of the submodules, but it will still happily do everything else.
+- delta     : https://github.com/dandavison/delta     - Delta is used as the pager for git by default.
 - **coreutils** : http://www.gnu.org/s/coreutils - GNU basic utilities, some aliases and functions in the bash configuration may fail. (Preinstalled on Linux), use Homebrew to install on macOS)
 
 *Note that my configuration files use GNU syntax, not BSD syntax.*
