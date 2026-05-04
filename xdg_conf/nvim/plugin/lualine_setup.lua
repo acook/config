@@ -1,7 +1,8 @@
 -- https://github.com/nvim-lualine/lualine.nvim
 local xei = require 'xei'
 
-local conf = {
+local lualine = xei.plugin('lualine',
+{
   options = {
     theme = 'moloxei',
     icons_enabled = true,
@@ -41,12 +42,12 @@ local conf = {
     lualine_z = {'location'}
   },
   inactive_sections = {
-    lualine_a = {
-      {
-        -- center the component and disable the separator
-        '%=',
-        separator = "",
-      },
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {
       {
         'filename',
         newfile_status = true,
@@ -58,18 +59,11 @@ local conf = {
           unnamed  = ''
         }
       }
-    },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
+    }
   },
   tabline = {},
   winbar = {},
   inactive_winbar = {},
   extensions = {}
-}
-
-local lualine = xei.plugin('lualine', conf)
+})
 

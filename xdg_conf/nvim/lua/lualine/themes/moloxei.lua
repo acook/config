@@ -53,7 +53,7 @@ return {
     c = {bg = colors.steelglint, fg = colors.steelbright}
   },
   inactive = {
-    a = {bg = colors.darkgray, fg = colors.gray, gui = 'bold'},
+    a = {bg = colors.darkgray, fg = colors.gray, gui = 'italic'},
     b = {bg = colors.darkgray, fg = colors.gray},
     c = {bg = colors.darkgray, fg = colors.gray}
   }
