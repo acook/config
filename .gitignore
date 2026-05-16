@@ -6,3 +6,4 @@ tags
 plug.vim.old
 fish_variables
 xdg_conf/fish/*.tmp*
+xdg_conf/nvim/wiki.conf
