@@ -51,7 +51,7 @@
   unstash = stash pop
   unstage = reset HEAD --
 
-  branches = branch -v
+  branches = branch --all
   remotes = remote -v
   tags = tag -n -l
   origin = remote show origin
