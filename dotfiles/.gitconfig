@@ -55,6 +55,7 @@
   remotes = remote -v
   tags = tag -n -l
   origin = remote show origin
+  upstream = "!bash -c \"git for-each-ref --format='%(upstream:short)' \"$(git symbolic-ref -q HEAD)\"\""
 
   dog = log --decorate --oneline --graph
   hist = log --graph  --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
